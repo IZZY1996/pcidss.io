@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PCI DSS v4.0 Helper Tool</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- Settings Icon -->
+  <button id="settingsIcon" class="settings-cog">⚙️</button>
+
+  <!-- Modal Backdrop (Initially hidden) -->
+  <div id="modalBackdrop" class="modal-backdrop"></div>
+
+  <!-- Settings Modal (Initially hidden) -->
+  <div id="settingsModal" class="settings-modal">
+    <h2>Settings</h2>
+    <label>
+      <input type="checkbox" id="serviceProviderSwitch">
+      Are you a service provider?
+    </label>
+    <br />
+    <label>
+      <input type="checkbox" id="issuerSwitch"> Issuers
+    </label>
+  </div>
+
+  <div id="contentModal" class="contentModal">
+    <div class="content">
+    </div>
+    <button class="complete">In Place</button>
+    <button class="ccw">In Place with CCW</button>
+    <button class="na">Not Applicable</button>
+    <button class="close">Not in Place</button>
+  </div>
+
+
+
+  <div class="panel" id="main-requirements-panel">
+    <button id="toggle-main-reqs">></button>
+    <div id="main-header-section">
+      <h2>Principal PCI DSS Requirements</h2>
+    </div>
+    <div class="content-section">
+      <h4>Build and Maintain a Secure Network and Systems</h4>
+      <div class="requirement" data-requirement="01">1. Install and Maintain Network Security Controls.</div>
+      <div class="requirement" data-requirement="2">2. Apply Secure Configurations to All System Components.</div>
+      <h4>Protect Account Data</h4>
+      <div class="requirement" data-requirement="3">3. Protect Stored Account Data.</div>
+      <div class="requirement" data-requirement="4">4. Protect Cardholder Data with Strong Cryptography During
+        Transmission Over Open, Public Networks</div>
+      <h4>Maintain a Vulnerability Management Program</h4>
+      <div class="requirement" data-requirement="5">5. Protect All Systems and Networks from Malicious Software.</div>
+      <div class="requirement" data-requirement="6">6. Develop and Maintain Secure Systems and Software.</div>
+      <h4>Implement Strong Access Control Measures</h4>
+      <div class="requirement" data-requirement="7">7. Restrict Access to System Components and Cardholder Data by
+        Business Need to Know.</div>
+      <div class="requirement" data-requirement="8">8. Identify Users and Authenticate Access to System Components.
+      </div>
+      <div class="requirement" data-requirement="9">9. Restrict Physical Access to Cardholder Data.</div>
+      <h4>Regularly Monitor and Test Networks</h4>
+      <div class="requirement" data-requirement="10">10. Log and Monitor All Access to System Components and Cardholder
+        Data.</div>
+      <div class="requirement" data-requirement="11">11. Test Security of Systems and Networks Regularly.</div>
+      <h4>Maintain an Information Security Policy</h4>
+      <div class="requirement" data-requirement="12">12. Support Information Security with Organizational Policies and
+        Programs.</div>
+    </div>
+  </div>
+
+  <div class="panel" id="sub-requirements-panel">
+    <button id="toggle-sub-reqs">></button>
+    <div id="sub-header-section">
+      <h2>1. Install and Maintain Network Security Controls.</h2>
+    </div>
+    <div class="content-section">
+      <!-- List all sub requirements here, identified by the main requirement they belong to -->
+      <div class="sub-requirement" data-main-requirement="01" data-sub-requirement="1.1" data-title="1.1 Processes and mechanisms for installing and maintaining network security controls are defined and understood.">1.1 Processes and mechanisms for installing and maintaining network security controls are defined and understood.</div>
+      <div class="sub-requirement" data-main-requirement="01" data-sub-requirement="1.2" data-title="1.2 Network security controls (NSCs) are configured and maintained.">1.2 Network security controls (NSCs) are configured and maintained.</div>
+      <div class="sub-requirement" data-main-requirement="01" data-sub-requirement="1.3" data-title="1.3 Network access to and from the cardholder data environment is restricted.">1.3 Network access to and from the cardholder data environment is restricted.</div>
+      <div class="sub-requirement" data-main-requirement="01" data-sub-requirement="1.4" data-title="1.4 Network connections between trusted and untrusted networks are controlled.">1.4 Network connections between trusted and untrusted networks are controlled.</div>
+      <div class="sub-requirement" data-main-requirement="01" data-sub-requirement="1.5" data-title="1.5 Risks to the CDE from computing devices that are able to connect to both untrusted networks and the CDE are mitigated.">1.5 Risks to the CDE from computing devices that are able to connect to both untrusted networks and the CDE are mitigated.</div>
+      <div class="sub-requirement" data-main-requirement="2" data-sub-requirement="2.1" data-title="2.1 Processes and mechanisms for applying secure configurations to all system components are defined and understood.">2.1 Processes and mechanisms for applying secure configurations to all system components are defined and understood.</div>
+      <div class="sub-requirement" data-main-requirement="2" data-sub-requirement="2.2" data-title="2.2 System components are configured and managed securely.">2.2 System components are configured and managed securely.</div>
+      <div class="sub-requirement" data-main-requirement="2" data-sub-requirement="2.3" data-title="2.3 Wireless environments are configured and managed securely.">2.3 Wireless environments are configured and managed securely.</div>
+      <div class="sub-requirement" data-main-requirement="3" data-sub-requirement="3.1" data-title="3.1 Processes and mechanisms for protecting stored account data are defined and understood.">3.1 Processes and mechanisms for protecting stored account data are defined and understood.</div>
+      <div class="sub-requirement" data-main-requirement="3" data-sub-requirement="3.2" data-title="3.2 Storage of account data is kept to a minimum.">3.2 Storage of account data is kept to a minimum.</div>
+      <div class="sub-requirement" data-main-requirement="3" data-sub-requirement="3.3" data-title="3.3 Sensitive authentication data (SAD) is not stored after authorization.">3.3 Sensitive authentication data (SAD) is not stored after authorization.</div>
+      <div class="sub-requirement" data-main-requirement="3" data-sub-requirement="3.4" data-title="3.4 Access to displays of full PAN and ability to copy cardholder data are restricted.">3.4 Access to displays of full PAN and ability to copy cardholder data are restricted.</div>
+      <div class="sub-requirement" data-main-requirement="3" data-sub-requirement="3.5" data-title="3.5 Primary account number (PAN) is secured wherever it is stored.">3.5 Primary account number (PAN) is secured wherever it is stored.</div>
+      <div class="sub-requirement" data-main-requirement="3" data-sub-requirement="3.6" data-title="3.6 Cryptographic keys used to protect stored account data are secured.">3.6 Cryptographic keys used to protect stored account data are secured.</div>
+      <div class="sub-requirement" data-main-requirement="3" data-sub-requirement="3.7" data-title="3.7 Where cryptography is used to protect stored account data, key management processes and procedures covering all aspects of the key lifecycle are defined and implemented.">3.7 Where cryptography is used to protect stored account data, key management processes and procedures covering all aspects of the key lifecycle are defined and implemented.</div>
+      <div class="sub-requirement" data-main-requirement="4" data-sub-requirement="4.1" data-title="4.1 Processes and mechanisms for protecting cardholder data with strong cryptography during transmission over open, public networks are defined and documented.">4.1 Processes and mechanisms for protecting cardholder data with strong cryptography during transmission over open, public networks are defined and documented.</div>
+      <div class="sub-requirement" data-main-requirement="4" data-sub-requirement="4.2" data-title="4.2 PAN is protected with strong cryptography during transmission">4.2 PAN is protected with strong cryptography during transmission</div>
+      <div class="sub-requirement" data-main-requirement="5" data-sub-requirement="5.1" data-title="5.1 Processes and mechanisms for protecting all systems and networks from malicious software are defined and understood.">5.1 Processes and mechanisms for protecting all systems and networks from malicious software are defined and understood.</div>
+      <div class="sub-requirement" data-main-requirement="5" data-sub-requirement="5.2" data-title="5.2 Malicious software (malware) is prevented, or detected and addressed.">5.2 Malicious software (malware) is prevented, or detected and addressed.</div>
+      <div class="sub-requirement" data-main-requirement="5" data-sub-requirement="5.3" data-title="5.3 Anti-malware mechanisms and processes are active, maintained, and monitored.">5.3 Anti-malware mechanisms and processes are active, maintained, and monitored.</div>
+      <div class="sub-requirement" data-main-requirement="5" data-sub-requirement="5.4" data-title="5.4 Anti-phishing mechanisms protect users against phishing attacks.">5.4 Anti-phishing mechanisms protect users against phishing attacks.</div>
+      <div class="sub-requirement" data-main-requirement="6" data-sub-requirement="6.1" data-title="6.1 Processes and mechanisms for developing and maintaining secure systems and software are defined and understood.">6.1 Processes and mechanisms for developing and maintaining secure systems and software are defined and understood.</div>
+      <div class="sub-requirement" data-main-requirement="6" data-sub-requirement="6.2" data-title="6.2 Bespoke and custom software are developed securely.">6.2 Bespoke and custom software are developed securely.</div>
+      <div class="sub-requirement" data-main-requirement="6" data-sub-requirement="6.3" data-title="6.3 Security vulnerabilities are identified and addressed.">6.3 Security vulnerabilities are identified and addressed.</div>
+      <div class="sub-requirement" data-main-requirement="6" data-sub-requirement="6.4" data-title="6.4 Public-facing web applications are protected against attacks.">6.4 Public-facing web applications are protected against attacks.</div>
+      <div class="sub-requirement" data-main-requirement="6" data-sub-requirement="6.5" data-title="6.5 Changes to all system components are managed securely.">6.5 Changes to all system components are managed securely.</div>
+      <div class="sub-requirement" data-main-requirement="7" data-sub-requirement="7.1" data-title="7.1 Processes and mechanisms for restricting access to system components and cardholder data by business need to know are defined and understood.">7.1 Processes and mechanisms for restricting access to system components and cardholder data by business need to know are defined and understood.</div>
+      <div class="sub-requirement" data-main-requirement="7" data-sub-requirement="7.2" data-title="7.2 Access to system components and data is appropriately defined and assigned.">7.2 Access to system components and data is appropriately defined and assigned.</div>
+      <div class="sub-requirement" data-main-requirement="7" data-sub-requirement="7.3" data-title="7.3 Access to system components and data is managed via an access control system(s).">7.3 Access to system components and data is managed via an access control system(s).</div>
+      <div class="sub-requirement" data-main-requirement="8" data-sub-requirement="8.1" data-title="8.1 Processes and mechanisms for identifying users and authenticating access to system components are defined and understood.">8.1 Processes and mechanisms for identifying users and authenticating access to system components are defined and understood.</div>
+      <div class="sub-requirement" data-main-requirement="8" data-sub-requirement="8.2" data-title="8.2 User identification and related accounts for users and administrators are strictly managed throughout an account’s lifecycle.">8.2 User identification and related accounts for users and administrators are strictly managed throughout an account’s lifecycle.</div>
+      <div class="sub-requirement" data-main-requirement="8" data-sub-requirement="8.3" data-title="8.3 Strong authentication for users and administrators is established and managed.">8.3 Strong authentication for users and administrators is established and managed.</div>
+      <div class="sub-requirement" data-main-requirement="8" data-sub-requirement="8.4" data-title="8.4 Multi-factor authentication (MFA) is implemented to secure access into the CDE">8.4 Multi-factor authentication (MFA) is implemented to secure access into the CDE</div>
+      <div class="sub-requirement" data-main-requirement="8" data-sub-requirement="8.5" data-title="8.5 Multi-factor authentication (MFA) systems are configured to prevent misuse.">8.5 Multi-factor authentication (MFA) systems are configured to prevent misuse.</div>
+      <div class="sub-requirement" data-main-requirement="8" data-sub-requirement="8.6" data-title="8.6 Use of application and system accounts and associated authentication factors is strictly managed.">8.6 Use of application and system accounts and associated authentication factors is strictly managed.</div>
+      <div class="sub-requirement" data-main-requirement="9" data-sub-requirement="9.1" data-title="9.1 Processes and mechanisms for restricting physical access to cardholder data are defined and understood.">9.1 Processes and mechanisms for restricting physical access to cardholder data are defined and understood.</div>
+      <div class="sub-requirement" data-main-requirement="9" data-sub-requirement="9.2" data-title="9.2 Physical access controls manage entry into facilities and systems containing cardholder data.">9.2 Physical access controls manage entry into facilities and systems containing cardholder data.</div>
+      <div class="sub-requirement" data-main-requirement="9" data-sub-requirement="9.3" data-title="9.3 Physical access for personnel and visitors is authorized and managed.">9.3 Physical access for personnel and visitors is authorized and managed.</div>
+      <div class="sub-requirement" data-main-requirement="9" data-sub-requirement="9.4" data-title="9.4 Media with cardholder data is securely stored, accessed, distributed, and destroyed.">9.4 Media with cardholder data is securely stored, accessed, distributed, and destroyed.</div>
+      <div class="sub-requirement" data-main-requirement="9" data-sub-requirement="9.5" data-title="9.5 Point of interaction (POI) devices are protected from tampering and unauthorized substitution.">9.5 Point of interaction (POI) devices are protected from tampering and unauthorized substitution.</div>
+      <div class="sub-requirement" data-main-requirement="10" data-sub-requirement="10.1" data-title="10.1 Processes and mechanisms for logging and monitoring all access to system components and cardholder data are defined and documented.">10.1 Processes and mechanisms for logging and monitoring all access to system components and cardholder data are defined and documented.</div>
+      <div class="sub-requirement" data-main-requirement="10" data-sub-requirement="10.2" data-title="10.2 Audit logs are implemented to support the detection of anomalies and suspicious activity, and the forensic analysis of events.">10.2 Audit logs are implemented to support the detection of anomalies and suspicious activity, and the forensic analysis of events.</div>
+      <div class="sub-requirement" data-main-requirement="10" data-sub-requirement="10.3" data-title="10.3 Audit logs are protected from destruction and unauthorized modifications.">10.3 Audit logs are protected from destruction and unauthorized modifications.</div>
+      <div class="sub-requirement" data-main-requirement="10" data-sub-requirement="10.4" data-title="10.4 Audit logs are reviewed to identify anomalies or suspicious activity.">10.4 Audit logs are reviewed to identify anomalies or suspicious activity.</div>
+      <div class="sub-requirement" data-main-requirement="10" data-sub-requirement="10.5" data-title="10.5 Audit log history is retained and available for analysis.">10.5 Audit log history is retained and available for analysis.</div>
+      <div class="sub-requirement" data-main-requirement="10" data-sub-requirement="10.6" data-title="10.6 Time-synchronization mechanisms support consistent time settings across all systems.">10.6 Time-synchronization mechanisms support consistent time settings across all systems.</div>
+      <div class="sub-requirement" data-main-requirement="10" data-sub-requirement="10.7" data-title="10.7 Failures of critical security control systems are detected, reported, and responded to promptly.">10.7 Failures of critical security control systems are detected, reported, and responded to promptly.</div>
+      <div class="sub-requirement" data-main-requirement="11" data-sub-requirement="11.1" data-title="11.1 Processes and mechanisms for regularly testing security of systems and networks are defined and understood.">11.1 Processes and mechanisms for regularly testing security of systems and networks are defined and understood.</div>
+      <div class="sub-requirement" data-main-requirement="11" data-sub-requirement="11.2" data-title="11.2 Wireless access points are identified and monitored, and unauthorized wireless access points are addressed.">11.2 Wireless access points are identified and monitored, and unauthorized wireless access points are addressed.</div>
+      <div class="sub-requirement" data-main-requirement="11" data-sub-requirement="11.3" data-title="11.3 External and internal vulnerabilities are regularly identified, prioritized, and addressed.">11.3 External and internal vulnerabilities are regularly identified, prioritized, and addressed.</div>
+      <div class="sub-requirement" data-main-requirement="11" data-sub-requirement="11.4" data-title="11.4 External and internal penetration testing is regularly performed, and exploitable vulnerabilities and security weaknesses are corrected.">11.4 External and internal penetration testing is regularly performed, and exploitable vulnerabilities and security weaknesses are corrected.</div>
+      <div class="sub-requirement" data-main-requirement="11" data-sub-requirement="11.5" data-title="11.5 Network intrusions and unexpected file changes are detected and responded to.">11.5 Network intrusions and unexpected file changes are detected and responded to.</div>
+      <div class="sub-requirement" data-main-requirement="11" data-sub-requirement="11.6" data-title="11.6 Unauthorized changes on payment pages are detected and responded to.">11.6 Unauthorized changes on payment pages are detected and responded to.</div>
+      <div class="sub-requirement" data-main-requirement="12" data-sub-requirement="12.1" data-title="12.1 A comprehensive information security policy that governs and provides direction for protection of the entity’s information assets is known and current.">12.1 A comprehensive information security policy that governs and provides direction for protection of the entity’s information assets is known and current.</div>
+      <div class="sub-requirement" data-main-requirement="12" data-sub-requirement="12.2" data-title="12.2 Acceptable use policies for end-user technologies are defined and implemented.">12.2 Acceptable use policies for end-user technologies are defined and implemented.</div>
+      <div class="sub-requirement" data-main-requirement="12" data-sub-requirement="12.3" data-title="12.3 Risks to the cardholder data environment are formally identified, evaluated, and managed.">12.3 Risks to the cardholder data environment are formally identified, evaluated, and managed.</div>
+      <div class="sub-requirement" data-main-requirement="12" data-sub-requirement="12.4" data-title="12.4 PCI DSS compliance is managed.">12.4 PCI DSS compliance is managed.</div>
+      <div class="sub-requirement" data-main-requirement="12" data-sub-requirement="12.5" data-title="12.5 PCI DSS scope is documented and validated.">12.5 PCI DSS scope is documented and validated.</div>
+      <div class="sub-requirement" data-main-requirement="12" data-sub-requirement="12.6" data-title="12.6 Security awareness education is an ongoing activity.">12.6 Security awareness education is an ongoing activity.</div>
+      <div class="sub-requirement" data-main-requirement="12" data-sub-requirement="12.7" data-title="12.7 Personnel are screened to reduce risks from insider threats.">12.7 Personnel are screened to reduce risks from insider threats.</div>
+      <div class="sub-requirement" data-main-requirement="12" data-sub-requirement="12.8" data-title="12.8 Risk to information assets associated with third-party service provider (TPSP) relationships is managed.">12.8 Risk to information assets associated with third-party service provider (TPSP) relationships is managed.</div>
+      <div class="sub-requirement" data-main-requirement="12" data-sub-requirement="12.9" data-title="12.9 Third-party service providers (TPSPs) support their customers’ PCI DSS compliance.">12.9 Third-party service providers (TPSPs) support their customers’ PCI DSS compliance.</div>
+      <div class="sub-requirement" data-main-requirement="12" data-sub-requirement="12.10" data-title="12.10 Suspected and confirmed security incidents that could impact the CDE are responded to immediately.">12.10 Suspected and confirmed security incidents that could impact the CDE are responded to immediately.</div>
+    </div>
+  </div>
+
+  <div class="panel" id="checklist-panel">
+    <h2>1.1 Processes and mechanisms for installing and maintaining network security controls are defined and
+      understood.</h2>
+    <!-- List all checklist items here, identified by the sub-requirement they belong to -->
+    <div class="tabs">
+      <div class="checklist-item" data-sub-requirement="1.1" data-item-requirement="1.1.1">1.1.1</div>
+      <div class="checklist-item" data-sub-requirement="1.1" data-item-requirement="1.1.2">1.1.2</div>
+      <div class="checklist-item" data-sub-requirement="1.2" data-item-requirement="1.2.1">1.2.1</div>
+      <div class="checklist-item" data-sub-requirement="1.2" data-item-requirement="1.2.2">1.2.2</div>
+      <div class="checklist-item" data-sub-requirement="1.2" data-item-requirement="1.2.3">1.2.3</div>
+      <div class="checklist-item" data-sub-requirement="1.2" data-item-requirement="1.2.4">1.2.4</div>
+      <div class="checklist-item" data-sub-requirement="1.2" data-item-requirement="1.2.5">1.2.5</div>
+      <div class="checklist-item" data-sub-requirement="1.2" data-item-requirement="1.2.6">1.2.6</div>
+      <div class="checklist-item" data-sub-requirement="1.2" data-item-requirement="1.2.7">1.2.7</div>
+      <div class="checklist-item" data-sub-requirement="1.2" data-item-requirement="1.2.8">1.2.8</div>
+      <div class="checklist-item" data-sub-requirement="1.3" data-item-requirement="1.3.1">1.3.1</div>
+      <div class="checklist-item" data-sub-requirement="1.3" data-item-requirement="1.3.2">1.3.2</div>
+      <div class="checklist-item" data-sub-requirement="1.3" data-item-requirement="1.3.3">1.3.3</div>
+      <div class="checklist-item" data-sub-requirement="1.4" data-item-requirement="1.4.1">1.4.1</div>
+      <div class="checklist-item" data-sub-requirement="1.4" data-item-requirement="1.4.2">1.4.2</div>
+      <div class="checklist-item" data-sub-requirement="1.4" data-item-requirement="1.4.3">1.4.3</div>
+      <div class="checklist-item" data-sub-requirement="1.4" data-item-requirement="1.4.4">1.4.4</div>
+      <div class="checklist-item" data-sub-requirement="1.4" data-item-requirement="1.4.5">1.4.5</div>
+      <div class="checklist-item" data-sub-requirement="1.5" data-item-requirement="1.4.2">1.5.1</div>
+
+      <div class="checklist-item" data-sub-requirement="2.1" data-item-requirement="2.1.1">2.1.1</div>
+      <div class="checklist-item" data-sub-requirement="2.1" data-item-requirement="2.1.2">2.1.2</div>
+      <div class="checklist-item" data-sub-requirement="2.2" data-item-requirement="2.2.1">2.2.1</div>
+      <div class="checklist-item" data-sub-requirement="2.2" data-item-requirement="2.2.2">2.2.2</div>
+      <div class="checklist-item" data-sub-requirement="2.2" data-item-requirement="2.2.3">2.2.3</div>
+      <div class="checklist-item" data-sub-requirement="2.2" data-item-requirement="2.2.4">2.2.4</div>
+      <div class="checklist-item" data-sub-requirement="2.2" data-item-requirement="2.2.5">2.2.5</div>
+      <div class="checklist-item" data-sub-requirement="2.2" data-item-requirement="2.2.6">2.2.6</div>
+      <div class="checklist-item" data-sub-requirement="2.2" data-item-requirement="2.2.7">2.2.7</div>
+      <div class="checklist-item" data-sub-requirement="2.3" data-item-requirement="2.3.1">2.3.1</div>
+      <div class="checklist-item" data-sub-requirement="2.3" data-item-requirement="2.3.2">2.3.2</div>
+
+      <div class="checklist-item" data-sub-requirement="3.1" data-item-requirement="3.1.1">3.1.1</div>
+      <div class="checklist-item" data-sub-requirement="3.1" data-item-requirement="3.1.2">3.1.2</div>
+      <div class="checklist-item" data-sub-requirement="3.2" data-item-requirement="3.2.1">3.2.1</div>
+      <div class="checklist-item" data-sub-requirement="3.3" data-item-requirement="3.3.1">3.3.1</div>
+      <div class="checklist-item" data-sub-requirement="3.3" data-item-requirement="3.3.1.1">3.3.1.1</div>
+      <div class="checklist-item" data-sub-requirement="3.3" data-item-requirement="3.3.1.2">3.3.1.2</div>
+      <div class="checklist-item" data-sub-requirement="3.3" data-item-requirement="3.3.1.3">3.3.1.3</div>
+      <div class="checklist-item" data-sub-requirement="3.3" data-item-requirement="3.3.2">3.3.2</div>
+      <div class="checklist-item" data-sub-requirement="3.3" data-item-requirement="3.3.3" data-issuer-only="true">3.3.3
+      </div>
+      <div class="checklist-item" data-sub-requirement="3.4" data-item-requirement="3.4.1">3.4.1</div>
+      <div class="checklist-item" data-sub-requirement="3.4" data-item-requirement="3.4.2">3.4.2</div>
+      <div class="checklist-item" data-sub-requirement="3.5" data-item-requirement="3.5.1">3.5.1</div>
+      <div class="checklist-item" data-sub-requirement="3.5" data-item-requirement="3.5.1.1">3.5.1.1</div>
+      <div class="checklist-item" data-sub-requirement="3.5" data-item-requirement="3.5.1.2">3.5.1.2</div>
+      <div class="checklist-item" data-sub-requirement="3.5" data-item-requirement="3.5.1.3">3.5.1.3</div>
+      <div class="checklist-item" data-sub-requirement="3.6" data-item-requirement="3.6.1">3.6.1</div>
+      <div class="checklist-item" data-sub-requirement="3.6" data-item-requirement="3.6.1.1" data-provider-only="true">
+        3.6.1.1</div>
+      <div class="checklist-item" data-sub-requirement="3.6" data-item-requirement="3.6.1.2">3.6.1.2</div>
+      <div class="checklist-item" data-sub-requirement="3.6" data-item-requirement="3.6.1.3">3.6.1.3</div>
+      <div class="checklist-item" data-sub-requirement="3.7" data-item-requirement="3.7.1">3.7.1</div>
+      <div class="checklist-item" data-sub-requirement="3.7" data-item-requirement="3.7.2">3.7.2</div>
+      <div class="checklist-item" data-sub-requirement="3.7" data-item-requirement="3.7.3">3.7.3</div>
+      <div class="checklist-item" data-sub-requirement="3.7" data-item-requirement="3.7.4">3.7.4</div>
+      <div class="checklist-item" data-sub-requirement="3.7" data-item-requirement="3.7.5">3.7.5</div>
+      <div class="checklist-item" data-sub-requirement="3.7" data-item-requirement="3.7.6">3.7.6</div>
+      <div class="checklist-item" data-sub-requirement="3.7" data-item-requirement="3.7.7">3.7.7</div>
+      <div class="checklist-item" data-sub-requirement="3.7" data-item-requirement="3.7.8">3.7.8</div>
+      <div class="checklist-item" data-sub-requirement="3.7" data-item-requirement="3.7.9" data-provider-only="true">
+        3.7.9</div>
+
+      <div class="checklist-item" data-sub-requirement="4.1" data-item-requirement="4.1.1">4.1.1</div>
+      <div class="checklist-item" data-sub-requirement="4.1" data-item-requirement="4.1.2">4.1.2</div>
+      <div class="checklist-item" data-sub-requirement="4.2" data-item-requirement="4.2.1">4.2.1</div>
+      <div class="checklist-item" data-sub-requirement="4.2" data-item-requirement="4.2.1.1">4.2.1.1</div>
+      <div class="checklist-item" data-sub-requirement="4.2" data-item-requirement="4.2.1.2">4.2.1.2</div>
+      <div class="checklist-item" data-sub-requirement="4.2" data-item-requirement="4.2.2">4.2.2</div>
+
+      <div class="checklist-item" data-sub-requirement="5.1" data-item-requirement="5.1.1">5.1.1</div>
+      <div class="checklist-item" data-sub-requirement="5.1" data-item-requirement="5.1.2">5.1.2</div>
+      <div class="checklist-item" data-sub-requirement="5.2" data-item-requirement="5.2.1">5.2.1</div>
+      <div class="checklist-item" data-sub-requirement="5.2" data-item-requirement="5.2.2">5.2.2</div>
+      <div class="checklist-item" data-sub-requirement="5.2" data-item-requirement="5.2.3">5.2.3</div>
+      <div class="checklist-item" data-sub-requirement="5.2" data-item-requirement="5.2.3.1">5.2.3.1</div>
+      <div class="checklist-item" data-sub-requirement="5.3" data-item-requirement="5.3.1">5.3.1</div>
+      <div class="checklist-item" data-sub-requirement="5.3" data-item-requirement="5.3.2">5.3.2</div>
+      <div class="checklist-item" data-sub-requirement="5.3" data-item-requirement="5.3.2.1">5.3.2.1</div>
+      <div class="checklist-item" data-sub-requirement="5.3" data-item-requirement="5.3.3">5.3.3</div>
+      <div class="checklist-item" data-sub-requirement="5.3" data-item-requirement="5.3.4">5.3.4</div>
+      <div class="checklist-item" data-sub-requirement="5.3" data-item-requirement="5.3.5">5.3.5</div>
+      <div class="checklist-item" data-sub-requirement="5.4" data-item-requirement="5.4.1">5.4.1</div>
+
+      <div class="checklist-item" data-sub-requirement="6.1" data-item-requirement="6.1.1">6.1.1</div>
+      <div class="checklist-item" data-sub-requirement="6.1" data-item-requirement="6.1.2">6.1.2</div>
+      <div class="checklist-item" data-sub-requirement="6.2" data-item-requirement="6.2.1">6.2.1</div>
+      <div class="checklist-item" data-sub-requirement="6.2" data-item-requirement="6.2.2">6.2.2</div>
+      <div class="checklist-item" data-sub-requirement="6.2" data-item-requirement="6.2.3">6.2.3</div>
+      <div class="checklist-item" data-sub-requirement="6.2" data-item-requirement="6.2.3.1">6.2.3.1</div>
+      <div class="checklist-item" data-sub-requirement="6.2" data-item-requirement="6.2.4">6.2.4</div>
+      <div class="checklist-item" data-sub-requirement="6.3" data-item-requirement="6.3.1">6.3.1</div>
+      <div class="checklist-item" data-sub-requirement="6.3" data-item-requirement="6.3.2">6.3.2</div>
+      <div class="checklist-item" data-sub-requirement="6.3" data-item-requirement="6.3.3">6.3.3</div>
+      <div class="checklist-item" data-sub-requirement="6.4" data-item-requirement="6.4.1">6.4.1</div>
+      <div class="checklist-item" data-sub-requirement="6.4" data-item-requirement="6.4.2">6.4.2</div>
+      <div class="checklist-item" data-sub-requirement="6.4" data-item-requirement="6.4.3">6.4.3</div>
+      <div class="checklist-item" data-sub-requirement="6.5" data-item-requirement="6.5.1">6.5.1</div>
+      <div class="checklist-item" data-sub-requirement="6.5" data-item-requirement="6.5.2">6.5.2</div>
+      <div class="checklist-item" data-sub-requirement="6.5" data-item-requirement="6.5.3">6.5.3</div>
+      <div class="checklist-item" data-sub-requirement="6.5" data-item-requirement="6.5.4">6.5.4</div>
+      <div class="checklist-item" data-sub-requirement="6.5" data-item-requirement="6.5.5">6.5.5</div>
+      <div class="checklist-item" data-sub-requirement="6.5" data-item-requirement="6.5.6">6.5.6</div>
+
+      <div class="checklist-item" data-sub-requirement="7.1" data-item-requirement="7.1.1">7.1.1</div>
+      <div class="checklist-item" data-sub-requirement="7.1" data-item-requirement="7.1.2">7.1.2</div>
+      <div class="checklist-item" data-sub-requirement="7.2" data-item-requirement="7.2.1">7.2.1</div>
+      <div class="checklist-item" data-sub-requirement="7.2" data-item-requirement="7.2.2">7.2.2</div>
+      <div class="checklist-item" data-sub-requirement="7.2" data-item-requirement="7.2.3">7.2.3</div>
+      <div class="checklist-item" data-sub-requirement="7.2" data-item-requirement="7.2.4">7.2.4</div>
+      <div class="checklist-item" data-sub-requirement="7.2" data-item-requirement="7.2.5">7.2.5</div>
+      <div class="checklist-item" data-sub-requirement="7.2" data-item-requirement="7.2.5.1">7.2.5.1</div>
+      <div class="checklist-item" data-sub-requirement="7.2" data-item-requirement="7.2.6">7.2.6</div>
+      <div class="checklist-item" data-sub-requirement="7.3" data-item-requirement="7.3.1">7.3.1</div>
+      <div class="checklist-item" data-sub-requirement="7.3" data-item-requirement="7.3.2">7.3.2</div>
+      <div class="checklist-item" data-sub-requirement="7.3" data-item-requirement="7.3.3">7.3.3</div>
+
+      <div class="checklist-item" data-sub-requirement="8.1" data-item-requirement="8.1.1">8.1.1</div>
+      <div class="checklist-item" data-sub-requirement="8.1" data-item-requirement="8.1.2">8.1.2</div>
+      <div class="checklist-item" data-sub-requirement="8.2" data-item-requirement="8.2.1">8.2.1</div>
+      <div class="checklist-item" data-sub-requirement="8.2" data-item-requirement="8.2.2">8.2.2</div>
+      <div class="checklist-item" data-sub-requirement="8.2" data-item-requirement="8.2.3" data-provider-only="true">
+        8.2.3</div>
+      <div class="checklist-item" data-sub-requirement="8.2" data-item-requirement="8.2.4">8.2.4</div>
+      <div class="checklist-item" data-sub-requirement="8.2" data-item-requirement="8.2.5">8.2.5</div>
+      <div class="checklist-item" data-sub-requirement="8.2" data-item-requirement="8.2.6">8.2.6</div>
+      <div class="checklist-item" data-sub-requirement="8.2" data-item-requirement="8.2.7">8.2.7</div>
+      <div class="checklist-item" data-sub-requirement="8.2" data-item-requirement="8.2.8">8.2.8</div>
+      <div class="checklist-item" data-sub-requirement="8.3" data-item-requirement="8.3.1">8.3.1</div>
+      <div class="checklist-item" data-sub-requirement="8.3" data-item-requirement="8.3.2">8.3.2</div>
+      <div class="checklist-item" data-sub-requirement="8.3" data-item-requirement="8.3.3">8.3.3</div>
+      <div class="checklist-item" data-sub-requirement="8.3" data-item-requirement="8.3.4">8.3.4</div>
+      <div class="checklist-item" data-sub-requirement="8.3" data-item-requirement="8.3.5">8.3.5</div>
+      <div class="checklist-item" data-sub-requirement="8.3" data-item-requirement="8.3.6">8.3.6</div>
+      <div class="checklist-item" data-sub-requirement="8.3" data-item-requirement="8.3.7">8.3.7</div>
+      <div class="checklist-item" data-sub-requirement="8.3" data-item-requirement="8.3.8">8.3.8</div>
+      <div class="checklist-item" data-sub-requirement="8.3" data-item-requirement="8.3.9">8.3.9</div>
+      <div class="checklist-item" data-sub-requirement="8.3" data-item-requirement="8.3.10" data-provider-only="true">
+        8.3.10</div>
+      <div class="checklist-item" data-sub-requirement="8.3" data-item-requirement="8.3.10.1" data-provider-only="true">
+        8.3.10.1</div>
+      <div class="checklist-item" data-sub-requirement="8.3" data-item-requirement="8.3.11">8.3.11</div>
+      <div class="checklist-item" data-sub-requirement="8.4" data-item-requirement="8.4.1">8.4.1</div>
+      <div class="checklist-item" data-sub-requirement="8.4" data-item-requirement="8.4.2">8.4.2</div>
+      <div class="checklist-item" data-sub-requirement="8.4" data-item-requirement="8.4.3">8.4.3</div>
+      <div class="checklist-item" data-sub-requirement="8.5" data-item-requirement="8.5.1">8.5.1</div>
+      <div class="checklist-item" data-sub-requirement="8.6" data-item-requirement="8.6.1">8.6.1</div>
+      <div class="checklist-item" data-sub-requirement="8.6" data-item-requirement="8.6.2">8.6.2</div>
+      <div class="checklist-item" data-sub-requirement="8.6" data-item-requirement="8.6.3">8.6.3</div>
+
+      <div class="checklist-item" data-sub-requirement="9.1" data-item-requirement="9.1.1">9.1.1</div>
+      <div class="checklist-item" data-sub-requirement="9.1" data-item-requirement="9.1.2">9.1.2</div>
+      <div class="checklist-item" data-sub-requirement="9.2" data-item-requirement="9.2.1">9.2.1</div>
+      <div class="checklist-item" data-sub-requirement="9.2" data-item-requirement="9.2.1.1">9.2.1.1</div>
+      <div class="checklist-item" data-sub-requirement="9.2" data-item-requirement="9.2.2">9.2.2</div>
+      <div class="checklist-item" data-sub-requirement="9.2" data-item-requirement="9.2.3">9.2.3</div>
+      <div class="checklist-item" data-sub-requirement="9.2" data-item-requirement="9.2.4">9.2.4</div>
+      <div class="checklist-item" data-sub-requirement="9.3" data-item-requirement="9.3.1">9.3.1</div>
+      <div class="checklist-item" data-sub-requirement="9.3" data-item-requirement="9.3.1.1">9.3.1.1</div>
+      <div class="checklist-item" data-sub-requirement="9.3" data-item-requirement="9.3.2">9.3.2</div>
+      <div class="checklist-item" data-sub-requirement="9.3" data-item-requirement="9.3.3">9.3.3</div>
+      <div class="checklist-item" data-sub-requirement="9.3" data-item-requirement="9.3.4">9.3.4</div>
+      <div class="checklist-item" data-sub-requirement="9.4" data-item-requirement="9.4.1">9.4.1</div>
+      <div class="checklist-item" data-sub-requirement="9.4" data-item-requirement="9.4.1.1">9.4.1.1</div>
+      <div class="checklist-item" data-sub-requirement="9.4" data-item-requirement="9.4.1.2">9.4.1.2</div>
+      <div class="checklist-item" data-sub-requirement="9.4" data-item-requirement="9.4.2">9.4.2</div>
+      <div class="checklist-item" data-sub-requirement="9.4" data-item-requirement="9.4.3">9.4.3</div>
+      <div class="checklist-item" data-sub-requirement="9.4" data-item-requirement="9.4.4">9.4.4</div>
+      <div class="checklist-item" data-sub-requirement="9.4" data-item-requirement="9.4.5">9.4.5</div>
+      <div class="checklist-item" data-sub-requirement="9.4" data-item-requirement="9.4.5.1">9.4.5.1</div>
+      <div class="checklist-item" data-sub-requirement="9.4" data-item-requirement="9.4.6">9.4.6</div>
+      <div class="checklist-item" data-sub-requirement="9.4" data-item-requirement="9.4.7">9.4.7</div>
+      <div class="checklist-item" data-sub-requirement="9.5" data-item-requirement="9.5.1">9.5.1</div>
+      <div class="checklist-item" data-sub-requirement="9.5" data-item-requirement="9.5.1.1">9.5.1.1</div>
+      <div class="checklist-item" data-sub-requirement="9.5" data-item-requirement="9.5.1.2">9.5.1.2</div>
+      <div class="checklist-item" data-sub-requirement="9.5" data-item-requirement="9.5.1.2.1">9.5.1.2.1</div>
+      <div class="checklist-item" data-sub-requirement="9.5" data-item-requirement="9.5.1.3">9.5.1.3</div>
+
+      <div class="checklist-item" data-sub-requirement="10.1" data-item-requirement="10.1.1">10.1.1</div>
+      <div class="checklist-item" data-sub-requirement="10.1" data-item-requirement="10.1.2">10.1.2</div>
+      <div class="checklist-item" data-sub-requirement="10.2" data-item-requirement="10.2.1">10.2.1</div>
+      <div class="checklist-item" data-sub-requirement="10.2" data-item-requirement="10.2.1.1">10.2.1.1</div>
+      <div class="checklist-item" data-sub-requirement="10.2" data-item-requirement="10.2.1.2">10.2.1.2</div>
+      <div class="checklist-item" data-sub-requirement="10.2" data-item-requirement="10.2.1.3">10.2.1.3</div>
+      <div class="checklist-item" data-sub-requirement="10.2" data-item-requirement="10.2.1.4">10.2.1.4</div>
+      <div class="checklist-item" data-sub-requirement="10.2" data-item-requirement="10.2.1.5">10.2.1.5</div>
+      <div class="checklist-item" data-sub-requirement="10.2" data-item-requirement="10.2.1.6">10.2.1.6</div>
+      <div class="checklist-item" data-sub-requirement="10.2" data-item-requirement="10.2.2">10.2.2</div>
+      <div class="checklist-item" data-sub-requirement="10.3" data-item-requirement="10.3.1">10.3.1</div>
+      <div class="checklist-item" data-sub-requirement="10.3" data-item-requirement="10.3.2">10.3.2</div>
+      <div class="checklist-item" data-sub-requirement="10.3" data-item-requirement="10.3.3">10.3.3</div>
+      <div class="checklist-item" data-sub-requirement="10.3" data-item-requirement="10.3.4">10.3.4</div>
+      <div class="checklist-item" data-sub-requirement="10.4" data-item-requirement="10.4.1">10.4.1</div>
+      <div class="checklist-item" data-sub-requirement="10.4" data-item-requirement="10.4.1.1">10.4.1.1</div>
+      <div class="checklist-item" data-sub-requirement="10.4" data-item-requirement="10.4.2">10.4.2</div>
+      <div class="checklist-item" data-sub-requirement="10.4" data-item-requirement="10.4.2.1">10.4.2.1</div>
+      <div class="checklist-item" data-sub-requirement="10.4" data-item-requirement="10.4.3">10.4.3</div>
+      <div class="checklist-item" data-sub-requirement="10.5" data-item-requirement="10.5.1">10.5.1</div>
+      <div class="checklist-item" data-sub-requirement="10.6" data-item-requirement="10.6.1">10.6.1</div>
+      <div class="checklist-item" data-sub-requirement="10.6" data-item-requirement="10.6.2">10.6.2</div>
+      <div class="checklist-item" data-sub-requirement="10.6" data-item-requirement="10.6.3">10.6.3</div>
+      <div class="checklist-item" data-sub-requirement="10.7" data-item-requirement="10.7.1" data-provider-only="true">
+        10.7.1</div>
+      <div class="checklist-item" data-sub-requirement="10.7" data-item-requirement="10.7.2">10.7.2</div>
+      <div class="checklist-item" data-sub-requirement="10.7" data-item-requirement="10.7.3">10.7.3</div>
+
+      <div class="checklist-item" data-sub-requirement="11.1" data-item-requirement="11.1.1">11.1.1</div>
+      <div class="checklist-item" data-sub-requirement="11.1" data-item-requirement="11.1.2">11.1.2</div>
+      <div class="checklist-item" data-sub-requirement="11.2" data-item-requirement="11.2.1">11.2.1</div>
+      <div class="checklist-item" data-sub-requirement="11.2" data-item-requirement="11.2.2">11.2.2</div>
+      <div class="checklist-item" data-sub-requirement="11.3" data-item-requirement="11.3.1">11.3.1</div>
+      <div class="checklist-item" data-sub-requirement="11.3" data-item-requirement="11.3.1.1">11.3.1.1</div>
+      <div class="checklist-item" data-sub-requirement="11.3" data-item-requirement="11.3.1.2">11.3.1.2</div>
+      <div class="checklist-item" data-sub-requirement="11.3" data-item-requirement="11.3.1.3">11.3.1.3</div>
+      <div class="checklist-item" data-sub-requirement="11.3" data-item-requirement="11.3.2">11.3.2</div>
+      <div class="checklist-item" data-sub-requirement="11.3" data-item-requirement="11.3.2.1">11.3.2.1</div>
+      <div class="checklist-item" data-sub-requirement="11.4" data-item-requirement="11.4.1">11.4.1</div>
+      <div class="checklist-item" data-sub-requirement="11.4" data-item-requirement="11.4.2">11.4.2</div>
+      <div class="checklist-item" data-sub-requirement="11.4" data-item-requirement="11.4.3">11.4.3</div>
+      <div class="checklist-item" data-sub-requirement="11.4" data-item-requirement="11.4.4">11.4.4</div>
+      <div class="checklist-item" data-sub-requirement="11.4" data-item-requirement="11.4.5">11.4.5</div>
+      <div class="checklist-item" data-sub-requirement="11.4" data-item-requirement="11.4.6" data-provider-only="true">
+        11.4.6</div>
+      <div class="checklist-item" data-sub-requirement="11.4" data-item-requirement="11.4.7">11.4.7</div>
+      <div class="checklist-item" data-sub-requirement="11.5" data-item-requirement="11.5.1">11.5.1</div>
+      <div class="checklist-item" data-sub-requirement="11.5" data-item-requirement="11.5.1.1" data-provider-only="true">11.5.1.1</div>
+      <div class="checklist-item" data-sub-requirement="11.5" data-item-requirement="11.5.2">11.5.2</div>
+      <div class="checklist-item" data-sub-requirement="11.6" data-item-requirement="11.6.1">11.6.1</div>
+
+      <div class="checklist-item" data-sub-requirement="12.1" data-item-requirement="12.1.1">12.1.1</div>
+      <div class="checklist-item" data-sub-requirement="12.1" data-item-requirement="12.1.2">12.1.2</div>
+      <div class="checklist-item" data-sub-requirement="12.1" data-item-requirement="12.1.3">12.1.3</div>
+      <div class="checklist-item" data-sub-requirement="12.1" data-item-requirement="12.1.4">12.1.4</div>
+      <div class="checklist-item" data-sub-requirement="12.2" data-item-requirement="12.2.1">12.2.1</div>
+      <div class="checklist-item" data-sub-requirement="12.3" data-item-requirement="12.3.1">12.3.1</div>
+      <div class="checklist-item" data-sub-requirement="12.3" data-item-requirement="12.3.2">12.3.2</div>
+      <div class="checklist-item" data-sub-requirement="12.3" data-item-requirement="12.3.3">12.3.3</div>
+      <div class="checklist-item" data-sub-requirement="12.3" data-item-requirement="12.3.4">12.3.4</div>
+      <div class="checklist-item" data-sub-requirement="12.4" data-item-requirement="12.4.1" data-provider-only="true">
+        12.4.1</div>
+      <div class="checklist-item" data-sub-requirement="12.4" data-item-requirement="12.4.2" data-provider-only="true">
+        12.4.2</div>
+      <div class="checklist-item" data-sub-requirement="12.4" data-item-requirement="12.4.2.1" data-provider-only="true">12.4.2.1</div>
+      <div class="checklist-item" data-sub-requirement="12.5" data-item-requirement="12.5.1">12.5.1</div>
+      <div class="checklist-item" data-sub-requirement="12.5" data-item-requirement="12.5.2">12.5.2</div>
+      <div class="checklist-item" data-sub-requirement="12.5" data-item-requirement="12.5.2.1" data-provider-only="true">12.5.2.1</div>
+      <div class="checklist-item" data-sub-requirement="12.5" data-item-requirement="12.5.3" data-provider-only="true">
+        12.5.3</div>
+      <div class="checklist-item" data-sub-requirement="12.6" data-item-requirement="12.6.1">12.6.1</div>
+      <div class="checklist-item" data-sub-requirement="12.6" data-item-requirement="12.6.2">12.6.2</div>
+      <div class="checklist-item" data-sub-requirement="12.6" data-item-requirement="12.6.3">12.6.3</div>
+      <div class="checklist-item" data-sub-requirement="12.6" data-item-requirement="12.6.3.1">12.6.3.1</div>
+      <div class="checklist-item" data-sub-requirement="12.6" data-item-requirement="12.6.3.2">12.6.3.2</div>
+      <div class="checklist-item" data-sub-requirement="12.7" data-item-requirement="12.7.1">12.7.1</div>
+      <div class="checklist-item" data-sub-requirement="12.8" data-item-requirement="12.8.1">12.8.1</div>
+      <div class="checklist-item" data-sub-requirement="12.8" data-item-requirement="12.8.2">12.8.2</div>
+      <div class="checklist-item" data-sub-requirement="12.8" data-item-requirement="12.8.3">12.8.3</div>
+      <div class="checklist-item" data-sub-requirement="12.8" data-item-requirement="12.8.4">12.8.4</div>
+      <div class="checklist-item" data-sub-requirement="12.8" data-item-requirement="12.8.5">12.8.5</div>
+      <div class="checklist-item" data-sub-requirement="12.9" data-item-requirement="12.9.1" data-provider-only="true">
+        12.9.1</div>
+      <div class="checklist-item" data-sub-requirement="12.9" data-item-requirement="12.9.2" data-provider-only="true">
+        12.9.2</div>
+      <div class="checklist-item" data-sub-requirement="12.10" data-item-requirement="12.10.1">12.10.1</div>
+      <div class="checklist-item" data-sub-requirement="12.10" data-item-requirement="12.10.2">12.10.2</div>
+      <div class="checklist-item" data-sub-requirement="12.10" data-item-requirement="12.10.3">12.10.3</div>
+      <div class="checklist-item" data-sub-requirement="12.10" data-item-requirement="12.10.4">12.10.4</div>
+      <div class="checklist-item" data-sub-requirement="12.10" data-item-requirement="12.10.4.1">12.10.4.1</div>
+      <div class="checklist-item" data-sub-requirement="12.10" data-item-requirement="12.10.5">12.10.5</div>
+      <div class="checklist-item" data-sub-requirement="12.10" data-item-requirement="12.10.6">12.10.6</div>
+      <div class="checklist-item" data-sub-requirement="12.10" data-item-requirement="12.10.7">12.10.7</div>
+
+    </div>
+    <div id="inner-panel">
+
+
+      <div class="checklist-content" id="content-1.1.1" style="display: none;">
+        <!-- Content for checklist item 1.1.1 -->
+        <input type="checkbox" id="checkbox-1.1.1">
+        <label for="checkbox-1.1.1">Mark 1.1.1 as completed</label>
+        <!-- ... other content for 1.1.1 ... -->
+      </div>
+
+      <div class="checklist-content" id="content-1.1.2" style="display: none;">
+        <!-- Content for checklist item 1.1.2 -->
+        <input type="checkbox" id="checkbox-1.1.2">
+        <label for="checkbox-1.1.2">Mark 1.1.2 as completed</label>
+        <!-- ... other content for 1.1.2 ... -->
+      </div>
+
+      <!-- Hidden content for 5.3.1 -->
+      <div class="checklist-content" id="content-5.3.1" style="display: none;">
+        <h3>5.3.1 The anti-malware solution(s) is kept current via automatic updates.</h3>
+        <h4>Defined Approach Testing Procedures</h4>
+        <button class="testing-approach" data-approach="5.3.1.a">
+          <b>5.3.1.a</b> Examine anti-malware solution(s)
+          configurations, including any master installation of
+          the software, to verify the solution is configured to
+          perform automatic updates.
+        </button>
+        <button class="testing-approach" data-approach="5.3.1.b">
+          <b>5.3.1.b</b> Examine system components and logs, to
+          verify that the anti-malware solution(s) and
+          definitions are current and have been promptly
+          deployed
+        </button>
+        <h4>Customized Approach Objective</h4>
+        <p>Anti-malware mechanisms can detect and address
+          the latest malware threats.</p>
+        <h4>Purpose</h4>
+        <p>For an anti-malware solution to remain effective, it
+          needs to have the latest security updates,
+          signatures, threat analysis engines, and any other
+          malware protections on which the solution relies.</p>
+        <p>Having an automated update process avoids
+          burdening end users with responsibility for
+          manually installing updates and provides greater
+          assurance that anti-malware protection
+          mechanisms are updated as quickly as possible
+          after an update is released.</p>
+        <h4>Good Practice</h4>
+        <p>Anti-malware mechanisms should be updated via
+          a trusted source as soon as possible after an
+          update is available. Using a trusted common
+          source to distribute updates to end-user systems
+          helps ensure the integrity and consistency of the
+          solution architecture.</p>
+        <p>Updates may be automatically downloaded to a
+          central location—for example, to allow for
+          testing—prior to being deployed to individual
+          system components.</p>
+
+        <!-- Content for approach 5.3.1.a -->
+        <div id="content-for-5.3.1.a" style="display:none;" data-content-for="5.3.1.a">
+          <h3>5.3.1.a Testing Guide</h3>
+          <p>Here is the detailed guide for testing approach 5.3.1.a...</p>
+          <!-- You can add more content or structure it differently as needed -->
+        </div>
+
+        <!-- Content for another approach, say 5.3.1.b -->
+        <div id="content-for-5.3.1.b" style="display:none;" data-content-for="5.3.1.b">
+          <h3>5.3.1.b Testing Guide</h3>
+          <p>Here is the detailed guide for testing approach 5.3.1.b...</p>
+          <!-- You can add more content or structure it differently as needed -->
+        </div>
+
+        <!-- ... and so on for each testing approach -->
+
+
+      </div>
+
+      <!-- Hidden content for 5.3.2 -->
+      <div class="checklist-content" id="content-5.3.2" style="display: none;">
+        <h3>5.3.2: Periodic Scans</h3>
+        <p>Periodic scans by anti-malware tools are essential. These routine scans help in identifying and removing any
+          malware that might have bypassed real-time protection mechanisms.</p>
+      </div>
+
+
+
+
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
