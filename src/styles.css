@@ -61,6 +61,7 @@ body {
 .panel {
     display: flex;
     flex-direction: column;
+    border-radius: 5px;
     border: 1px solid #ccc;
     padding: 20px;
     flex: 1;
@@ -177,10 +178,12 @@ body {
 
 #sub-requirements-panel {
     position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 #main-requirements-panel {
     position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 #toggle-sub-reqs {
@@ -215,6 +218,7 @@ body {
 
 
 #checklist-panel {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     max-width: 100%;
     display: flex;
     flex-direction: column;
@@ -317,12 +321,20 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 300px;
+    min-width: 300px;
+    width: 50%;
     padding: 20px;
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     z-index: 102;
+}
+
+.contentModal img {
+    max-width: 100%;
+    height: auto;
+    margin: 10px 0;
+    display: block;
 }
 
 .testing-approach {
@@ -338,4 +350,33 @@ body {
 
 .testing-approach:last-of-type {
     margin-right: 0;         /* Removes the right margin for the last button */
+}
+
+.github-link {
+    margin-top: 20px; /* spacing from other content */
+    display: flex;
+    align-items: center; /* vertical alignment */
+}
+
+.github-link a {
+    display: flex;
+    align-items: center; /* align icon and text vertically */
+    text-decoration: none; /* remove underline */
+    color: inherit; /* use current text color */
+}
+
+.github-link img {
+    width: 24px; /* or desired size */
+    height: 24px; /* or desired size */
+    margin-right: 8px; /* spacing between icon and text */
+}
+
+.footer-copyright {
+    position: fixed;  /* This will fix the position of the div to the viewport */
+    bottom: 4px;     /* 10px from the bottom of the viewport */
+    left: 9px;       /* 10px from the left of the viewport */
+    font-size: 12px;  /* Adjust the font size as needed */
+    color: #666;      /* A slightly gray color for the text, adjust as needed */
+    z-index: 9999;    /* This ensures the text is always on top */
+    cursor: default;
 }
