@@ -19,14 +19,36 @@
   <!-- Settings Modal (Initially hidden) -->
   <div id="settingsModal" class="settings-modal">
     <h2>Settings</h2>
+    <hr />
+    <h3>Company Info</h3>
     <label>
       <input type="checkbox" id="serviceProviderSwitch">
       Are you a service provider?
     </label>
     <br />
+    <br />
     <label>
-      <input type="checkbox" id="issuerSwitch"> Issuers
+      <input type="checkbox" id="issuerSwitch">
+      Are you an Issuer or a company that supports issuing services?
     </label>
+    <hr />
+    <h3>Antivirus</h3>
+    <label>
+      <input type="checkbox" id="SophosSwitch">
+      Sophos
+    </label>
+    <hr />
+    <h3>About</h3>
+    <p>PCIDSS.io v0.1</p>
+    <p>⚠️ This is very early development ⚠️</p>
+    <p>All data is stored using the Local Storage, and all code is using client-side Javascript. Nothing is run server-side.</p>
+    <p>Questions/Concerns?<br /> Suggest Features/Contribute?<br />Contact me: <b>jacob@petrie.systems</b></p>
+    <div class="github-link">
+      <a href="https://github.com/IZZY1996/pcidss.io/" target="_blank">
+        <img src="https://imagedelivery.net/FgYlnTl8G0V_NRsRo5-YEg/6578c2fa-1c83-4073-49e5-9d9b56bd5d00/public" alt="GitHub Logo">
+        IZZY1996/pcidss.io
+      </a>
+    </div>
   </div>
 
   <div id="contentModal" class="contentModal">
@@ -441,7 +463,6 @@
         <!-- ... other content for 1.1.2 ... -->
       </div>
 
-      <!-- Hidden content for 5.3.1 -->
       <div class="checklist-content" id="content-5.3.1" style="display: none;">
         <h3>5.3.1 The anti-malware solution(s) is kept current via automatic updates.</h3>
         <h4>Defined Approach Testing Procedures</h4>
@@ -483,30 +504,74 @@
           testing—prior to being deployed to individual
           system components.</p>
 
-        <!-- Content for approach 5.3.1.a -->
-        <div id="content-for-5.3.1.a" style="display:none;" data-content-for="5.3.1.a">
-          <h3>5.3.1.a Testing Guide</h3>
-          <p>Here is the detailed guide for testing approach 5.3.1.a...</p>
-          <!-- You can add more content or structure it differently as needed -->
-        </div>
-
-        <!-- Content for another approach, say 5.3.1.b -->
-        <div id="content-for-5.3.1.b" style="display:none;" data-content-for="5.3.1.b">
-          <h3>5.3.1.b Testing Guide</h3>
-          <p>Here is the detailed guide for testing approach 5.3.1.b...</p>
-          <!-- You can add more content or structure it differently as needed -->
-        </div>
-
-        <!-- ... and so on for each testing approach -->
-
-
       </div>
 
-      <!-- Hidden content for 5.3.2 -->
       <div class="checklist-content" id="content-5.3.2" style="display: none;">
-        <h3>5.3.2: Periodic Scans</h3>
-        <p>Periodic scans by anti-malware tools are essential. These routine scans help in identifying and removing any
-          malware that might have bypassed real-time protection mechanisms.</p>
+        <h3>5.3.2 The anti-malware solution(s):
+          <ul>
+            <li>Performs periodic scans and active or real-time scans.</li>
+            <p>OR</p>
+            <li>Performs continuous behavioral analysis of systems or processes.</li>
+          </ul>
+        </h3>
+        <h4>Defined Approach Testing Procedures</h4>
+        <button class="testing-approach" data-approach="5.3.2.a">
+          <b>5.3.2.a</b> Examine anti-malware solution(s)
+          configurations, including any master installation of
+          the software, to verify the solution(s) is configured
+          to perform at least one of the elements specified in
+          this requirement.
+        </button>
+        <button class="testing-approach" data-approach="5.3.2.b">
+          <b>5.3.2.b</b> Examine system components, including all
+          operating system types identified as at risk for
+          malware, to verify the solution(s) is enabled in
+          accordance with at least one of the elements
+          specified in this requirement.
+        </button>
+        <button class="testing-approach" data-approach="5.3.2.c">
+          <b>5.3.2.c</b> Examine logs and scan results to verify that
+          the solution(s) is enabled in accordance with at
+          least one of the elements specified in this
+          requirement.
+        </button>
+        <h4>Customized Approach Objective</h4>
+        <p>Malware cannot complete execution.</p>
+        <h4>Purpose</h4>
+        <p>Periodic scans can identify malware that is
+          present, but currently inactive, within the
+          environment. Some malware, such as zero-day
+          malware, can enter an environment before the
+          scan solution is capable of detecting it.
+          Performing regular periodic scans or continuous
+          behavioral analysis of systems or processes
+          helps ensure that previously undetectable
+          malware can be identified, removed, and
+          investigated to determine how it gained access to
+          the environment.</p>
+        <h4>Good Practice</h4>
+        <p>Using a combination of periodic scans (scheduled
+          and on-demand) and active, real-time (on-access)
+          scanning helps ensure that malware residing in
+          both static and dynamic elements of the CDE is
+          addressed. Users should also be able to run on-
+          demand scans on their systems if suspicious
+          activity is detected – this can be useful in the
+          early detection of malware.</p>
+        <p>Scans should include the entire file system,
+          including all disks, memory, and start-up files and
+          boot records (at system restart) to detect all
+          malware upon file execution, including any
+          software that may be resident on a system but not
+          currently active. Scan scope should include all
+          systems and software in the CDE, including those
+          that are often overlooked such as email servers,
+          web browsers, and instant messaging software.</p>
+        <h4>Definitions</h4>
+        <p>Active, or real-time, scanning checks files for
+          malware upon any attempt to open, close,
+          rename, or otherwise interact with a file,
+          preventing the malware from being activated.</p>
       </div>
 
 
@@ -515,6 +580,11 @@
     </div>
 
   </div>
+
+  <div class="footer-copyright">
+    Content derived from © 2006 - 2022 PCI Security Standards Council, LLC. Not affiliated or endorsed by them.
+  </div>
+
 
   <script src="script.js"></script>
 </body>
