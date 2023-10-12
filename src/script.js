@@ -1,3 +1,44 @@
+const approachContent = {
+    '5.3.1.a': {
+        default: `
+            <h3>5.3.1.a</h3>
+            <p>Examine anti-malware solution(s) configurations, including any master installation of the software, to verify the solution is configured to perform automatic updates.</p>
+        `,
+        sophos: `
+        <h3>5.3.1.a</h3>
+        <p>Examine anti-malware solution(s) configurations, including any master installation of the software, to verify the solution is configured to perform automatic updates.</p>
+        <p>Using <b>Sophos Central</b></p>
+        <p>Confirm what <i>Update Management Policy</i> the computers in the CDE are using, Then check that policy to see that is has <i>Scheduled Updates</i> enabled</p>
+        <img src="https://imagedelivery.net/FgYlnTl8G0V_NRsRo5-YEg/14cad642-ce9c-4e06-4f03-42fa8cbf8b00/public" alt="Sophos Scheduled Updates">
+        `
+    },
+    '5.3.1.b': {
+        default: `
+        <h3>5.3.1.b</h3>
+        <p>Examine system components and logs, to verify that the anti-malware solution(s) and definitions are current and have been promptly deployed</p>
+        `
+    },
+    '5.3.2.a': {
+        default: `
+        <h3>5.3.2.a</h3>
+        <p>Examine anti-malware solution(s) configurations, including any master installation of the software, to verify the solution(s) is configured to perform at least one of the elements specified in this requirement.</p>
+        `
+    },
+    '5.3.2.b': {
+        default: `
+        <h3>5.3.2.b</h3>
+        <p>Examine system components, including all operating system types identified as at risk for malware, to verify the solution(s) is enabled in accordance with at least one of the elements specified in this requirement.</p>
+        `
+    },
+    '5.3.2.c': {
+        default: `
+        <h3>5.3.2.c</h3>
+        <p>Examine logs and scan results to verify that the solution(s) is enabled in accordance with at least one of the elements specified in this requirement.</p>
+        `
+    }
+};
+
+
 //
 // The DOMContentLoaded event fires when the initial HTML document has been 
 // completely loaded and parsed, without waiting for stylesheets, images, and subframes 
@@ -9,7 +50,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const checklistPanel = document.getElementById('checklist-panel');
     const toggleMainButton = document.getElementById('toggle-main-reqs');
     const toggleSubReqsButton = document.getElementById('toggle-sub-reqs');
-    const innerPanel = document.getElementById('inner-panel');
 
 
     function filterSubRequirements(mainReqNumber) {
@@ -387,36 +427,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     //
-    // This segment of the code is focused on enabling the interactive toggling of 
-    // the 'subRequirementsPanel', allowing users to expand or shrink it with a single 
-    // click. It enhances the user experience by providing a clean and concise view, 
-    // especially when dealing with a large number of sub-requirements.
-    //
-    // Here's a breakdown of how this works:
-    //
-    // 1. The code starts by selecting the button or element with the ID 'toggle-sub-reqs'. 
-    //    This element acts as the trigger for the toggling action.
-    //
-    // 2. A 'click' event listener is then attached to this button. This means that 
-    //    every time a user clicks on this button, the code within the event listener 
-    //    will be executed.
-    //
-    // 3. Within the event listener, there's a conditional check using an 'if' statement. 
-    //    The code checks if the 'subRequirementsPanel' currently has a class named 'shrunken'.
-    //
-    // 4. If the 'subRequirementsPanel' is in a 'shrunken' state (i.e., it has the 
-    //    'shrunken' class), the `expandSubRequirements` function is called to expand 
-    //    the panel. This function might be responsible for displaying the full details 
-    //    of the sub-requirements.
-    //
-    // 5. Conversely, if the 'subRequirementsPanel' is not in a 'shrunken' state (i.e., 
-    //    it doesn't have the 'shrunken' class), the `shrinkSubRequirements` function 
-    //    is called to shrink the panel. This function likely reduces the displayed details 
-    //    or hides certain sections of the sub-requirements for a more compact view.
-    //
-    // In summary, this code block equips the 'toggle-sub-reqs' button with the ability 
-    // to switch the view mode of the 'subRequirementsPanel' between expanded and shrunken 
-    // states, offering users flexibility in how they interact with the content.
     //
     document.getElementById('toggle-sub-reqs').addEventListener('click', function () {
         if (subRequirementsPanel.classList.contains('shrunken')) {
@@ -428,33 +438,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     //
-    // This segment of the code is designed to add interactive functionality to 
-    // each checklist item in the interface. It ensures that when a user clicks 
-    // on a particular checklist item, the associated content for that item gets 
-    // displayed, providing a responsive and interactive user experience.
-    //
-    // Let's break it down step by step:
-    //
-    // 1. The code begins by selecting all elements with the class 'checklist-item'. 
-    //    These elements represent individual checklist items in the interface.
-    //
-    // 2. For each of these checklist items, the code attaches a 'click' event listener. 
-    //    This means that the code will be able to detect and respond whenever a user 
-    //    clicks on any of these items.
-    //
-    // 3. Within the event listener, the specific identifier (`subReq`) for the clicked 
-    //    checklist item is retrieved. This identifier is stored as a data attribute 
-    //    named 'data-sub-requirement' on the element and serves as a unique reference 
-    //    to differentiate each checklist item.
-    //
-    // 4. Once the identifier is retrieved, the `loadContentForChecklistItem` function 
-    //    is called with this identifier. As previously explained, this function is 
-    //    responsible for displaying the content associated with the clicked checklist 
-    //    item and managing its checkbox's state.
-    //
-    // In essence, this code block makes the checklist items interactive, allowing 
-    // users to click on them and view relevant content, thus enhancing the overall 
-    // usability of the interface.
     //
     document.querySelectorAll('.checklist-item').forEach(item => {
         item.addEventListener('click', function () {
@@ -465,41 +448,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     //
-    // The `loadContentForChecklistItem` function is designed to manage the display 
-    // of content for a specific checklist item and to monitor user interactions 
-    // with its associated checkbox. This function is crucial in ensuring that 
-    // the content displayed is always in sync with the checklist item that a user 
-    // has selected, and it also keeps track of the completion state of the checklist items.
-    //
-    // Let's delve into the specifics:
-    //
-    // 1. The function starts by hiding the content of all checklist items. This 
-    //    ensures that any previously displayed content is hidden, giving way to 
-    //    the new content that the user wants to see.
-    //
-    // 2. It then identifies the specific content associated with the clicked 
-    //    checklist item (using its unique identifier `subReq`) and displays it.
-    //
-    // 3. Within this content, the function fetches the checkbox element, which 
-    //    allows users to mark a checklist item as completed. 
-    //
-    // 4. The completion state of this checkbox is then set based on information 
-    //    stored in the browser's local storage (`localStorage`). If the item is 
-    //    stored as "completed" in `localStorage`, the checkbox will be checked; 
-    //    otherwise, it will be unchecked.
-    //
-    // 5. An event listener is added to the checkbox to detect when its state changes 
-    //    (i.e., when a user checks or unchecks it). Depending on the checkbox's 
-    //    state, the function will either store the item's completion status in 
-    //    `localStorage` or remove it.
-    //
-    // 6. After updating the `localStorage`, the function calls `updateTabColor` 
-    //    to adjust the tab's color based on its completion status.
-    //
-    // In summary, this function ensures that the correct content is displayed 
-    // when a checklist item is selected, and it keeps track of the completion 
-    // status of each item, providing users with a visual cue (via tab color) 
-    // and storing this status for future reference.
     //
     function loadContentForChecklistItem(itemReq) {
         console.log("Function loadContentForChecklistItem called with:", itemReq);  // Debugging line
@@ -531,43 +479,9 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         }
 
-        // When loading content for a specific checklist item, only update its tab color
         updateTabColor(itemReq);
     }
 
-
-    //
-    // The function `updateTabColor` is designed to provide visual feedback to the user 
-    // regarding the progress of a specific checklist item. In web applications, such 
-    // visual feedback is essential to enhance user experience, letting users know the 
-    // current state or progress of tasks they're working on.
-    //
-    // Here's a step-by-step breakdown of what happens inside this function:
-    //
-    // 1. The function takes in a parameter `subReq`, which is the identifier for a 
-    //    specific sub-requirement or checklist item. With this identifier, we can 
-    //    determine which checklist tab we need to update.
-    //
-    // 2. Using the `document.querySelector` method and a template literal, we target 
-    //    the specific tab associated with our `subReq` identifier. The `querySelector` 
-    //    method returns the first DOM element that matches the provided selector. In 
-    //    this case, our selector targets an element with the class 'checklist-item' 
-    //    and a specific `data-sub-requirement` attribute value that matches our `subReq`.
-    //
-    // 3. We then check the state of this checklist item in the browser's `localStorage`. 
-    //    The `localStorage` is a Web Storage API that allows us to store key-value pairs 
-    //    in a web browser. It's useful for preserving application data without needing 
-    //    to interact with a server. In our context, we use it to remember which checklist 
-    //    items have been marked as "completed".
-    //
-    //    If our `subReq` identifier has a value of "completed" in `localStorage`, it 
-    //    indicates that this specific checklist item has been marked as done by the user. 
-    //    Therefore, we change the background color of the tab to green.
-    //
-    // 4. If the checklist item is not marked as "completed" in `localStorage`, we reset 
-    //    the tab's background color to its default, effectively removing any specific 
-    //    color that might have been set earlier.
-    //
     function updateTabColor(itemReq) {
         const tab = document.querySelector(`.checklist-item[data-sub-requirement="${itemReq}"]`);
         if (tab) {  // Check if tab exists
@@ -579,83 +493,8 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    //
 
-    //
-    // This piece of code is concerned with the initial presentation of the web page
-    // when it first loads. In web applications, it's important to ensure that the 
-    // state of the user interface matches any saved or stored data from previous 
-    // interactions. This way, users are presented with a consistent view, 
-    // reflecting their past actions.
-    //
-    // Here's a breakdown of what happens:
-    //
-    // 1. Upon the web page's initial load, we want to display the correct colors 
-    //    for each checklist tab based on the user's previous interactions. This 
-    //    visual feedback informs users about which checklist items they've already 
-    //    marked as completed.
-    //
-    // 2. The `document.querySelectorAll('.checklist-item')` method retrieves all 
-    //    the DOM elements with the class 'checklist-item'. These elements represent 
-    //    the individual tabs for each checklist item on our web page.
-    //
-    // 3. The `forEach` method is then used to iterate over each of these checklist 
-    //    tabs. For every tab, we perform the following steps:
-    //    
-    //    a. Retrieve the specific identifier (`subReq`) for the checklist item 
-    //       using the `getAttribute` method. This identifier is stored as a 
-    //       `data-sub-requirement` attribute in the tab's HTML element.
-    //
-    //    b. Call the previously defined `updateTabColor` function with the 
-    //       `subReq` identifier. This function checks the `localStorage` to see 
-    //       if the associated checklist item has been marked as "completed". 
-    //       It then updates the tab's background color accordingly (green if 
-    //       completed, default color otherwise).
-    //
-    // In summary, this code ensures that, upon the page's initial load, each 
-    // checklist tab displays the correct color based on the user's saved progress.
-    //
-    //document.querySelectorAll('.checklist-item').forEach(item => {
-    //    item.addEventListener('click', function () {
-    //        const subReq = this.getAttribute('data-sub-requirement');
-    //        loadContentForChecklistItem(subReq);
-    //    });
-    //});
-
-
-    //
-    // This piece of code is centered around enhancing user interactivity with 
-    // the checklist tabs present on the web page. It ensures that when a user 
-    // clicks on a particular checklist tab, the corresponding content for that 
-    // tab becomes visible.
-    //
-    // Here's a detailed breakdown of what happens:
-    //
-    // 1. `document.querySelectorAll('.checklist-tab')` is a method that fetches 
-    //    all the DOM elements with the class 'checklist-tab'. These elements 
-    //    signify the individual tabs for each checklist item on our webpage.
-    //
-    // 2. The `forEach` method is then employed to iterate over each of these 
-    //    checklist tabs. For every tab, the following steps are executed:
-    //    
-    //    a. An event listener is attached to the tab using the `addEventListener` 
-    //       method. This ensures that a specific function is called whenever a 
-    //       user clicks on the tab.
-    //
-    //    b. Inside the event listener function (i.e., the function that's invoked 
-    //       upon a tab click), we first retrieve the unique identifier (`subReq`) 
-    //       for the clicked checklist item using the `getAttribute` method. This 
-    //       identifier is stored as a `data-sub-requirement` attribute in the tab's 
-    //       HTML element.
-    //
-    //    c. We then call the `showContentForChecklistItem` function, providing 
-    //       the `subReq` identifier as an argument. This function takes care of 
-    //       displaying the content specific to the clicked checklist item while 
-    //       hiding the content of all other checklist items.
-    //
-    // In essence, this code ensures that, whenever a user clicks on a checklist 
-    // tab, the web page dynamically shows the associated content for that tab 
-    // while keeping the content of other tabs hidden.
-    //
     const checklistTabs = document.querySelectorAll('.checklist-tab');
     checklistTabs.forEach(tab => {
         tab.addEventListener('click', function () {
@@ -666,34 +505,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     //
-    // The function `showContentForChecklistItem` is designed to display specific content 
-    // related to a checklist item when it's clicked on. In web development, especially 
-    // with dynamic user interfaces, it's common to hide or show different sections of 
-    // content based on user interactions. This function embodies this principle.
-    //
-    // Here's a step-by-step breakdown of what happens inside this function:
-    //
-    // 1. The function receives a parameter `subReq`, which is the identifier for a 
-    //    specific sub-requirement or checklist item. Using this identifier, we can 
-    //    determine which content to display to the user.
-    //
-    // 2. We first ensure that all other checklist contents are hidden. This is done to 
-    //    provide a clean slate, ensuring that the user only sees the relevant content. 
-    //    We use `document.querySelectorAll('.checklist-content')` to grab all elements 
-    //    with the class 'checklist-content'. The method `querySelectorAll` returns a 
-    //    NodeList, which is a collection of DOM elements. We then loop over this collection 
-    //    using `forEach`, and for each content element, we set its `display` style to 'none', 
-    //    effectively hiding it.
-    //
-    // 3. After hiding all the other content, we want to display the content specific 
-    //    to the clicked checklist item. Using the `document.getElementById` method and 
-    //    a template literal (`content-${subReq}`), we can directly target the specific 
-    //    content associated with our `subReq` identifier. Once we have this content, 
-    //    we change its `display` style to 'block', making it visible to the user.
-    //
-    // 4. Lastly, we call the `updateTabColor` function to visually indicate the progress 
-    //    of this checklist item (e.g., whether it's completed or not). This helps provide 
-    //    immediate feedback to the user and enhances the user experience.
     //
     function showContentForChecklistItem(subReq) {
         // Hide all checklist contents
@@ -720,7 +531,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const settingsIcon = document.getElementById('settingsIcon');
     const modalBackdrop = document.getElementById('modalBackdrop');
     const settingsModal = document.getElementById('settingsModal');
-    const serviceProviderSwitch = document.getElementById('serviceProviderSwitch');
 
     settingsIcon.addEventListener('click', () => {
         modalBackdrop.style.display = 'block';
@@ -751,23 +561,62 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    serviceProviderSwitch.addEventListener('change', function () {
+
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  
+
+    /*
+     SERVICE PROVIDER FUNCTIONALLITY
+
+     This Section Deals with the Service Provider Functionality in Settings and in the List enabling and disabling certain Items based on that result
+    */
+
+    const serviceProviderSwitch = document.getElementById('serviceProviderSwitch');
+    /*
+     The handleServiceProviderSwitchChange function manages the visibility and interactivity
+     of checklist items that are meant only for service providers. 
+     
+     When the serviceProviderSwitch is checked, all provider-only checklist items are made fully 
+     visible and interactable. When unchecked, these items are greyed out and made non-interactable.
+    */
+    function handleServiceProviderSwitchChange() {
         const providerOnlyItems = document.querySelectorAll('.checklist-item[data-provider-only="true"]');
 
-        if (this.checked) {
-            // Restore the items to normal
+        if (serviceProviderSwitch.checked) {
             providerOnlyItems.forEach(item => {
                 item.style.opacity = "1";
                 item.style.pointerEvents = "auto";
             });
+            localStorage.setItem('settings-provider', '1');
         } else {
-            // Grey out the items
             providerOnlyItems.forEach(item => {
                 item.style.opacity = "0.5";
                 item.style.pointerEvents = "none";
             });
+            localStorage.setItem('settings-provider', '0');
         }
-    });
+    }
+    serviceProviderSwitch.addEventListener('change', handleServiceProviderSwitchChange);
+
+    handleServiceProviderSwitchChange();
+
+    const providerstoredValue = localStorage.getItem('settings-provider');
+
+    if (providerstoredValue !== null) {
+        // Set the serviceProviderSwitch based on the stored value
+        serviceProviderSwitch.checked = providerstoredValue === '1';
+
+        // Call the function to apply the correct styles based on the saved state
+        handleServiceProviderSwitchChange();
+    }
+
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  
+
+
+
 
     const issuerSwitch = document.getElementById('issuerSwitch');
 
@@ -785,36 +634,35 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-    // Reference to the modal
     // Open the contentModal when a testing-approach button is clicked
     document.querySelectorAll('.testing-approach').forEach(button => {
-        button.addEventListener('click', function() {
-            // Fetch the custom content for the modal based on the clicked button
+        button.addEventListener('click', function () {
             const approach = this.getAttribute('data-approach');
             const contentModalDiv = document.querySelector('.content');
-    
-            // Hide all content sections within the modal
-            document.querySelectorAll('.modal-content-section').forEach(section => {
-                section.style.display = 'none';
-            });
-    
-            // Show the content section that corresponds to the clicked button
-            const contentSection = document.querySelector(`[data-content-for="${approach}"]`);
-            if (contentSection) {
-                contentModalDiv.innerHTML = contentSection.innerHTML;
-                contentSection.style.display = 'none'; // Hide the original content in its initial position
+            const contentModal = document.getElementById('contentModal');
+
+            // Set the data-approach attribute to the contentModal
+            contentModal.setAttribute('data-approach', approach);
+
+            // Load Default Content
+            let contentToShow = approachContent[approach].default;
+
+            // Load Custom Content
+            if (approach === '5.3.1.a' && sophosSwitch.checked) {
+                contentToShow = approachContent[approach].sophos;
             }
-    
-            // Show the modal backdrop
+
+            contentModalDiv.innerHTML = contentToShow;
+
+            // Display logic for the modal
             modalBackdrop.style.display = 'block';
             setTimeout(() => {
                 modalBackdrop.style.opacity = '1';
-            }, 50); 
-    
-            // Show the content modal with a transition
-            const contentModal = document.getElementById('contentModal');
+            }, 50);
+
             contentModal.style.display = 'block';
             setTimeout(() => {
                 contentModal.style.opacity = '1';
@@ -823,10 +671,37 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Close the contentModal when the close button is clicked
-    document.querySelector('.close').addEventListener('click', function () {
-        document.getElementById('modalBackdrop').style.display = 'none';
-        document.getElementById('contentModal').style.display = 'none';
+    document.querySelectorAll('.contentModal button').forEach(button => {
+        button.addEventListener('click', function () {
+            let approach = document.getElementById('contentModal').getAttribute('data-approach');
+            let status = {
+                'complete': '1',
+                'ccw': '2',
+                'na': '3',
+                'close': '0'
+            }[this.className];
+
+            localStorage.setItem(approach, status);
+
+            let correspondingButton = document.querySelector(`.testing-approach[data-approach="${approach}"]`);
+            setButtonColor(correspondingButton, status);
+
+
+            // Hide the modal and the backdrop
+            document.getElementById('modalBackdrop').style.display = 'none';
+            document.getElementById('contentModal').style.display = 'none';
+        });
+    });
+
+    window.addEventListener('load', function () {
+        document.querySelectorAll('.testing-approach').forEach(button => {
+            let approach = button.getAttribute('data-approach');
+            let status = localStorage.getItem(approach);
+
+            if (status !== null) {
+                setButtonColor(button, status);
+            }
+        });
     });
 
     // Close the modal when clicking outside of it
@@ -838,4 +713,58 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+    // AV - Sophos
+
+    const sophosSwitch = document.getElementById('SophosSwitch');
+
+    // Function to handle the change in the SophosSwitch state.
+    function handleSophosSwitchChange() {
+        // Save the state of the SophosSwitch checkbox to localStorage.
+        if (sophosSwitch.checked) {
+            localStorage.setItem('settings-av-sophos', '1');
+        } else {
+            localStorage.setItem('settings-av-sophos', '0');
+        }
+    }
+
+    // Attach an event listener to the SophosSwitch checkbox.
+    sophosSwitch.addEventListener('change', handleSophosSwitchChange);
+
+
+    const storedValue = localStorage.getItem('settings-av-sophos');
+
+    if (storedValue !== null) {
+        // Set the SophosSwitch based on the stored value.
+        sophosSwitch.checked = storedValue === '1';
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    function setButtonColor(button, status) {
+        button.style.borderRadius = '5px';  // Ensure rounded corners
+        button.style.boxShadow = 'none';    // Remove shadow
+
+        switch (status) {
+            case '1':
+                button.style.backgroundColor = '#A8E6CF'; // Pastel Green
+                break;
+            case '2':
+                button.style.backgroundColor = '#AEDFF7'; // Pastel Blue
+                break;
+            case '3':
+                button.style.backgroundColor = '#FFD3B6'; // Pastel Yellow
+                break;
+            default:
+                button.style.backgroundColor = ''; // default color
+        }
+    }
+
 });
+
+
