@@ -35,6 +35,34 @@ const approachContent = {
         <h3>5.3.2.c</h3>
         <p>Examine logs and scan results to verify that the solution(s) is enabled in accordance with at least one of the elements specified in this requirement.</p>
         `
+    },
+    '5.4.1': {
+        default: `
+        <h3>5.4.1</h3>
+        <p>Observe implemented processes and examine mechanisms to verify controls are in place to detect and protect personnel against phishing attacks.</p>
+        <hr />
+        <h4>DMARC, SPF, and DKIM</h4>
+        <p>DMARC, SPF, and DKIM work together to fight phishing by ensuring email authenticity. SPF verifies the email source, DKIM ensures the message hasn't been altered, and DMARC specifies what to do if either check fails. Together, they make it hard for phishers to impersonate trusted domains.</p>
+        <h4>Check the email domain for SPF</h4>
+        <div class="terminal"><code>
+            <span class="command">dig</span> <span class="option">TXT</span> <span class="domain">example.com</span> <span class="option">+short</span> | <span class="command">grep</span> spf
+        </code></div>
+        <p>The output will look like this if it's configured</p>
+        <div class="terminal"><code>
+        "v=spf1 ip4:54.0.14.116 include:spf.protection.outlook.com -all"
+        </code></div>
+        <p>The <b>ip4:</b> and <b>include:</b> are sources that are trusted. At the end it will either have a catch all with either a <b>~</b> or <b>-</b>. <b>~all</b> is a softfail and means it will generally still accept other sources but might categorize them as suspicious. <b>-all</b> is a fail, meaning if the source wasn't on the list it should be rejected.</p>
+        <h4>Check the email domain for DMARC</h4>
+        <div class="terminal"><code>
+        <span class="command">dig</span> <span class="option">TXT</span> <span class="domain">_dmarc.example.com</span> <span class="option">+short</span>
+        </code></div>
+        <p>This is the output</p>
+        <div class="terminal"><code>
+        "v=DMARC1; p=quarantine; rua=mailto:dmarc@example.com; ruf=mailto:dmarc-forensic@example.com"
+        </code></div>
+        <p>The output will have a policy option with a <b>p=</b>. This can be <b>none</b>, <b>quarantine</b>, or <b>reject</b>. <b>None</b> is for monitoring, <b>quarantine</b> moves suspicious emails to spam, and <b>reject</b> blocks them.</p>
+        <hr />
+        `
     }
 };
 
@@ -615,24 +643,37 @@ document.addEventListener('DOMContentLoaded', function () {
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  
 
-
-
-
     const issuerSwitch = document.getElementById('issuerSwitch');
 
-    issuerSwitch.addEventListener('change', function () {
-        const items = document.querySelectorAll('.checklist-item[data-issuer-only="true"]');
+    function handleissuerswitchchange() {
+        const issueritems = document.querySelectorAll('.checklist-item[data-issuer-only="true"]');
 
-        items.forEach(item => {
-            if (item.style.opacity === "0.5") {
+        if (issuerSwitch.checked){
+            issueritems.forEach(item =>{
                 item.style.opacity = "1";
                 item.style.pointerEvents = "auto";
-            } else {
+            });
+            localStorage.setItem('settings-issuer', '1')
+        } else {
+            issueritems.forEach(item =>{
                 item.style.opacity = "0.5";
                 item.style.pointerEvents = "none";
-            }
-        });
-    });
+            });
+            localStorage.setItem('settings-issuer', '0');
+        }
+    }
+    issuerSwitch.addEventListener('change', handleissuerswitchchange);
+
+    handleissuerswitchchange();
+
+    const issuerstoredvalue = localStorage.getItem('settings-issuer');
+
+    if (issuerstoredvalue !== null){
+
+        issuerSwitch.checked = issuerstoredvalue === '1';
+
+        handleissuerswitchchange();
+    }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -766,5 +807,3 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 });
-
-
