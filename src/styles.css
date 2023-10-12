@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
     height: 100%;
     margin: 0;
     padding: 0;
@@ -9,8 +10,10 @@ body {
     display: flex;
     justify-content: space-between;
     padding: 20px;
-    flex-direction: row; /* Default to side by side */
-    height: calc(100% - 40px); /* Deducting the total padding (20px on top + 20px on bottom) */
+    flex-direction: row;
+    /* Default to side by side */
+    height: calc(100% - 40px);
+    /* Deducting the total padding (20px on top + 20px on bottom) */
 }
 
 #main-header-section {
@@ -21,7 +24,7 @@ body {
     max-width: 50px;
     writing-mode: vertical-rl;
     transform: rotate(180deg);
-    text-align:center;
+    text-align: center;
 }
 
 #sub-header-section {
@@ -32,10 +35,8 @@ body {
     max-width: 50px;
     writing-mode: vertical-rl;
     transform: rotate(180deg);
-    text-align:center;
+    text-align: center;
 }
-
-
 
 .content-section {
     order: 2;
@@ -67,31 +68,15 @@ body {
     flex: 1;
     margin-right: 20px;
     overflow-y: auto;
-    height: calc(100% - 40px); /* Deducting the total padding (20px on top + 20px on bottom) */
-    transition: flex 0.3s; /* smooth transition */
+    height: calc(100% - 40px);
+    /* Deducting the total padding (20px on top + 20px on bottom) */
+    transition: flex 0.3s;
+    /* smooth transition */
 }
 
 .panel:last-child {
     margin-right: 0;
 }
-
-/* Media query for smaller screens 
-@media screen and (max-width: 768px) {
-    body {
-        flex-direction: column;
-    }
-    
-    .panel {
-        margin-bottom: 20px;
-        margin-right: 0;
-        height: calc(33.33% - 40px);
-    }
-
-    .panel:last-child {
-        margin-bottom: 0;
-    }
-}
-*/
 
 .requirement {
     cursor: pointer;
@@ -122,9 +107,11 @@ body {
 }
 
 .shrunken {
-    flex: 0 0 10%; /* don't grow, don't shrink, base width is 10% */
+    flex: 0 0 10%;
+    /* don't grow, don't shrink, base width is 10% */
     max-width: 90px;
 }
+
 .shrunken .requirement {
     white-space: nowrap;
     overflow: hidden;
@@ -141,14 +128,16 @@ body {
     width: 100%;
 }
 
-
 .title-container {
     display: flex;
     height: 100%;
     width: 100%;
-    align-items: center; /* Vertically center the content */
-    justify-content: flex-start; /* Align content to the start */
-    flex-direction: row; /* Ensure the direction is row */
+    align-items: center;
+    /* Vertically center the content */
+    justify-content: flex-start;
+    /* Align content to the start */
+    flex-direction: row;
+    /* Ensure the direction is row */
 }
 
 /* Default styling for the h2 title when the panel is not shrunken */
@@ -158,17 +147,20 @@ body {
     text-align: left;
     width: auto;
     margin: 0;
-    order: 2; /* This ensures the title goes to the right side when not shrunken */
+    order: 2;
+    /* This ensures the title goes to the right side when not shrunken */
 }
 
-/* Styling for the h2 title when the panel is shrunken */
-#main-requirements-panel.shrunken h2 {   
+#main-requirements-panel.shrunken h2 {
     white-space: nowrap;
-    position:relative;
-    width:auto;
-    order: 1; /* This ensures the title goes to the left side when shrunken */
-    margin-right: 10px; /* Spacing between the title and the requirements */
-    align-self: center; /* Center the h2 title vertically within the flex container */
+    position: relative;
+    width: auto;
+    order: 1;
+    /* This ensures the title goes to the left side when shrunken */
+    margin-right: 10px;
+    /* Spacing between the title and the requirements */
+    align-self: center;
+    /* Center the h2 title vertically within the flex container */
 }
 
 #sub-requirements-panel.shrunken {
@@ -187,18 +179,23 @@ body {
 }
 
 #toggle-sub-reqs {
-    position:absolute;
-    top: 0px; /* Adjust as necessary */
-    right: 0px; /* Adjust as necessary */
+    position: absolute;
+    top: 0px;
+    /* Adjust as necessary */
+    right: 0px;
+    /* Adjust as necessary */
     cursor: pointer;
     max-width: 20px;
 }
 
 #toggle-main-reqs {
     /* Add your specific button styling here to ensure it looks as intended */
-    position: absolute; /* This will keep the button positioned relative to the panel */
-    top: 0px; /* Adjust to move the button up/down */
-    right: 0px; /* Adjust to move the button left/right */
+    position: absolute;
+    /* This will keep the button positioned relative to the panel */
+    top: 0px;
+    /* Adjust to move the button up/down */
+    right: 0px;
+    /* Adjust to move the button left/right */
     cursor: pointer;
 }
 
@@ -207,27 +204,28 @@ body {
     white-space: normal;
     text-align: left;
     width: auto;
-    margin: 0 10px 0 0; /* Adding a little margin to the right of the h2 element */
+    margin: 0 10px 0 0;
+    /* Adding a little margin to the right of the h2 element */
 }
 
 #sub-requirements-panel.shrunken h2 {
     white-space: nowrap;
-    margin-right: 10px; /* Keeps spacing between the title and the requirements */
-    order: 1; /* Ensures the title goes to the left side when shrunken */
+    margin-right: 10px;
+    /* Keeps spacing between the title and the requirements */
+    order: 1;
+    /* Ensures the title goes to the left side when shrunken */
 }
-
 
 #checklist-panel {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     max-width: 100%;
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap; /* Allow items to wrap to the next line if there's not enough space */
-    gap: 10px; /* Add space between each checklist item */
 }
 
 .checklist-item {
-    padding: 5px 10px; /* Smaller vertical padding, larger horizontal padding */
+    padding: 5px 10px;
+    /* Smaller vertical padding, larger horizontal padding */
     border: 1px solid #ddd;
     border-radius: 4px 4px 0 0;
     background-color: #f5f5f5;
@@ -241,9 +239,11 @@ body {
 
 #inner-panel {
     overflow-y: auto;
-    flex-grow: 1; /* This will make the inner panel take up all remaining space */
+    flex-grow: 1;
+    /* This will make the inner panel take up all remaining space */
     border: 1px solid #ddd;
     border-radius: 4px;
+    border-top-left-radius: 0px;
     margin-top: 0px;
     padding: 10px;
     background-color: #fff;
@@ -251,15 +251,18 @@ body {
 
 #checklist-panel .tabs {
     display: flex;
-    flex-direction: row; /* Line up items side by side */
-    gap: 10px; /* Space between tabs */
+    flex-direction: row;
+    /* Line up items side by side */
+    gap: 10px;
+    /* Space between tabs */
+
 }
+
 #checklist-panel h2 {
-    margin-bottom: 10px; /* Some spacing between the title and the tabs */
+    margin-top: 0px;
+    margin-bottom: 10px;
+    /* Some spacing between the title and the tabs */
 }
-
-
-
 
 /* Settings */
 
@@ -272,8 +275,9 @@ body {
 
 .modal-backdrop {
     opacity: 0;
-    display: none; 
-    transition: opacity 0.3s ease-in-out; /* Fade transition */
+    display: none;
+    transition: opacity 0.3s ease-in-out;
+    /* Fade transition */
     position: fixed;
     top: 0;
     left: 0;
@@ -283,12 +287,16 @@ body {
     z-index: 100;
 }
 
-.settings-modal {  /* Fix the typo here */
-    opacity: 0; 
-    transform: translateY(-50px); /* Initially placed slightly above the center */
-    transition: 
-        opacity 0.3s ease-in-out, /* Fade transition */
-        transform 0.3s ease-in-out; /* Slide transition */
+.settings-modal {
+    /* Fix the typo here */
+    opacity: 0;
+    transform: translateY(-50px);
+    /* Initially placed slightly above the center */
+    transition:
+        opacity 0.3s ease-in-out,
+        /* Fade transition */
+        transform 0.3s ease-in-out;
+    /* Slide transition */
     display: none;
     position: fixed;
     top: 50%;
@@ -312,10 +320,13 @@ body {
 
 .contentModal {
     opacity: 0;
-    transform: translateY(-50px); /* Initially placed slightly above the center */
-    transition: 
-        opacity 0.3s ease-in-out, /* Fade transition */
-        transform 0.3s ease-in-out; /* Slide transition */
+    transform: translateY(-50px);
+    /* Initially placed slightly above the center */
+    transition:
+        opacity 0.3s ease-in-out,
+        /* Fade transition */
+        transform 0.3s ease-in-out;
+    /* Slide transition */
     display: none;
     position: fixed;
     top: 50%;
@@ -339,44 +350,222 @@ body {
 
 .testing-approach {
     cursor: pointer;
-    display: inline-block;   /* Makes the buttons flow horizontally */
-    margin-right: 10px;      /* Adds some space to the right of each button */
+    display: inline-block;
+    /* Makes the buttons flow horizontally */
+    margin-right: 10px;
+    /* Adds some space to the right of each button */
     margin-top: 10px;
-    padding: 5px 10px;       /* Increases padding inside the button for a better look */
-    max-width: 45%;        /* Set a max-width for the buttons */
-    white-space: normal;     /* Allows the text inside the button to wrap */
-    vertical-align: top;     /* Aligns the buttons to the top */
+    padding: 5px 10px;
+    /* Increases padding inside the button for a better look */
+    max-width: 45%;
+    /* Set a max-width for the buttons */
+    white-space: normal;
+    /* Allows the text inside the button to wrap */
+    vertical-align: top;
+    /* Aligns the buttons to the top */
 }
 
 .testing-approach:last-of-type {
-    margin-right: 0;         /* Removes the right margin for the last button */
+    margin-right: 0;
+    /* Removes the right margin for the last button */
 }
 
 .github-link {
-    margin-top: 20px; /* spacing from other content */
+    margin-top: 20px;
+    /* spacing from other content */
     display: flex;
-    align-items: center; /* vertical alignment */
+    align-items: center;
+    /* vertical alignment */
 }
 
 .github-link a {
     display: flex;
-    align-items: center; /* align icon and text vertically */
-    text-decoration: none; /* remove underline */
-    color: inherit; /* use current text color */
+    align-items: center;
+    /* align icon and text vertically */
+    text-decoration: none;
+    /* remove underline */
+    color: inherit;
+    /* use current text color */
 }
 
 .github-link img {
-    width: 24px; /* or desired size */
-    height: 24px; /* or desired size */
-    margin-right: 8px; /* spacing between icon and text */
+    width: 24px;
+    /* or desired size */
+    height: 24px;
+    /* or desired size */
+    margin-right: 8px;
+    /* spacing between icon and text */
 }
 
 .footer-copyright {
-    position: fixed;  /* This will fix the position of the div to the viewport */
-    bottom: 4px;     /* 10px from the bottom of the viewport */
-    left: 9px;       /* 10px from the left of the viewport */
-    font-size: 12px;  /* Adjust the font size as needed */
-    color: #666;      /* A slightly gray color for the text, adjust as needed */
-    z-index: 9999;    /* This ensures the text is always on top */
+    position: fixed;
+    /* This will fix the position of the div to the viewport */
+    bottom: 4px;
+    /* 10px from the bottom of the viewport */
+    left: 9px;
+    /* 10px from the left of the viewport */
+    font-size: 12px;
+    /* Adjust the font size as needed */
+    color: #666;
+    /* A slightly gray color for the text, adjust as needed */
+    z-index: 9999;
+    /* This ensures the text is always on top */
     cursor: default;
+}
+
+/* Old terminal style */
+.terminal {
+    font-family: "Courier New", monospace;
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+    overflow: auto;
+}
+
+/* Optional: Syntax highlighting */
+.command {
+    color: lime;
+}
+
+.option {
+    color: cyan;
+}
+
+.domain {
+    color: yellow;
+}
+
+
+@media screen and (max-width: 800px) {
+    body {
+        flex-direction: column;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 10px;
+        padding-bottom: 15px;
+    }
+
+    .panel {
+        margin-bottom: 15px;
+        margin-right: 0;
+        height: calc(33.33% - 40px);
+    }
+
+    .panel:last-child {
+        margin-bottom: 0;
+    }
+
+    #main-requirements-panel {
+        margin-right: 30px;
+    }
+
+    #main-requirements-panel.shrunken h2 {
+        white-space: nowrap;
+        position: relative;
+        width: auto;
+        order: 1;
+        /* This ensures the title goes to the left side when shrunken */
+        margin-right: 10px;
+        /* Spacing between the title and the requirements */
+        align-self: center;
+        /* Center the h2 title vertically within the flex container */
+    }
+
+    #sub-requirements-panel.shrunken {
+        max-height: 50px;
+        min-height: 40px;
+        position: relative;
+        width: auto;
+        padding: 10px;
+        padding-bottom: 20px;
+        overflow-y: hidden;
+    }
+
+    #main-requirements-panel.shrunken {
+        max-height: 50px;
+        min-height: 40px;
+        position: relative;
+        width: auto;
+        padding: 10px;
+        padding-bottom: 20px;
+        overflow-y: hidden;
+    }
+
+    #sub-requirements-panel.shrunken h2 {
+        white-space: nowrap;
+        margin-right: 10px;
+        /* Keeps spacing between the title and the requirements */
+        order: 1;
+        /* Ensures the title goes to the left side when shrunken */
+    }
+
+    .panel.shrunken {
+        flex-direction: column;
+
+    }
+
+    .shrunken #main-header-section {
+        max-height: 50px;
+        text-align: center;
+        writing-mode: horizontal-tb;
+        transform: rotate(0deg);
+    }
+
+    .shrunken #sub-header-section {
+        max-height: 50px;
+        text-align: center;
+        writing-mode: horizontal-tb;
+        transform: rotate(0deg);
+    }
+
+    .shrunken h4 {
+        display: none;
+    }
+
+    .shrunken {
+        max-width: 100%;
+    }
+
+    .content-section {
+        order: 2;
+        display: flex;
+    }
+
+    .shrunken .content-section {
+        flex-direction: row;
+        display: flex;
+        gap: 10px;
+    }
+
+    #checklist-panel {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 0px;
+    }
+
+    #toggle-sub-reqs {
+        position: absolute;
+        top: auto;
+        bottom: 0px;
+        /* Adjust as necessary */
+        right: 0px;
+        /* Adjust as necessary */
+        cursor: pointer;
+        max-width: 20px;
+    }
+
+    #toggle-main-reqs {
+        /* Add your specific button styling here to ensure it looks as intended */
+        position: absolute;
+        /* This will keep the button positioned relative to the panel */
+        bottom: 0px;
+        /* Adjust to move the button up/down */
+        right: 0px;
+        top:auto;
+        cursor: pointer;
+    }
+
 }
