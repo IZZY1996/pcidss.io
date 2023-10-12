@@ -574,11 +574,169 @@
           preventing the malware from being activated.</p>
       </div>
 
+      <div class="checklist-content" id="content-5.3.4" style="display: none;">
+        <h3>5.3.4 Audit logs for the anti-malware solution(s) are enabled and retained in accordance with Requirement 10.5.1.</h3>
+        <h4>Defined Approach Testing Procedures</h4>
+        <button class="testing-approach" data-approach="5.3.4">
+          <b>5.3.4</b> Examine anti-malware solution(s)
+          configurations to verify logs are enabled and
+          retained in accordance with Requirement 10.5.1.
+        </button>
+        <h4>Customized Approach Objective</h4>
+        <p>Historical records of anti-malware actions are
+          immediately available and retained for at least 12
+          months.</p>
+        <h4>Purpose</h4>
+        <p>It is important to track the effectiveness of the
+          anti-malware mechanisms—for example, by
+          confirming that updates and scans are being
+          performed as expected, and that malware is
+          identified and addressed. Audit logs also allow an
+          entity to determine how malware entered the
+          environment and track its activity when inside the
+          entity’s network.</p>
+      </div>
 
+      <div class="checklist-content" id="content-5.3.5" style="display: none;">
+        <h3>5.3.5 Anti-malware mechanisms cannot be disabled or altered by users, unless specifically documented, and authorized by management on a case-by-case basis for a limited time period.</h3>
+        <h4>Defined Approach Testing Procedures</h4>
+        <button class="testing-approach" data-approach="5.3.5.a">
+          <b>5.3.5.a</b> Examine anti-malware configurations, to
+          verify that the anti-malware mechanisms cannot be
+          disabled or altered by users.
+        </button>
+        <button class="testing-approach" data-approach="5.3.5.b">
+          <b>5.3.5.b</b> Interview responsible personnel and
+          observe processes to verify that any requests to
+          disable or alter anti-malware mechanisms are
+          specifically documented and authorized by
+          management on a case-by-case basis for a limited
+          time period.
+        </button>
+        <h4>Customized Approach Objective</h4>
+        <p>Anti-malware mechanisms cannot be modified by
+          unauthorized personnel.</p>
+        <h4>Applicability Notes</h4>
+        <p>Anti-malware solutions may be temporarily disabled
+          only if there is a legitimate technical need, as
+          authorized by management on a case-by-case
+          basis. If anti-malware protection needs to be
+          disabled for a specific purpose, it must be formally
+          authorized. Additional security measures may also
+          need to be implemented for the period during which
+          anti-malware protection is not active.</p>
+        <h4>Purpose</h4>
+        <p>It is important that defensive mechanisms are
+          always running so that malware is detected in real
+          time. Ad-hoc starting and stopping of anti-
+          malware solutions could allow malware to
+          propagate unchecked and undetected.</p>
+        <h4>Good Practice</h4>
+        <p>Where there is a legitimate need to temporarily
+          disable a system’s anti-malware protection—for
+          example, to support a specific maintenance
+          activity or investigation of a technical problem—
+          the reason for taking such action should be
+          understood and approved by an appropriate
+          management representative. Any disabling or
+          altering of anti-malware mechanisms, including on
+          administrators’ own devices, should be performed
+          by authorized personnel. It is recognized that
+          administrators have privileges that may allow
+          them to disable anti-malware on their own
+          computers, but there should be alerting
+          mechanisms in place when such software is
+          disabled and then follow up that occurs to ensure
+          correct processes were followed.</p>
+        <h4>Examples</h4>
+        <p>Additional security measures that may need to be
+          implemented for the period during which anti-
+          malware protection is not active include
+          disconnecting the unprotected system from the
+          Internet while the anti-malware protection is
+          disabled and running a full scan once it is re-
+          enabled.</p>
+      </div>
+      <div class="checklist-content" id="content-5.4.1" style="display: none;">
+        <h3>5.4.1 Processes and automated mechanisms are in place to detect and protect personnel against phishing attacks.</h3>
+        <h4>Defined Approach Testing Procedures</h4>
+        <button class="testing-approach" data-approach="5.4.1">
+          <b>5.4.1</b> Observe implemented processes and
+          examine mechanisms to verify controls are in place
+          to detect and protect personnel against phishing
+          attacks.
+        </button>
+        <h4>Customized Approach Objective</h4>
+        <p>Mechanisms are in place to protect against and
+          mitigate risk posed by phishing attacks.</p>
+        <h4>Applicability Notes</h4>
+        <p>This requirement applies to the automated
+          mechanism. It is not intended that the systems and
+          services providing such automated mechanisms
+          (such as email servers) are brought into scope for
+          PCI DSS.</p>
+        <p>The focus of this requirement is on protecting
+          personnel with access to system components in-
+          scope for PCI DSS.</p>
+        <p>Meeting this requirement for technical and
+          automated controls to detect and protect personnel
+          against phishing is not the same as Requirement
+          12.6.3.1 for security awareness training. Meeting
+          this requirement does not also meet the requirement
+          for providing personnel with security awareness
+          training, and vice versa.</p>
+        <p><i>This requirement is a best practice until 31 March
+            2025, after which it will be required and must be
+            fully considered during a PCI DSS assessment.</i></p>
+        <h4>Purpose</h4>
+        <p>Technical controls can limit the number of
+          occasions personnel have to evaluate the veracity
+          of a communication and can also limit the effects
+          of individual responses to phishing.</p>
+        <h4>Good Practice</h4>
+        <p>When developing anti-phishing controls, entities
+          are encouraged to consider a combination of
+          approaches. For example, using anti-spoofing
+          controls such as Domain-based Message
+          Authentication, Reporting & Conformance
+          (DMARC), Sender Policy Framework (SPF), and
+          Domain Keys Identified Mail (DKIM) will help stop
+          phishers from spoofing the entity’s domain and
+          impersonating personnel.</p>
+        <p>The deployment of technologies for blocking
+          phishing emails and malware before they reach
+          personnel, such as link scrubbers and server-side
+          anti-malware, can reduce incidents and decrease
+          the time required by personnel to check and
+          report phishing attacks. Additionally, training
+          personnel to recognize and report phishing emails
+          can allow similar emails to be identified and
+          permit them to be removed before being opened.</p>
+        <p>It is recommended (but not required) that anti-
+          phishing controls are applied across an entity’s
+          entire organization.</p>
+        <h4>Definitions</h4>
+        <p>Phishing is a form of social engineering and
+          describes the different methods used by attackers
+          to trick personnel into disclosing sensitive
+          information, such as user account names and
+          passwords, and account data. Attackers will
+          typically disguise themselves and attempt to
+          appear as a genuine or trusted source, directing
+          personnel to send an email response, click on a
+          web link, or enter data into a compromised
+          website. Mechanisms that can detect and prevent
+          phishing attempts are often included in anti-
+          malware solutions.</p>
+        <h4>Further Information</h4>
+        <p>See the following for more information about
+          phishing:</p>
+          <p><a href="https://www.ncsc.gov.uk/guidance/phishing">National Cyber Security Centre - Phishing Attacks: Defending your Organization.</a></p>
+          <p><a href="https://www.cisa.gov/report">US Cybersecurity & Infrastructure Security Agency - Report Phishing Sites.</a></p>
+      </div>
 
 
     </div>
-
   </div>
 
   <div class="footer-copyright">
