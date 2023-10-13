@@ -7,15 +7,32 @@ const approachContent = {
         sophos: `
         <h3>5.3.1.a</h3>
         <p>Examine anti-malware solution(s) configurations, including any master installation of the software, to verify the solution is configured to perform automatic updates.</p>
-        <p>Using <b>Sophos Central</b></p>
+        <hr />
+        <h4>Sophos Central</h4>
         <p>Confirm what <i>Update Management Policy</i> the computers in the CDE are using, Then check that policy to see that is has <i>Scheduled Updates</i> enabled</p>
         <img src="https://imagedelivery.net/FgYlnTl8G0V_NRsRo5-YEg/14cad642-ce9c-4e06-4f03-42fa8cbf8b00/public" alt="Sophos Scheduled Updates">
+        <hr />
         `
     },
     '5.3.1.b': {
         default: `
         <h3>5.3.1.b</h3>
         <p>Examine system components and logs, to verify that the anti-malware solution(s) and definitions are current and have been promptly deployed</p>
+        `,
+        sophos: `
+        <h3>5.3.1.b</h3>
+        <p>Examine system components and logs, to verify that the anti-malware solution(s) and definitions are current and have been promptly deployed</p>
+        <hr />
+        <h4>Sophos Central</h4>
+        <p>Going into the Computers settings in Sophos Central you will see a last updated time</p>
+        <img src="https://imagedelivery.net/FgYlnTl8G0V_NRsRo5-YEg/5da68cfb-e981-4c73-2d5b-f2f81b348400/public" alt="Sophos Central Last Update">
+        <p>You can also go into the events and see past updates</p>
+        <img src="https://imagedelivery.net/FgYlnTl8G0V_NRsRo5-YEg/24ac714b-4a2a-4b52-2ac9-15b03d4e8a00/public" alt="Sophos Central Update History">
+        <hr />
+        <h4>Sophos Endpoint Agent</h4>
+        <p>You can also verify this step on the local machine in the bottom right of the Agent you'll see an <b>about</b> link. You'll find the last update there.</p>
+        <img src="https://imagedelivery.net/FgYlnTl8G0V_NRsRo5-YEg/96838d26-f7b1-4bf2-4c23-d6cf6cc35c00/public" alt="Sophos Client Updates">
+        <hr />
         `
     },
     '5.3.2.a': {
@@ -34,6 +51,52 @@ const approachContent = {
         default: `
         <h3>5.3.2.c</h3>
         <p>Examine logs and scan results to verify that the solution(s) is enabled in accordance with at least one of the elements specified in this requirement.</p>
+        `
+    },
+    '5.3.5.a': {
+        default: `
+        <h3>5.3.5.a</h3>
+        <p>Examine anti-malware configurations, to verify that the anti-malware mechanisms cannot be disabled or altered by users.</p>
+        `,
+        sophos: `
+        <h3>5.3.5.a</h3>
+        <p>Examine anti-malware configurations, to verify that the anti-malware mechanisms cannot be disabled or altered by users.</p>
+        <hr />
+        <h4>Sophos Central</h4>
+        <p><b>Tamper Protection</b> is the feature that will only allow users with a password obtained in Sophos Central to modify the settings and uninstall the agent. Under the computer settings you can see if <b>Tamper Protection</b> is turned on</p>
+        <img src="https://imagedelivery.net/FgYlnTl8G0V_NRsRo5-YEg/f772bd2b-a319-4a19-64ec-5a505a65fb00/public" alt="Sophos Central Tamper Protection">
+        <hr />
+        <h4>Sophos Endpoint Agent</h4>
+        <p>Go to the computer and verify they can't modify the settings. In the Agent, select <b>Admin sign-in</b> and you should be prompted for a password</p>
+        <img src="https://imagedelivery.net/FgYlnTl8G0V_NRsRo5-YEg/0bb6c5b9-c58c-45fd-ffdd-b84a69602700/public" alt="Sophos Agent Tamper Protection">
+        <hr />
+        `
+    },
+    '5.3.5.b': {
+        default: `
+        <h3>5.3.5.b</h3>
+        <p>Interview responsible personnel and observe processes to verify that any requests to disable or alter anti-malware mechanisms are specifically documented and authorized by management on a case-by-case basis for a limited time period.</p>
+        <hr />
+        <h4>Documented Procedure</h4>
+        <label for="jobTitle">Management Position:</label>
+        <input type="text" id="jobTitle">
+        <br />
+        <!-- Formality Slider -->
+        <label for="formalitySlider">Formality:</label>
+        <input type="range" id="formalitySlider" min="1" max="3" step="1">
+        <br/>
+        <!-- Length Slider -->
+        <label for="lengthSlider">Length:</label>
+        <input type="range" id="lengthSlider" min="1" max="3" step="1">
+        <br />
+        <p></p>
+        <!-- Button to Generate Text -->
+        <button id="generateTextButton">Generate Text</button>
+        <p></p>
+
+        <!-- Display Area for Generated Text -->
+        <div id="output"></div>
+        <hr />
         `
     },
     '5.4.1': {
@@ -62,6 +125,12 @@ const approachContent = {
         </code></div>
         <p>The output will have a policy option with a <b>p=</b>. This can be <b>none</b>, <b>quarantine</b>, or <b>reject</b>. <b>None</b> is for monitoring, <b>quarantine</b> moves suspicious emails to spam, and <b>reject</b> blocks them.</p>
         <hr />
+        <h4>Anti-phishing in Microsoft 365</h4>
+        <p>Find these settings in Microsoft 365 Defender <a href="https://security.microsoft.com/antiphishing">https://security.microsoft.com/antiphishing</a></p>
+        <img src="https://imagedelivery.net/FgYlnTl8G0V_NRsRo5-YEg/99545da2-5c93-43dd-4135-dabb52bc1e00/public" alt="Microsoft 365 Anti-Phishing">
+        <img src="https://imagedelivery.net/FgYlnTl8G0V_NRsRo5-YEg/ec0ebc62-4255-4e84-09fb-06ac23812e00/public" alt="More Microsoft 365 Anti-Phishing">
+        <p>Microsoft 365's <b>Mailbox Intelligence</b> learns user behavior to spot suspicious emails, while <b>Spoof Intelligence</b> checks for spoofing signs. The <b>First Contact Safety Tip</b> alerts users to new senders, and the <b>Unauthenticated Senders Symbol</b> flags unverified emails with a <b>?</b>. These features collectively strengthen your defense against phishing.</p>
+        <hr />
         `
     }
 };
@@ -89,6 +158,17 @@ document.addEventListener('DOMContentLoaded', function () {
                 subReq.style.display = 'none';
             }
         });
+
+    }
+
+    function getFirstVisibleChecklistItem() {
+        const checklistItems = document.querySelectorAll('#checklist-panel .checklist-item');
+        for (let item of checklistItems) {
+            if (item.style.display !== 'none') {
+                return item;
+            }
+        }
+        return null;
     }
 
     function filterChecklistItems(subReqNumber) {
@@ -217,7 +297,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Attach click event to each sub-requirement
     const subRequirements = subRequirementsPanel.querySelectorAll('.sub-requirement');
     subRequirements.forEach(subReq => {
         subReq.addEventListener('click', function () {
@@ -232,10 +311,17 @@ document.addEventListener('DOMContentLoaded', function () {
                 document.querySelector('#checklist-panel h2').textContent = title;
             }
 
-            filterChecklistItems(subReqNumber);
+            filterChecklistItems(subReqNumber); // Original function
+
+            const firstVisibleChecklistItem = getFirstVisibleChecklistItem(); // New function
+            if (firstVisibleChecklistItem) {
+                // Trigger a click event on the first visible checklist item
+                firstVisibleChecklistItem.click();
+            }
+
             shrinkSubRequirements();
         });
-    })
+    });
 
     toggleMainButton.addEventListener('click', function () {
         if (mainRequirementsPanel.classList.contains('shrunken')) {
@@ -648,14 +734,14 @@ document.addEventListener('DOMContentLoaded', function () {
     function handleissuerswitchchange() {
         const issueritems = document.querySelectorAll('.checklist-item[data-issuer-only="true"]');
 
-        if (issuerSwitch.checked){
-            issueritems.forEach(item =>{
+        if (issuerSwitch.checked) {
+            issueritems.forEach(item => {
                 item.style.opacity = "1";
                 item.style.pointerEvents = "auto";
             });
             localStorage.setItem('settings-issuer', '1')
         } else {
-            issueritems.forEach(item =>{
+            issueritems.forEach(item => {
                 item.style.opacity = "0.5";
                 item.style.pointerEvents = "none";
             });
@@ -668,7 +754,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const issuerstoredvalue = localStorage.getItem('settings-issuer');
 
-    if (issuerstoredvalue !== null){
+    if (issuerstoredvalue !== null) {
 
         issuerSwitch.checked = issuerstoredvalue === '1';
 
@@ -696,7 +782,17 @@ document.addEventListener('DOMContentLoaded', function () {
                 contentToShow = approachContent[approach].sophos;
             }
 
+            if (approach === '5.3.1.b' && sophosSwitch.checked) {
+                contentToShow = approachContent[approach].sophos;
+            }
+
+            if (approach === '5.3.5.a' && sophosSwitch.checked) {
+                contentToShow = approachContent[approach].sophos;
+            }
+
+
             contentModalDiv.innerHTML = contentToShow;
+            initializeDynamicContent();
 
             // Display logic for the modal
             modalBackdrop.style.display = 'block';
@@ -777,11 +873,11 @@ document.addEventListener('DOMContentLoaded', function () {
     sophosSwitch.addEventListener('change', handleSophosSwitchChange);
 
 
-    const storedValue = localStorage.getItem('settings-av-sophos');
+    const sophosstoredValue = localStorage.getItem('settings-av-sophos');
 
-    if (storedValue !== null) {
+    if (sophosstoredValue !== null) {
         // Set the SophosSwitch based on the stored value.
-        sophosSwitch.checked = storedValue === '1';
+        sophosSwitch.checked = sophosstoredValue === '1';
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -790,7 +886,6 @@ document.addEventListener('DOMContentLoaded', function () {
     function setButtonColor(button, status) {
         button.style.borderRadius = '5px';  // Ensure rounded corners
         button.style.boxShadow = 'none';    // Remove shadow
-
         switch (status) {
             case '1':
                 button.style.backgroundColor = '#A8E6CF'; // Pastel Green
@@ -805,5 +900,103 @@ document.addEventListener('DOMContentLoaded', function () {
                 button.style.backgroundColor = ''; // default color
         }
     }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+    function initializeDynamicContent() {
+        console.log("Initializing Dynamic Content...");
+
+        // Retrieve and set the job title from localStorage
+        const jobTitleInput = document.getElementById('jobTitle');
+        if (jobTitleInput) {
+            console.log("Found jobTitleInput");
+            jobTitleInput.value = localStorage.getItem('5.3.5.management') || '';
+            jobTitleInput.addEventListener('input', function () {
+                console.log("jobTitleInput value changed", jobTitleInput.value);
+                localStorage.setItem('5.3.5.management', jobTitleInput.value);
+            });
+        }
+
+        // Handle formality and length sliders
+        const formalitySlider = document.getElementById('formalitySlider');
+        const lengthSlider = document.getElementById('lengthSlider');
+
+        if (formalitySlider) {
+            formalitySlider.value = localStorage.getItem('formality') || '1';
+            formalitySlider.addEventListener('change', function () {
+                console.log("formalitySlider value changed", formalitySlider.value);
+                localStorage.setItem('formality', formalitySlider.value);
+            });
+        }
+
+        if (lengthSlider) {
+            lengthSlider.value = localStorage.getItem('length') || '1';
+            lengthSlider.addEventListener('change', function () {
+                console.log("lengthSlider value changed", lengthSlider.value);
+                localStorage.setItem('length', lengthSlider.value);
+            });
+        }
+
+        // Handle "Generate Text" button
+        const generateTextButton = document.getElementById('generateTextButton');
+        if (generateTextButton) {
+            console.log("Found generateTextButton");
+            generateTextButton.addEventListener('click', function () {
+                let generatedText;
+                const formality = formalitySlider ? formalitySlider.value : '1';
+                const length = lengthSlider ? lengthSlider.value : '1';
+                const managementPosition = jobTitleInput ? jobTitleInput.value : '[Management Position]';
+
+                if (length === '1') {
+                    switch (formality) {
+                        case '1':
+                            generatedText = `Alright, so if anyone thinks about tweaking the anti-malware tools, that's a no-go. If there's ever a need to pause the tools, you gotta chat with ${managementPosition} about it. And remember, if we do turn it off, let's disconnect from the web and run a complete check once it's back up.`;
+                            break;
+                        case '2':
+                            generatedText = `For those handling our anti-malware tools, please be aware that they shouldn't be disabled or changed. If there's a genuine reason to do so, it's essential to get a nod from ${managementPosition}. Always ensure extra precautions, like disconnecting from the internet, and performing a full system scan afterward.`;
+                            break;
+                        case '3':
+                        default:
+                            generatedText = `It is of utmost importance that the anti-malware mechanisms are not disabled or altered without proper procedure. Any alterations must be documented and authorized by the ${managementPosition}. Should the mechanism be deactivated, the respective system must be disconnected from the internet and a thorough scan should be executed upon reactivation.`;
+                            break;
+                    }
+                } else if (length === '2') {
+                    switch (formality) {
+                        case '1':
+                            generatedText = `Hey team, remember our anti-malware tools? Well, they're kinda like our security guards, so no tweaking them. If you've got a real good reason to turn them off or make changes, make sure to have a chat with ${managementPosition}. Just a heads-up, if you ever need to turn them off, disconnect from the internet. We don't want any unwanted guests. Oh, and once you turn it back on, do a complete system check. Better safe than sorry!`;
+                            break;
+                        case '2':
+                            generatedText = `Attention all personnel, the anti-malware mechanisms we have in place serve as critical components of our security infrastructure. It's imperative that these mechanisms are not altered or deactivated without proper justification. Any required changes should be brought to the attention of ${managementPosition} for authorization. In the event of deactivation, as a precautionary measure, disconnect the system from the internet. Upon reactivation, it's mandatory to perform a comprehensive system scan to ensure its integrity.`;
+                            break;
+                        case '3':
+                        default:
+                            generatedText = `To all stakeholders, the integrity of our anti-malware mechanisms is paramount for the security of our organization's digital assets. Any contemplation regarding the alteration or deactivation of these mechanisms must be meticulously documented and subsequently authorized by ${managementPosition}. Should there be a period of deactivation, the system in question must be isolated from internet connectivity. A thorough and comprehensive scan is required upon the mechanism's reactivation to ensure no vulnerabilities have been introduced.`;
+                            break;
+                    }
+                } else if (length === '3') {
+                    switch (formality) {
+                        case '1':
+                            generatedText = `Alright team, let's chat about our anti-malware tools. Think of them like our digital bodyguards. They're here to keep the bad guys out, so no playing around with them, alright? If you've got a super legit reason to turn them off or tweak something, you gotta let ${managementPosition} know. And hey, if you're turning them off, pull the plug on the internet too. We don't want to invite any digital party crashers. When you power them back on, give everything a good look-over with a full system check. It's like making sure you didn't forget to lock the front door.`;
+                            break;
+                        case '2':
+                            generatedText = `Team, our anti-malware mechanisms play a crucial role in safeguarding our digital landscape. These tools are meticulously calibrated to ensure optimal security. Any considerations to alter or deactivate them must be approached with utmost caution. Such actions require a formal approval process, spearheaded by ${managementPosition}. In the interim period when they're off, it's of paramount importance to disconnect the system from the internet to prevent potential threats. Upon reactivation, a thorough system-wide scan is non-negotiable to confirm the system's integrity and ensure no breaches occurred.`;
+                            break;
+                        case '3':
+                        default:
+                            generatedText = `All personnel are hereby reminded of the significance of our established anti-malware protocols. These mechanisms, a cornerstone of our cybersecurity infrastructure, have been optimized for maximum efficacy. Any contemplation to deviate from or modify these configurations necessitates a rigorous documentation process and explicit authorization from ${managementPosition}. During any intervals of deactivation, it is imperative that the associated system be severed from all internet connections to negate external threats. Subsequent to the mechanism's re-establishment, a comprehensive audit and scan must be undertaken to ascertain the system's uncompromised status.`;
+                            break;
+                    }
+                }
+
+                const outputDiv = document.getElementById('output');
+                if (outputDiv) {
+                    outputDiv.innerHTML = `<div style="border: 2px solid #ccc; padding: 10px; border-radius: 10px; background-color: #f8f8f8;">${generatedText}</div>`;
+                }
+            });
+        }
+    }
+
 
 });
