@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PCI DSS v4.0 Helper Tool</title>
+  <title>PCI DSS v4.0 IO</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -170,7 +170,6 @@
   <div class="panel" id="checklist-panel">
     <h2>1.1 Processes and mechanisms for installing and maintaining network security controls are defined and
       understood.</h2>
-    <!-- List all checklist items here, identified by the sub-requirement they belong to -->
     <div class="tabs">
       <div class="checklist-item" data-sub-requirement="1.1" data-item-requirement="1.1.1">1.1.1</div>
       <div class="checklist-item" data-sub-requirement="1.1" data-item-requirement="1.1.2">1.1.2</div>
@@ -448,19 +447,89 @@
     </div>
     <div id="inner-panel">
 
-
-      <div class="checklist-content" id="content-1.1.1" style="display: none;">
-        <!-- Content for checklist item 1.1.1 -->
-        <input type="checkbox" id="checkbox-1.1.1">
-        <label for="checkbox-1.1.1">Mark 1.1.1 as completed</label>
-        <!-- ... other content for 1.1.1 ... -->
+      <div class="checklist-content" id="content-5.1.1" style="display: none;">
+        <h3>5.1.1 All security policies and operationa procedures that are identified in Requirement 5 are:
+          <ul>
+            <li>Documented.</li>
+            <li>Kept up to date.</li>
+            <li>In use.</li>
+            <li>Known to all affected parties.</li>
+          </ul>
+        </h3>
+        <h4>Defined Approach Testing Procedures</h4>
+        <button class="testing-approach" data-approach="5.1.1">
+          <b>5.1.1</b> Examine documentation and interview
+          personnel to verify that security policies and
+          operational procedures identified in Requirement 5
+          are managed in accordance with all elements
+          specified in this requirement.
+        </button>
+        <h4>Customized Approach Objective</h4>
+        <p>Expectations, controls, and oversight for meeting
+          activities within Requirement 5 are defined and
+          adhered to by affected personnel. All supporting
+          activities are repeatable, consistently applied, and
+          conform to management’s intent.</p>
+        <h4>Purpose</h4>
+        <p>Requirement 5.1.1 is about effectively managing
+          and maintaining the various policies and
+          procedures specified throughout Requirement 5.
+          While it is important to define the specific policies
+          or procedures called out in Requirement 5, it is
+          equally important to ensure they are properly
+          documented, maintained, and disseminated.</p>
+        <h4>Good Practice</h4>
+        <p>It is important to update policies and procedures
+          as needed to address changes in processes,
+          technologies, and business objectives. For this
+          reason, consider updating these documents as
+          soon as possible after a change occurs and not
+          only on a periodic cycle.</p>
+        <h4>Definitions</h4>
+        <p>Security policies define the entity’s security
+          objectives and principles. Operational procedures
+          describe how to perform activities, and define the
+          controls, methods, and processes that are
+          followed to achieve the desired result in a
+          consistent manner and in accordance with policy
+          objectives.</p>
       </div>
 
-      <div class="checklist-content" id="content-1.1.2" style="display: none;">
-        <!-- Content for checklist item 1.1.2 -->
-        <input type="checkbox" id="checkbox-1.1.2">
-        <label for="checkbox-1.1.2">Mark 1.1.2 as completed</label>
-        <!-- ... other content for 1.1.2 ... -->
+      <div class="checklist-content" id="content-5.1.2" style="display: none;">
+        <h3>5.1.2 Roles and responsibilities for performing activities in Requirement 5 are documented, assigned, and understood.</h3>
+        <h4>Defined Approach Testing Procedures</h4>
+        <button class="testing-approach" data-approach="5.1.2.a">
+          <b>5.3.4</b> Examine anti-malware solution(s)
+          configurations to verify logs are enabled and
+          retained in accordance with Requirement 10.5.1.
+        </button>
+        <button class="testing-approach" data-approach="5.1.2.b">
+          <b>5.1.2.a</b> Examine documentation to verify that descriptions of roles and responsibilities for performing activities in Requirement 5 are
+          documented and assigned.
+        </button>
+        <h4>Customized Approach Objective</h4>
+        <p>Day-to-day responsibilities for performing all the
+          activities in Requirement 5 are allocated. Personnel
+          are accountable for successful, continuous
+          operation of these requirements.</p>
+        <h4>Purpose</h4>
+        <p>If roles and responsibilities are not formally
+          assigned, networks and systems may not be
+          properly protected from malware.</p>
+        <h4>Good Practice</h4>
+        <p>Roles and responsibilities may be documented
+          within policies and procedures or maintained
+          within separate documents.</p>
+        <p>As part of communicating roles and
+          responsibilities, entities can consider having
+          personnel acknowledge their acceptance and
+          understanding of their assigned roles and
+          responsibilities.</p>
+        <h4>Examples</h4>
+        <p>A method to document roles and responsibilities
+          is a responsibility assignment matrix that includes
+          who is responsible, accountable, consulted, and
+          informed (also called a RACI matrix).</p>
       </div>
 
       <div class="checklist-content" id="content-5.3.1" style="display: none;">
@@ -573,9 +642,98 @@
           rename, or otherwise interact with a file,
           preventing the malware from being activated.</p>
       </div>
+      <div class="checklist-content" id="content-5.3.2.1" style="display: none;">
+        <h3>5.3.2.1 If periodic malware scans are performed to meet <span title="5.3.2 The anti-malware solution(s):
+          • Performs periodic scans and active or real-time scans.
+          OR
+          • Performs continuous behavioral analysis of systems or processes.">Requirement 5.3.2</span>, the frequency of scans is defined in the entity’s targeted risk analysis, which is performed according to all elements specified in <span title="12.3.1 Each PCI DSS requirement that provides flexibility for how frequently it is performed (for example, requirements to be performed periodically) is supported by a targeted risk analysis that is documented and includes:
+          • Identification of the assets being protected.
+          • Identification of the threat(s) that the requirement is protecting against.
+          • Identification of factors that contribute to the likelihood and/or impact of a threat being realized.
+          • Resulting analysis that determines, and includes justification for, how frequently the requirement must be performed to minimize the likelihood of the threat being realized.
+          • Review of each targeted risk analysis at least once every 12 months to determine whether the results are still valid or if an updated risk analysis is needed.
+          • Performance of updated risk analyses when needed, as determined by the annual review.">Requirement 12.3.1.</span></h3>
+        <h4>Defined Approach Testing Procedures</h4>
+        <button class="testing-approach" data-approach="5.3.2.1.a">
+          5.3.2.1.a Examine the entity’s targeted risk
+          analysis for the frequency of periodic malware
+          scans to verify the risk analysis was performed in
+          accordance with all elements specified in
+          Requirement 12.3.1
+        </button>
+        <button class="testing-approach" data-approach="5.3.2.1.b">
+          <b>5.3.2.1.b</b> Examine documented results of periodic
+          malware scans and interview personnel to verify
+          scans are performed at the frequency defined in
+          the entity’s targeted risk analysis performed for this
+          requirement.
+        </button>
+        <h4>Customized Approach Objective</h4>
+        <p>Scans by the malware solution are performed at a
+          frequency that addresses the entity’s risk.</p>
+        <h4>Applicability Notes</h4>
+        <p>This requirement applies to entities conducting
+          periodic malware scans to meet <span title="5.3.2 The anti-malware solution(s):
+          • Performs periodic scans and active or real-time scans.
+          OR
+          • Performs continuous behavioral analysis of systems or processes.">Requirement 5.3.2</span>.</p>
+        <p><i>This requirement is a best practice until 31 March
+            2025, after which it will be required and must be
+            fully considered during a PCI DSS assessment.</i></p>
+        <h4>Purpose</h4>
+        <p>Entities can determine the optimum period to
+          undertake periodic scans based on their own
+          assessment of the risks posed to their
+          environments.</p>
+      </div>
+
+      <div class="checklist-content" id="content-5.3.3" style="display: none;">
+        <h3>5.3.3 For removable electronic media, the anti-
+          malware solution(s): <ul>
+            <li>Performs automatic scans of when the media is inserted, connected, or logically mounted,</li>
+            <p>OR</p>
+            <li>Performs continuous behavioral analysis of systems or processes when the media is inserted, connected, or logically mounted.</li>
+          </ul>
+        </h3>
+        <h4>Defined Approach Testing Procedures</h4>
+        <button class="testing-approach" data-approach="5.3.3.a">
+          <b>5.3.3.a</b> Examine anti-malware solution(s)
+          configurations to verify that, for removable
+          electronic media, the solution is configured to
+          perform at least one of the elements specified in
+          this requirement.
+        </button>
+        <button class="testing-approach" data-approach="5.3.3.b">
+          <b>5.3.3.b</b> Examine system components with
+          removable electronic media connected to verify
+          that the solution(s) is enabled in accordance with
+          at least one of the elements as specified in this
+          requirement.
+        </button>
+        <button class="testing-approach" data-approach="5.3.3.c">
+          <b>5.3.3.c</b> Examine logs and scan results to verify that
+          the solution(s) is enabled in accordance with at
+          least one of the elements specified in this
+          requirement.
+        </button>
+        <h4>Customized Approach Objective</h4>
+        <p>Malware cannot be introduced to system
+          components via external removable media.</p>
+        <h4>Applicability Notes</h4>
+        <p><i>This requirement is a best practice until 31 March
+            2025, after which it will be required and must be
+            fully considered during a PCI DSS assessment.</i></p>
+        <h4>Purpose</h4>
+        <p>Portable media devices are often overlooked as
+          an entry method for malware. Attackers will often
+          pre-load malware onto portable devices such as
+          USB and flash drives; connecting an infected
+          device to a computer then triggers the malware,
+          introducing new threats within the environment.</p>
+      </div>
 
       <div class="checklist-content" id="content-5.3.4" style="display: none;">
-        <h3>5.3.4 Audit logs for the anti-malware solution(s) are enabled and retained in accordance with Requirement 10.5.1.</h3>
+        <h3>5.3.4 Audit logs for the anti-malware solution(s) are enabled and retained in accordance with <span title="10.5.1 Retain audit log history for at least 12 months, with at least the most recent three months immediately available for analysis.">Requirement 10.5.1.</span></h3>
         <h4>Defined Approach Testing Procedures</h4>
         <button class="testing-approach" data-approach="5.3.4">
           <b>5.3.4</b> Examine anti-malware solution(s)
@@ -712,8 +870,7 @@
           personnel to recognize and report phishing emails
           can allow similar emails to be identified and
           permit them to be removed before being opened.</p>
-        <p>It is recommended (but not required) that anti-
-          phishing controls are applied across an entity’s
+        <p>It is recommended (but not required) that anti-phishing controls are applied across an entity’s
           entire organization.</p>
         <h4>Definitions</h4>
         <p>Phishing is a form of social engineering and
@@ -731,11 +888,75 @@
         <h4>Further Information</h4>
         <p>See the following for more information about
           phishing:</p>
-          <p><a href="https://www.ncsc.gov.uk/guidance/phishing">National Cyber Security Centre - Phishing Attacks: Defending your Organization.</a></p>
-          <p><a href="https://www.cisa.gov/report">US Cybersecurity & Infrastructure Security Agency - Report Phishing Sites.</a></p>
+        <p><a href="https://www.ncsc.gov.uk/guidance/phishing">National Cyber Security Centre - Phishing Attacks: Defending your Organization.</a></p>
+        <p><a href="https://www.cisa.gov/report">US Cybersecurity & Infrastructure Security Agency - Report Phishing Sites.</a></p>
+      </div>
+
+      <div class="checklist-content" id="content-10.5.1" style="display: none;">
+        <h3>10.5.1 Retain audit log history for at least 12 months, with at least the most recent three months immediately available for analysis.</h3>
+        <h4>Defined Approach Testing Procedures</h4>
+        <button class="testing-approach" data-approach="10.5.1.a">
+          <b>10.5.1.a</b> Examine documentation to verify that the
+          following is defined:
+          <ul>
+            <li>Audit log retention policies.</li>
+            <li>Procedures for retaining audit log history for at
+              least 12 months, with at least the most recent
+              three months immediately available online.</li>
+          </ul>
+        </button>
+        <button class="testing-approach" data-approach="10.5.1.b">
+          <b>10.5.1.b</b> Examine configurations of audit log
+          history, interview personnel and examine audit logs
+          to verify that audit logs history is retained for at
+          least 12 months.
+        </button>
+        <button class="testing-approach" data-approach="10.5.1.c">
+          <b>10.5.1.c</b> Interview personnel and observe
+          processes to verify that at least the most recent
+          three months’ audit log history is immediately
+          available for analysis.
+        </button>
+        <h4>Customized Approach Objective</h4>
+        <p>Historical records of activity are available
+          immediately to support incident response and are
+          retained for at least 12 months.</p>
+        <h4>Good Practice</h4>
+        <p>Retaining historical audit logs for at least 12
+          months is necessary because compromises often
+          go unnoticed for significant lengths of time.
+          Having centrally stored log history allows
+          investigators to better determine the length of
+          time a potential breach was occurring, and the
+          possible system(s) impacted. By having three
+          months of logs immediately available, an entity
+          can quickly identify and minimize impact of a data
+          breach.</p>
+        <h4>Examples</h4>
+        <p>Methods that allow logs to be immediately
+          available include storing logs online, archiving
+          logs, or restoring logs quickly from backups.</p>
       </div>
 
 
+      <!-- For Template purposes
+
+        <div class="checklist-content" id="content-10.5.1" style="display: none;">
+        <h3>10.5.1 Retain audit log history for at least 12 months, with at least the most recent three months immediately available for analysis.</h3>
+        <h4>Defined Approach Testing Procedures</h4>
+        <button class="testing-approach" data-approach="5.3.4.a">
+          <b>5.3.4</b> Examine anti-malware solution(s)
+          configurations to verify logs are enabled and
+          retained in accordance with Requirement 10.5.1.
+        </button>
+        <h4>Customized Approach Objective</h4>
+        <p>Historical records of anti-malware actions are</p>
+        <h4>Purpose</h4>
+        <p>It is important to track the effectiveness of the
+          anti-malware mechanisms—for example, by</p>
+        </div>
+
+    -->
     </div>
   </div>
 
