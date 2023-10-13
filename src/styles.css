@@ -289,6 +289,8 @@ body {
 
 .settings-modal {
     /* Fix the typo here */
+    max-height: 85%;
+    overflow-y: auto;
     opacity: 0;
     transform: translateY(-50px);
     /* Initially placed slightly above the center */
@@ -319,6 +321,8 @@ body {
 }
 
 .contentModal {
+    max-height: 85%;
+    overflow-y: auto;
     opacity: 0;
     transform: translateY(-50px);
     /* Initially placed slightly above the center */
@@ -435,6 +439,13 @@ body {
 .domain {
     color: yellow;
 }
+
+span[title] {
+    border-bottom: 1px dotted #333;
+    text-decoration: none;
+    cursor: help;
+}
+
 
 
 @media screen and (max-width: 800px) {
