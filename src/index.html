@@ -448,7 +448,7 @@
     <div id="inner-panel">
 
       <div class="checklist-content" id="content-5.1.1" style="display: none;">
-        <h3>5.1.1 All security policies and operationa procedures that are identified in Requirement 5 are:
+        <h3>5.1.1 All security policies and operational procedures that are identified in Requirement 5 are:
           <ul>
             <li>Documented.</li>
             <li>Kept up to date.</li>
@@ -499,13 +499,16 @@
         <h3>5.1.2 Roles and responsibilities for performing activities in Requirement 5 are documented, assigned, and understood.</h3>
         <h4>Defined Approach Testing Procedures</h4>
         <button class="testing-approach" data-approach="5.1.2.a">
-          <b>5.3.4</b> Examine anti-malware solution(s)
-          configurations to verify logs are enabled and
-          retained in accordance with Requirement 10.5.1.
+          <b>5.1.2.a</b> Examine documentation to verify that
+          descriptions of roles and responsibilities for
+          performing activities in Requirement 5 are
+          documented and assigned.
         </button>
         <button class="testing-approach" data-approach="5.1.2.b">
-          <b>5.1.2.a</b> Examine documentation to verify that descriptions of roles and responsibilities for performing activities in Requirement 5 are
-          documented and assigned.
+          <b>5.1.2.b</b> Interview personnel with responsibility for
+          performing activities in Requirement 5 to verify that
+          roles and responsibilities are assigned as
+          documented and are understood.
         </button>
         <h4>Customized Approach Objective</h4>
         <p>Day-to-day responsibilities for performing all the
@@ -530,6 +533,208 @@
           is a responsibility assignment matrix that includes
           who is responsible, accountable, consulted, and
           informed (also called a RACI matrix).</p>
+      </div>
+
+      <div class="checklist-content" id="content-5.2.1" style="display: none;">
+        <h3>5.2.1 An anti-malware solution(s) is deployed on all system components, except for those system components identified in periodic evaluations per Requirement 5.2.3 that concludes the system components are not at risk from malware.</h3>
+        <h4>Defined Approach Testing Procedures</h4>
+        <button class="testing-approach" data-approach="5.2.1.a">
+          <b>5.2.1.a</b> Examine system components to verify that
+          an anti-malware solution(s) is deployed on all
+          system components, except for those determined
+          to not be at risk from malware based on periodic
+          evaluations per Requirement 5.2.3.
+        </button>
+        <button class="testing-approach" data-approach="5.2.1.b">
+          <b>5.2.1.b</b> For any system components without an
+          anti-malware solution, examine the periodic
+          evaluations to verify the component was evaluated
+          and the evaluation concludes that the component
+          is not at risk from malware.
+        </button>
+        <h4>Customized Approach Objective</h4>
+        <p>Automated mechanisms are implemented to prevent systems from becoming an attack vector for malware.</p>
+        <h4>Purpose</h4>
+        <p>There is a constant stream of attacks targeting
+          newly discovered vulnerabilities in systems
+          previously regarded as secure. Without an anti-
+          malware solution that is updated regularly, new
+          forms of malware can be used to attack systems,
+          disable a network, or compromise data.</p>
+        <h4>Good Practice</h4>
+        <p>It is beneficial for entities to be aware of "zero-
+          day" attacks (those that exploit a previously
+          unknown vulnerability) and consider solutions that
+          focus on behavioral characteristics and will alert
+          and react to unexpected behavior.</p>
+        <h4>Definitions</h4>
+        <p>System components known to be affected by
+          malware have active malware exploits available in
+          the real world (not only theoretical exploits).</p>
+      </div>
+
+      <div class="checklist-content" id="content-5.2.2" style="display: none;">
+        <h3>The deployed anti-malware solution(s):
+          <ul>
+            <li>Detects all known types of malware</li>
+            <li>Removes, blocks, or contains all known types of malware.</li>
+          </ul>
+        </h3>
+        <h4>Defined Approach Testing Procedures</h4>
+        <button class="testing-approach" data-approach="5.2.2">
+          <b>5.2.2</b> Examine vendor documentation and
+          configurations of the anti-malware solution(s) to
+          verify that the solution:
+          <ul>
+            <li>Detects all known types of malware</li>
+            <li>Removes, blocks, or contains all known types of malware.</li>
+          </ul>
+        </button>
+        <h4>Customized Approach Objective</h4>
+        <p>Malware cannot execute or infect other system components.</p>
+        <h4>Purpose</h4>
+        <p>It is important to protect against all types and
+          forms of malware to prevent unauthorized access.</p>
+        <h4>Good Practice</h4>
+        <p>Anti-malware solutions may include a combination
+          of network-based controls, host-based controls,
+          and endpoint security solutions. In addition to
+          signature-based tools, capabilities used by
+          modern anti-malware solutions include
+          sandboxing, privilege escalation controls, and
+          machine learning.</p>
+        <p>Solution techniques include preventing malware
+          from getting into the network and removing or
+          containing malware that does get into the
+          network.</p>
+        <h4>Examples</h4>
+        <p>Types of malware include, but are not limited to,
+          viruses, Trojans, worms, spyware, ransomware,
+          keyloggers, rootkits, malicious code, scripts, and
+          links.</p>
+      </div>
+
+      <div class="checklist-content" id="content-5.2.3" style="display: none;">
+        <h3>5.2.3 Any system components that are not at risk for malware are evaluated periodically to include the following:
+          <ul>
+            <li>
+              A documented list of all system components not at risk for malware.
+            </li>
+            <li>
+              Identification and evaluation of evolving malware threats for those system components.
+            </li>
+            <li>Confirmation whether such system components continue to not require anti-malware protection.</li>
+          </ul>
+        </h3>
+        <h4>Defined Approach Testing Procedures</h4>
+        <button class="testing-approach" data-approach="5.2.3.a">
+          <b>5.2.3.a</b> Examine documented policies and
+          procedures to verify that a process is defined for
+          periodic evaluations of any system components
+          that are not at risk for malware that includes all
+          elements specified in this requirement.
+        </button>
+        <button class="testing-approach" data-approach="5.2.3.b">
+          <b>5.2.3.b</b> Interview personnel to verify that the
+          evaluations include all elements specified in this
+          requirement.
+        </button>
+        <button class="testing-approach" data-approach="5.2.3.c">
+          <b>5.2.3.c</b> Examine the list of system components
+          identified as not at risk of malware and compare to
+          the system components without an anti-malware
+          solution deployed per Requirement 5.2.1 to verify
+          that the system components match for both
+          requirements.
+        </button>
+        <h4>Customized Approach Objective</h4>
+        <p>The entity maintains awareness of evolving malware
+          threats to ensure that any systems not protected
+          from malware are not at risk of infection.</p>
+        <h4>Applicability Notes</h4>
+        <p>System components covered by this requirement
+          are those for which there is no anti-malware solution
+          deployed per Requirement 5.2.1.</p>
+        <h4>Purpose</h4>
+        <p>Certain systems, at a given point in time, may not
+          currently be commonly targeted or affected by
+          malware. However, industry trends for malware
+          can change quickly, so it is important for
+          organizations to be aware of new malware that
+          might affect their systems—for example, by
+          monitoring vendor security notices and anti-
+          malware forums to determine whether its systems
+          might be coming under threat from new and
+          evolving malware.</p>
+        <h4>Good Practice</h4>
+        <p>If an entity determines that a particular system is
+          not susceptible to any malware, the determination
+          should be supported by industry evidence, vendor
+          resources, and best practices.</p>
+        <p>The following steps can help entities during their
+          periodic evaluations:</p>
+        <ul>
+          <li>
+            Identification of all system types previously
+            determined to not require malware protection.
+          </li>
+          <li>
+            Review of industry vulnerability alerts and
+            notices to determine if new threats exist for
+            any identified system.
+          </li>
+          <li>
+            A documented conclusion about whether the
+            system types remain not susceptible to
+            malware.
+          </li>
+          <li>
+            A strategy to add malware protection for any
+            system types for which malware protection has
+            become necessary.
+          </li>
+        </ul>
+        <p>Trends in malware should be included in the
+          identification of new security vulnerabilities at
+          Requirement 6.3.1, and methods to address new
+          trends should be incorporated into the entity’s
+          configuration standards and protection
+          mechanisms as needed.</p>
+      </div>
+
+      <div class="checklist-content" id="content-5.2.3.1" style="display: none;">
+        <h3>5.2.3.1 The frequency of periodic evaluations of system components identified as not at risk for malware is defined in the entity’s targeted risk analysis, which is performed according to all elements specified in Requirement 12.3.1.</h3>
+        <h4>Defined Approach Testing Procedures</h4>
+        <button class="testing-approach" data-approach="5.2.3.1.a">
+          <b>5.2.3.1.a</b> Examine the entity’s targeted risk
+          analysis for the frequency of periodic evaluations
+          of system components identified as not at risk for
+          malware to verify the risk analysis was performed
+          in accordance with all elements specified in
+          Requirement 12.3.1.
+        </button>
+        <button class="testing-approach" data-approach="5.2.3.1.b">
+          <b>5.2.3.1.b</b> Examine documented results of periodic
+          evaluations of system components identified as not
+          at risk for malware and interview personnel to
+          verify that evaluations are performed at the
+          frequency defined in the entity’s targeted risk
+          analysis performed for this requirement.
+        </button>
+        <h4>Customized Approach Objective</h4>
+        <p>Systems not known to be at risk from malware are
+          re-evaluated at a frequency that addresses the
+          entity’s risk.</p>
+        <h4>Applicability Notes</h4>
+        <p><i>This requirement is a best practice until 31 March
+            2025, after which it will be required and must be
+            fully considered during a PCI DSS assessment.</i></p>
+        <h4>Purpose</h4>
+        <p>Entities determine the optimum period to
+          undertake the evaluation based on criteria such
+          as the complexity of each entity’s environment
+          and the number of types of systems that are
+          required to be evaluated.</p>
       </div>
 
       <div class="checklist-content" id="content-5.3.1" style="display: none;">
