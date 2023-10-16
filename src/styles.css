@@ -446,7 +446,51 @@ span[title] {
     cursor: help;
 }
 
+/* Overall table styling */
+#raciMatrix {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    border: 2px solid #333;
+}
 
+/* Header styling */
+#raciMatrix thead th {
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    padding: 8px;
+    font-weight: bold;
+    text-align: left;
+}
+
+/* Body row styling */
+#raciMatrix tbody tr {
+    border: 1px solid #ccc;
+}
+
+/* Alternating row colors for better readability */
+#raciMatrix tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#raciMatrix tbody td {
+    border: 1px solid #ccc;
+    padding: 8px;
+}
+
+/* Dropdown styling */
+#raciMatrix select {
+    width: 100%;
+    border: none;
+    padding: 5px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+/* Styling when hovering over a row */
+#raciMatrix tbody tr:hover {
+    background-color: #e6e6e6;
+}
 
 @media screen and (max-width: 800px) {
     body {
