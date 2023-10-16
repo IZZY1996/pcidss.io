@@ -1,4 +1,67 @@
 const approachContent = {
+    '5.1.1':{
+        default: `
+        <h3>5.1.1</h3>
+        <p>All security policies and operational procedures that are identified in Requirement 5 are:
+        <ul>
+        <li>Documented.</li>
+        <li>Kept up to date.</li>
+        <li>In use.</li>
+        <li>Known to all affected parties.</li>
+        </ul>
+        </p>
+        `
+    },
+    '5.1.2.a': {
+        default: `
+        <h3>5.1.2.a</h3>
+        <p>Examine documentation to verify that descriptions of roles and responsibilities for performing activities in Requirement 5 are documented and assigned.</p>
+        <hr/>
+        <h4>Documented Roles and Responsibilities</h4>
+        <p>Having a RACI matrix to track this</p>
+        <p>R - Responsible: The person who performs the task.</p>
+        <p>A - Accountable: The person ultimately answerable for the task.</p>
+        <p>C - Consulted: The person who provides input prior to the task being executed.</p>
+        <p>I - Informed: The person who is kept informed about the task's progress.</p>
+
+        <div id="jobTitleForm">
+            <input type="text" id="jobTitleInput" placeholder="Enter Job Title">
+            <button id="addJobTitle">Add Job Title</button>
+        </div>
+
+        <!-- RACI Matrix -->
+        <table id="raciMatrix">
+            <thead>
+                <tr>
+                    <th>Tasks/Responsibilities</th>
+                    <!-- Job title columns will be added here dynamically -->
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>Anti-malware Deployment</b></td>
+                </tr>
+                <tr>
+                    <td><b>Risk Evaluation</b></td>
+                </tr>
+                <tr>
+                    <td><b>Anti-malware Maintenance</b></td>
+                </tr>
+                <tr>
+                    <td><b>Phishing Defense</b></td>
+                </tr>
+            </tbody>
+        </table>
+        `
+    },
+    '5.1.2.b': {
+        default: `
+        <h3>5.1.2.b</h3>
+        <p>Interview personnel with responsibility for
+        performing activities in Requirement 5 to verify that
+        roles and responsibilities are assigned as documented and are understood.</p>
+        `
+    },
     '5.3.1.a': {
         default: `
             <h3>5.3.1.a</h3>
@@ -51,6 +114,23 @@ const approachContent = {
         default: `
         <h3>5.3.2.c</h3>
         <p>Examine logs and scan results to verify that the solution(s) is enabled in accordance with at least one of the elements specified in this requirement.</p>
+        `
+    },
+    '5.3.4': {
+        default: `
+        <h3>5.3.4</h3>
+        <p>Audit logs for the anti-malware solution(s) are enabled and retained in accordance with Requirement 10.5.1.</p>
+        `,
+        sophos: `
+        <h3>5.3.4</h3>
+        <p>Audit logs for the anti-malware solution(s) are enabled and retained in accordance with Requirement 10.5.1.</p>
+        <hr />
+        <h4>Sophos Central</h4>
+        <p>Sopho Central by default saves event logs for the past 90 days within their dashboard. You can get to them by going to the Computers page, and then selecting the events tab. You can either view them their or be more selective in the <b>View Events Report</b> section (in the top right of that page)</p>
+        <img src="https://imagedelivery.net/FgYlnTl8G0V_NRsRo5-YEg/b4e7687b-7b08-474e-cf02-6d94e8f21100/public" alt="Sophos Central Events in the last 90 Days">
+        <p>This satisfies the requirement to keep the past 90 days online for ready analysis. You will have to manually store the records necessary to keep the whole past 12 months of logs.</p>
+        <button onclick="download5_3_4ICS()">Download Calendar Reminder</button>
+        <hr />
         `
     },
     '5.3.5.a': {
@@ -136,6 +216,34 @@ const approachContent = {
 };
 
 
+
+
+function formatDate(date) {
+    return date.toISOString().replace(/-|:|\.\d+/g, '');
+}
+
+
+function download5_3_4ICS() {
+    const event = [
+        'BEGIN:VCALENDAR',
+        'VERSION:2.0',
+        'BEGIN:VEVENT',
+        'DTSTART:' + formatDate(new Date()), // start date of the event
+        'DTEND:' + formatDate(new Date(new Date().getTime() + 1*60*60*1000)), // end date of the event (1 hour after start date for this example)
+        'RRULE:FREQ=MONTHLY;INTERVAL=2', // recurring every 2 months
+        'SUMMARY:Pull the last 90 days of logs',
+        'DESCRIPTION:Reminder to pull the last 90 days of logs for compliance with requirement 5.3.4.',
+        'END:VEVENT',
+        'END:VCALENDAR'
+    ].join('\n');
+
+    const blob = new Blob([event], { type: 'text/calendar' });
+    const a = document.createElement('a');
+    a.download = 'log-reminder.ics';
+    a.href = window.URL.createObjectURL(blob);
+    a.dataset.downloadurl = ['text/calendar', a.download, a.href].join(':');
+    a.click();
+}
 //
 // The DOMContentLoaded event fires when the initial HTML document has been 
 // completely loaded and parsed, without waiting for stylesheets, images, and subframes 
@@ -786,6 +894,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 contentToShow = approachContent[approach].sophos;
             }
 
+            if (approach === '5.3.4' && sophosSwitch.checked) {
+                contentToShow = approachContent[approach].sophos;
+            }
+
+
             if (approach === '5.3.5.a' && sophosSwitch.checked) {
                 contentToShow = approachContent[approach].sophos;
             }
@@ -904,12 +1017,14 @@ document.addEventListener('DOMContentLoaded', function () {
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    function initialize5_3_5_b() {
+        console.log("Initializing 5.3.5.b...");
 
-    function initializeDynamicContent() {
-        console.log("Initializing Dynamic Content...");
-
-        // Retrieve and set the job title from localStorage
         const jobTitleInput = document.getElementById('jobTitle');
+        const formalitySlider = document.getElementById('formalitySlider');
+        const lengthSlider = document.getElementById('lengthSlider');
+        const generateTextButton = document.getElementById('generateTextButton');
+
         if (jobTitleInput) {
             console.log("Found jobTitleInput");
             jobTitleInput.value = localStorage.getItem('5.3.5.management') || '';
@@ -920,9 +1035,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         // Handle formality and length sliders
-        const formalitySlider = document.getElementById('formalitySlider');
-        const lengthSlider = document.getElementById('lengthSlider');
-
         if (formalitySlider) {
             formalitySlider.value = localStorage.getItem('formality') || '1';
             formalitySlider.addEventListener('change', function () {
@@ -940,7 +1052,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         // Handle "Generate Text" button
-        const generateTextButton = document.getElementById('generateTextButton');
         if (generateTextButton) {
             console.log("Found generateTextButton");
             generateTextButton.addEventListener('click', function () {
@@ -996,6 +1107,129 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             });
         }
+    }
+
+    function initialize5_1_2_a() {
+        console.log("Initializing 5.1.2.a...");
+
+        const jobTitleForm = document.getElementById('jobTitleForm');
+        const addJobTitleButton = document.getElementById('addJobTitle');
+        const raciMatrix = document.getElementById('raciMatrix');
+
+        if (addJobTitleButton) {
+            addJobTitleButton.addEventListener('click', function () {
+                const jobTitle = document.getElementById('jobTitleInput').value;
+                addJobTitleToMatrix(jobTitle);
+                document.getElementById('jobTitleInput').value = '';
+                saveMatrixToLocalStorage();
+            });
+        }
+
+        // Load matrix when the section is initialized
+        loadMatrixFromLocalStorage();
+    }
+
+    function saveMatrixToLocalStorage() {
+        let csvArr = [];
+        const rows = raciMatrix.querySelectorAll('tr');
+        const raciMatrix = document.getElementById('raciMatrix');
+        if (!raciMatrix) return; // Check if raciMatrix exists
+
+
+        rows.forEach(row => {
+            let rowData = [];
+            const cells = row.querySelectorAll('th, td');
+            cells.forEach(cell => {
+                if (cell.querySelector('select')) {
+                    rowData.push(cell.querySelector('select').value);
+                } else {
+                    rowData.push(cell.innerText);
+                }
+            });
+            csvArr.push(rowData.join(','));
+        });
+
+        const csvString = csvArr.join('\n');
+        localStorage.setItem('raciMatrixCSV', csvString);
+    }
+
+    function loadMatrixFromLocalStorage() {
+        const raciMatrix = document.getElementById('raciMatrix');
+        const csvString = localStorage.getItem('raciMatrixCSV');
+        if (!raciMatrix) return; // Check if raciMatrix exists
+        if (!csvString) return;
+
+        const csvArr = csvString.split('\n');
+        const header = csvArr.shift().split(',');
+
+        header.forEach(title => {
+            if (title !== "Tasks/Responsibilities") {
+                addJobTitleToMatrix(title);
+            }
+        });
+
+        raciMatrix.querySelectorAll('tbody tr').forEach((row, rowIndex) => {
+            const values = csvArr[rowIndex].split(',');
+            values.shift(); // Remove task name as it's already there
+
+            row.querySelectorAll('select').forEach((select, selectIndex) => {
+                select.value = values[selectIndex];
+            });
+        });
+    }
+
+    function addJobTitleToMatrix(jobTitle) {
+        // Add column header for the new job title
+        const raciMatrix = document.getElementById('raciMatrix');
+        if (!raciMatrix) return; // Check if raciMatrix exists
+        const headerRow = raciMatrix.querySelector('thead tr');
+        const th = document.createElement('th');
+        th.innerText = jobTitle;
+
+        const removeButton = document.createElement('button');
+        removeButton.innerText = "Remove";
+        removeButton.onclick = function () {
+            const index = Array.from(headerRow.children).indexOf(th);
+            raciMatrix.querySelectorAll('tr').forEach(row => {
+                row.removeChild(row.children[index]);
+            });
+            saveMatrixToLocalStorage();
+        };
+        th.appendChild(removeButton);
+        headerRow.appendChild(th);
+
+        // Add RACI dropdowns for each task in the matrix
+        raciMatrix.querySelectorAll('tbody tr').forEach(row => {
+            const td = document.createElement('td');
+            const select = document.createElement('select');
+            ['', 'R', 'A', 'C', 'I'].forEach(optionValue => {
+                const option = document.createElement('option');
+                option.value = optionValue;
+                option.innerText = optionValue;
+                select.appendChild(option);
+            });
+            td.appendChild(select);
+            row.appendChild(td);
+        });
+    }
+
+    //addJobTitleButton.addEventListener('click', function () {
+    //    const jobTitle = document.getElementById('jobTitleInput').value;
+    //    addJobTitleToMatrix(jobTitle);
+    //    document.getElementById('jobTitleInput').value = '';
+    //    saveMatrixToLocalStorage();
+    //});
+
+    // Load matrix when page is loaded
+    window.addEventListener('DOMContentLoaded', (event) => {
+        loadMatrixFromLocalStorage();
+    });
+
+    function initializeDynamicContent() {
+        console.log("Initializing Dynamic Content...");
+
+        initialize5_3_5_b();
+        initialize5_1_2_a();
     }
 
 
