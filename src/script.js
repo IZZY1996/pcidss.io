@@ -1,5 +1,5 @@
 const approachContent = {
-    '5.1.1':{
+    '5.1.1': {
         default: `
         <h3>5.1.1</h3>
         <p>All security policies and operational procedures that are identified in Requirement 5 are:
@@ -102,6 +102,15 @@ const approachContent = {
         default: `
         <h3>5.3.2.a</h3>
         <p>Examine anti-malware solution(s) configurations, including any master installation of the software, to verify the solution(s) is configured to perform at least one of the elements specified in this requirement.</p>
+        `,
+        sophos: `
+        <h3>5.3.2.a</h3>
+        <p>Examine anti-malware solution(s) configurations, including any master installation of the software, to verify the solution(s) is configured to perform at least one of the elements specified in this requirement.</p>
+        <hr />
+        <h4>Sophos Central</h4>
+        <p>Check under the Threat Policy for the computers in the CDE that Realtime protection is enabled</p>
+        <img src="https://imagedelivery.net/FgYlnTl8G0V_NRsRo5-YEg/c2f3983f-01fc-4cae-ea28-5d19e706d700/public" alt="Sophos Central Real Time Scanning">
+        <hr />
         `
     },
     '5.3.2.b': {
@@ -129,7 +138,59 @@ const approachContent = {
         <p>Sopho Central by default saves event logs for the past 90 days within their dashboard. You can get to them by going to the Computers page, and then selecting the events tab. You can either view them their or be more selective in the <b>View Events Report</b> section (in the top right of that page)</p>
         <img src="https://imagedelivery.net/FgYlnTl8G0V_NRsRo5-YEg/b4e7687b-7b08-474e-cf02-6d94e8f21100/public" alt="Sophos Central Events in the last 90 Days">
         <p>This satisfies the requirement to keep the past 90 days online for ready analysis. You will have to manually store the records necessary to keep the whole past 12 months of logs.</p>
+        <p>You will need to document where these logs are stored.</p>
+        <p>here is a python script that can be used to merge the old records with the new ones</p>
+        <div class="terminal"><code>
+    <span class="command">import</span> csv<br>
+    <span class="command">import</span> sys<br>
+    <br>
+    <span class="command">def</span> <span class="domain">read_csv</span>(file_path):<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;content = []<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="command">with</span> <span class="domain">open</span>(file_path, 'r') <span class="command">as</span> f:<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;reader = csv.reader(f)<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="command">for</span> row <span class="command">in</span> reader:<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content.append(tuple(row))<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="command">return</span> content<br>
+    <br>
+    <span class="command">def</span> <span class="domain">merge_csvs</span>(csv1, csv2):<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;merged_set = <span class="domain">set</span>(csv1[1:])<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;merged_set.update(<span class="domain">set</span>(csv2[1:]))<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;merged_list = [csv1[0]]<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;merged_list.extend(<span class="domain">sorted</span>(<span class="domain">list</span>(merged_set), key=<span class="command">lambda</span> x: x[1]))<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="command">return</span> merged_list<br>
+    <br>
+    <span class="command">def</span> <span class="domain">write_csv</span>(file_path, content):<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="command">with</span> <span class="domain">open</span>(file_path, 'w', newline='') <span class="command">as</span> f:<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;writer = csv.writer(f)<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="command">for</span> row <span class="command">in</span> content:<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;writer.writerow(row)<br>
+    <br>
+    <span class="command">if</span> __name__ <span class="command">==</span> "__main__":<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="command">if</span> len(sys.argv) < 4:<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="domain">print</span>("Usage: python merge_csvs.py &lt;path_to_first_csv&gt; &lt;path_to_second_csv&gt; &lt;path_to_output_csv&gt;")<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sys.exit(1)<br>
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;csv1_path = sys.argv[1]<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;csv2_path = sys.argv[2]<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;output_path = sys.argv[3]<br>
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;csv1_content = <span class="domain">read_csv</span>(csv1_path)<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;csv2_content = <span class="domain">read_csv</span>(csv2_path)<br>
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="domain">print</span>(f"Rows in {csv1_path}: {len(csv1_content) - 1}")<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="domain">print</span>(f"Rows in {csv2_path}: {len(csv2_content) - 1}")<br>
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;merged_content = <span class="domain">merge_csvs</span>(csv1_content, csv2_content)<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;duplicates_removed = (len(csv1_content) + len(csv2_content) - 2) - len(merged_content) + 1<br>
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="domain">print</span>(f"Duplicate rows removed: {duplicates_removed}")<br>
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="domain">write_csv</span>(output_path, merged_content)<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="domain">print</span>(f"Merged CSV written to {output_path}")<br>
+        </code></div>
+        <p>Here is a calendar reminder for every 2 months, you can just download 3 months and merge them together to be safe.</p>
         <button onclick="download5_3_4ICS()">Download Calendar Reminder</button>
+        <p>You may also want to place this in your ticketing system as a reacurring ticket</p>
         <hr />
         `
     },
@@ -229,7 +290,7 @@ function download5_3_4ICS() {
         'VERSION:2.0',
         'BEGIN:VEVENT',
         'DTSTART:' + formatDate(new Date()), // start date of the event
-        'DTEND:' + formatDate(new Date(new Date().getTime() + 1*60*60*1000)), // end date of the event (1 hour after start date for this example)
+        'DTEND:' + formatDate(new Date(new Date().getTime() + 1 * 60 * 60 * 1000)), // end date of the event (1 hour after start date for this example)
         'RRULE:FREQ=MONTHLY;INTERVAL=2', // recurring every 2 months
         'SUMMARY:Pull the last 90 days of logs',
         'DESCRIPTION:Reminder to pull the last 90 days of logs for compliance with requirement 5.3.4.',
@@ -869,6 +930,11 @@ document.addEventListener('DOMContentLoaded', function () {
         handleissuerswitchchange();
     }
 
+
+
+
+
+    
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -891,6 +957,10 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             if (approach === '5.3.1.b' && sophosSwitch.checked) {
+                contentToShow = approachContent[approach].sophos;
+            }
+
+            if (approach === '5.3.2.a' && sophosSwitch.checked) {
                 contentToShow = approachContent[approach].sophos;
             }
 
@@ -992,6 +1062,43 @@ document.addEventListener('DOMContentLoaded', function () {
         // Set the SophosSwitch based on the stored value.
         sophosSwitch.checked = sophosstoredValue === '1';
     }
+
+ ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+    const lazySwitch = document.getElementById('lazySwitch');
+
+    function handlelazyswitchchange() {
+        const lazyitems = document.querySelectorAll('.checklist-item[data-lazy="true"]');
+
+        if (lazySwitch.checked) {
+            lazyitems.forEach(item => {
+                item.style.opacity = "0.5";
+                item.style.pointerEvents = "none";
+            });
+            localStorage.setItem('settings-lazy', '0')
+        } else {
+            lazyitems.forEach(item => {
+                item.style.opacity = "1";
+                item.style.pointerEvents = "auto";
+            });
+            localStorage.setItem('settings-lazy', '1');
+        }
+    }
+    lazySwitch.addEventListener('change', handlelazyswitchchange);
+
+    handlelazyswitchchange();
+
+    const lazystoredvalue = localStorage.getItem('settings-lazy');
+
+    if (lazystoredvalue !== null) {
+
+        lazySwitch.checked = lazystoredvalue === '1';
+
+        handlelazyswitchchange();
+    }
+
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1109,12 +1216,12 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    let raciMatrix;
+
     function initialize5_1_2_a() {
         console.log("Initializing 5.1.2.a...");
 
-        const jobTitleForm = document.getElementById('jobTitleForm');
         const addJobTitleButton = document.getElementById('addJobTitle');
-        const raciMatrix = document.getElementById('raciMatrix');
 
         if (addJobTitleButton) {
             addJobTitleButton.addEventListener('click', function () {
@@ -1130,11 +1237,12 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function saveMatrixToLocalStorage() {
+        console.log("Saving to localStorage...");
+        const raciMatrix = document.getElementById('raciMatrix'); // Fetch it here
+        if (!raciMatrix) return;
+
         let csvArr = [];
         const rows = raciMatrix.querySelectorAll('tr');
-        const raciMatrix = document.getElementById('raciMatrix');
-        if (!raciMatrix) return; // Check if raciMatrix exists
-
 
         rows.forEach(row => {
             let rowData = [];
@@ -1184,18 +1292,8 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!raciMatrix) return; // Check if raciMatrix exists
         const headerRow = raciMatrix.querySelector('thead tr');
         const th = document.createElement('th');
-        th.innerText = jobTitle;
 
-        const removeButton = document.createElement('button');
-        removeButton.innerText = "Remove";
-        removeButton.onclick = function () {
-            const index = Array.from(headerRow.children).indexOf(th);
-            raciMatrix.querySelectorAll('tr').forEach(row => {
-                row.removeChild(row.children[index]);
-            });
-            saveMatrixToLocalStorage();
-        };
-        th.appendChild(removeButton);
+        th.innerText = jobTitle; // Just setting the job title directly to the th
         headerRow.appendChild(th);
 
         // Add RACI dropdowns for each task in the matrix
@@ -1212,13 +1310,6 @@ document.addEventListener('DOMContentLoaded', function () {
             row.appendChild(td);
         });
     }
-
-    //addJobTitleButton.addEventListener('click', function () {
-    //    const jobTitle = document.getElementById('jobTitleInput').value;
-    //    addJobTitleToMatrix(jobTitle);
-    //    document.getElementById('jobTitleInput').value = '';
-    //    saveMatrixToLocalStorage();
-    //});
 
     // Load matrix when page is loaded
     window.addEventListener('DOMContentLoaded', (event) => {
