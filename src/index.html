@@ -37,9 +37,14 @@
       <input type="checkbox" id="SophosSwitch">
       Sophos
     </label>
+    <h3>Procrastinate</h3>
+    <label>
+      <input type="checkbox" id="lazySwitch">
+      Disable all requirements not due till March 31st 2025
+    </label>
     <hr />
     <h3>About</h3>
-    <p>PCIDSS.io v0.1</p>
+    <p>PCI DSS v4.0</p>
     <p>⚠️ This is very early development ⚠️</p>
     <p>All data is stored using the Local Storage, and all code is using client-side Javascript. Nothing is run server-side.</p>
     <p>Questions/Concerns?<br /> Suggest Features/Contribute?<br />Contact me: <b>jacob@petrie.systems</b></p>
@@ -210,14 +215,13 @@
       <div class="checklist-item" data-sub-requirement="3.3" data-item-requirement="3.3.1.1">3.3.1.1</div>
       <div class="checklist-item" data-sub-requirement="3.3" data-item-requirement="3.3.1.2">3.3.1.2</div>
       <div class="checklist-item" data-sub-requirement="3.3" data-item-requirement="3.3.1.3">3.3.1.3</div>
-      <div class="checklist-item" data-sub-requirement="3.3" data-item-requirement="3.3.2">3.3.2</div>
-      <div class="checklist-item" data-sub-requirement="3.3" data-item-requirement="3.3.3" data-issuer-only="true">3.3.3
-      </div>
+      <div class="checklist-item" data-sub-requirement="3.3" data-item-requirement="3.3.2" data-lazy="true">3.3.2</div>
+      <div class="checklist-item" data-sub-requirement="3.3" data-item-requirement="3.3.3" data-issuer-only="true">3.3.3</div>
       <div class="checklist-item" data-sub-requirement="3.4" data-item-requirement="3.4.1">3.4.1</div>
-      <div class="checklist-item" data-sub-requirement="3.4" data-item-requirement="3.4.2">3.4.2</div>
+      <div class="checklist-item" data-sub-requirement="3.4" data-item-requirement="3.4.2" data-lazy="true">3.4.2</div>
       <div class="checklist-item" data-sub-requirement="3.5" data-item-requirement="3.5.1">3.5.1</div>
-      <div class="checklist-item" data-sub-requirement="3.5" data-item-requirement="3.5.1.1">3.5.1.1</div>
-      <div class="checklist-item" data-sub-requirement="3.5" data-item-requirement="3.5.1.2">3.5.1.2</div>
+      <div class="checklist-item" data-sub-requirement="3.5" data-item-requirement="3.5.1.1" data-lazy="true">3.5.1.1</div>
+      <div class="checklist-item" data-sub-requirement="3.5" data-item-requirement="3.5.1.2" data-lazy="true">3.5.1.2</div>
       <div class="checklist-item" data-sub-requirement="3.5" data-item-requirement="3.5.1.3">3.5.1.3</div>
       <div class="checklist-item" data-sub-requirement="3.6" data-item-requirement="3.6.1">3.6.1</div>
       <div class="checklist-item" data-sub-requirement="3.6" data-item-requirement="3.6.1.1" data-provider-only="true">
@@ -238,7 +242,7 @@
       <div class="checklist-item" data-sub-requirement="4.1" data-item-requirement="4.1.1">4.1.1</div>
       <div class="checklist-item" data-sub-requirement="4.1" data-item-requirement="4.1.2">4.1.2</div>
       <div class="checklist-item" data-sub-requirement="4.2" data-item-requirement="4.2.1">4.2.1</div>
-      <div class="checklist-item" data-sub-requirement="4.2" data-item-requirement="4.2.1.1">4.2.1.1</div>
+      <div class="checklist-item" data-sub-requirement="4.2" data-item-requirement="4.2.1.1" data-lazy="true">4.2.1.1</div>
       <div class="checklist-item" data-sub-requirement="4.2" data-item-requirement="4.2.1.2">4.2.1.2</div>
       <div class="checklist-item" data-sub-requirement="4.2" data-item-requirement="4.2.2">4.2.2</div>
 
@@ -247,14 +251,14 @@
       <div class="checklist-item" data-sub-requirement="5.2" data-item-requirement="5.2.1">5.2.1</div>
       <div class="checklist-item" data-sub-requirement="5.2" data-item-requirement="5.2.2">5.2.2</div>
       <div class="checklist-item" data-sub-requirement="5.2" data-item-requirement="5.2.3">5.2.3</div>
-      <div class="checklist-item" data-sub-requirement="5.2" data-item-requirement="5.2.3.1">5.2.3.1</div>
+      <div class="checklist-item" data-sub-requirement="5.2" data-item-requirement="5.2.3.1" data-lazy="true">5.2.3.1</div>
       <div class="checklist-item" data-sub-requirement="5.3" data-item-requirement="5.3.1">5.3.1</div>
       <div class="checklist-item" data-sub-requirement="5.3" data-item-requirement="5.3.2">5.3.2</div>
-      <div class="checklist-item" data-sub-requirement="5.3" data-item-requirement="5.3.2.1">5.3.2.1</div>
+      <div class="checklist-item" data-sub-requirement="5.3" data-item-requirement="5.3.2.1" data-lazy="true">5.3.2.1</div>
       <div class="checklist-item" data-sub-requirement="5.3" data-item-requirement="5.3.3">5.3.3</div>
       <div class="checklist-item" data-sub-requirement="5.3" data-item-requirement="5.3.4">5.3.4</div>
       <div class="checklist-item" data-sub-requirement="5.3" data-item-requirement="5.3.5">5.3.5</div>
-      <div class="checklist-item" data-sub-requirement="5.4" data-item-requirement="5.4.1">5.4.1</div>
+      <div class="checklist-item" data-sub-requirement="5.4" data-item-requirement="5.4.1" data-lazy="true">5.4.1</div>
 
       <div class="checklist-item" data-sub-requirement="6.1" data-item-requirement="6.1.1">6.1.1</div>
       <div class="checklist-item" data-sub-requirement="6.1" data-item-requirement="6.1.2">6.1.2</div>
@@ -264,11 +268,11 @@
       <div class="checklist-item" data-sub-requirement="6.2" data-item-requirement="6.2.3.1">6.2.3.1</div>
       <div class="checklist-item" data-sub-requirement="6.2" data-item-requirement="6.2.4">6.2.4</div>
       <div class="checklist-item" data-sub-requirement="6.3" data-item-requirement="6.3.1">6.3.1</div>
-      <div class="checklist-item" data-sub-requirement="6.3" data-item-requirement="6.3.2">6.3.2</div>
+      <div class="checklist-item" data-sub-requirement="6.3" data-item-requirement="6.3.2" data-lazy="true">6.3.2</div>
       <div class="checklist-item" data-sub-requirement="6.3" data-item-requirement="6.3.3">6.3.3</div>
       <div class="checklist-item" data-sub-requirement="6.4" data-item-requirement="6.4.1">6.4.1</div>
-      <div class="checklist-item" data-sub-requirement="6.4" data-item-requirement="6.4.2">6.4.2</div>
-      <div class="checklist-item" data-sub-requirement="6.4" data-item-requirement="6.4.3">6.4.3</div>
+      <div class="checklist-item" data-sub-requirement="6.4" data-item-requirement="6.4.2" data-lazy="true">6.4.2</div>
+      <div class="checklist-item" data-sub-requirement="6.4" data-item-requirement="6.4.3" data-lazy="true">6.4.3</div>
       <div class="checklist-item" data-sub-requirement="6.5" data-item-requirement="6.5.1">6.5.1</div>
       <div class="checklist-item" data-sub-requirement="6.5" data-item-requirement="6.5.2">6.5.2</div>
       <div class="checklist-item" data-sub-requirement="6.5" data-item-requirement="6.5.3">6.5.3</div>
@@ -281,9 +285,9 @@
       <div class="checklist-item" data-sub-requirement="7.2" data-item-requirement="7.2.1">7.2.1</div>
       <div class="checklist-item" data-sub-requirement="7.2" data-item-requirement="7.2.2">7.2.2</div>
       <div class="checklist-item" data-sub-requirement="7.2" data-item-requirement="7.2.3">7.2.3</div>
-      <div class="checklist-item" data-sub-requirement="7.2" data-item-requirement="7.2.4">7.2.4</div>
-      <div class="checklist-item" data-sub-requirement="7.2" data-item-requirement="7.2.5">7.2.5</div>
-      <div class="checklist-item" data-sub-requirement="7.2" data-item-requirement="7.2.5.1">7.2.5.1</div>
+      <div class="checklist-item" data-sub-requirement="7.2" data-item-requirement="7.2.4" data-lazy="true">7.2.4</div>
+      <div class="checklist-item" data-sub-requirement="7.2" data-item-requirement="7.2.5" data-lazy="true">7.2.5</div>
+      <div class="checklist-item" data-sub-requirement="7.2" data-item-requirement="7.2.5.1" data-lazy="true">7.2.5.1</div>
       <div class="checklist-item" data-sub-requirement="7.2" data-item-requirement="7.2.6">7.2.6</div>
       <div class="checklist-item" data-sub-requirement="7.3" data-item-requirement="7.3.1">7.3.1</div>
       <div class="checklist-item" data-sub-requirement="7.3" data-item-requirement="7.3.2">7.3.2</div>
@@ -305,22 +309,22 @@
       <div class="checklist-item" data-sub-requirement="8.3" data-item-requirement="8.3.3">8.3.3</div>
       <div class="checklist-item" data-sub-requirement="8.3" data-item-requirement="8.3.4">8.3.4</div>
       <div class="checklist-item" data-sub-requirement="8.3" data-item-requirement="8.3.5">8.3.5</div>
-      <div class="checklist-item" data-sub-requirement="8.3" data-item-requirement="8.3.6">8.3.6</div>
+      <div class="checklist-item" data-sub-requirement="8.3" data-item-requirement="8.3.6" data-lazy="true">8.3.6</div>
       <div class="checklist-item" data-sub-requirement="8.3" data-item-requirement="8.3.7">8.3.7</div>
       <div class="checklist-item" data-sub-requirement="8.3" data-item-requirement="8.3.8">8.3.8</div>
       <div class="checklist-item" data-sub-requirement="8.3" data-item-requirement="8.3.9">8.3.9</div>
       <div class="checklist-item" data-sub-requirement="8.3" data-item-requirement="8.3.10" data-provider-only="true">
         8.3.10</div>
-      <div class="checklist-item" data-sub-requirement="8.3" data-item-requirement="8.3.10.1" data-provider-only="true">
+      <div class="checklist-item" data-sub-requirement="8.3" data-item-requirement="8.3.10.1" data-provider-only="true" data-lazy="true">
         8.3.10.1</div>
       <div class="checklist-item" data-sub-requirement="8.3" data-item-requirement="8.3.11">8.3.11</div>
       <div class="checklist-item" data-sub-requirement="8.4" data-item-requirement="8.4.1">8.4.1</div>
-      <div class="checklist-item" data-sub-requirement="8.4" data-item-requirement="8.4.2">8.4.2</div>
+      <div class="checklist-item" data-sub-requirement="8.4" data-item-requirement="8.4.2" data-lazy="true">8.4.2</div>
       <div class="checklist-item" data-sub-requirement="8.4" data-item-requirement="8.4.3">8.4.3</div>
-      <div class="checklist-item" data-sub-requirement="8.5" data-item-requirement="8.5.1">8.5.1</div>
-      <div class="checklist-item" data-sub-requirement="8.6" data-item-requirement="8.6.1">8.6.1</div>
-      <div class="checklist-item" data-sub-requirement="8.6" data-item-requirement="8.6.2">8.6.2</div>
-      <div class="checklist-item" data-sub-requirement="8.6" data-item-requirement="8.6.3">8.6.3</div>
+      <div class="checklist-item" data-sub-requirement="8.5" data-item-requirement="8.5.1" data-lazy="true">8.5.1</div>
+      <div class="checklist-item" data-sub-requirement="8.6" data-item-requirement="8.6.1" data-lazy="true">8.6.1</div>
+      <div class="checklist-item" data-sub-requirement="8.6" data-item-requirement="8.6.2" data-lazy="true">8.6.2</div>
+      <div class="checklist-item" data-sub-requirement="8.6" data-item-requirement="8.6.3" data-lazy="true">8.6.3</div>
 
       <div class="checklist-item" data-sub-requirement="9.1" data-item-requirement="9.1.1">9.1.1</div>
       <div class="checklist-item" data-sub-requirement="9.1" data-item-requirement="9.1.2">9.1.2</div>
@@ -347,7 +351,7 @@
       <div class="checklist-item" data-sub-requirement="9.5" data-item-requirement="9.5.1">9.5.1</div>
       <div class="checklist-item" data-sub-requirement="9.5" data-item-requirement="9.5.1.1">9.5.1.1</div>
       <div class="checklist-item" data-sub-requirement="9.5" data-item-requirement="9.5.1.2">9.5.1.2</div>
-      <div class="checklist-item" data-sub-requirement="9.5" data-item-requirement="9.5.1.2.1">9.5.1.2.1</div>
+      <div class="checklist-item" data-sub-requirement="9.5" data-item-requirement="9.5.1.2.1" data-lazy="true">9.5.1.2.1</div>
       <div class="checklist-item" data-sub-requirement="9.5" data-item-requirement="9.5.1.3">9.5.1.3</div>
 
       <div class="checklist-item" data-sub-requirement="10.1" data-item-requirement="10.1.1">10.1.1</div>
@@ -365,9 +369,9 @@
       <div class="checklist-item" data-sub-requirement="10.3" data-item-requirement="10.3.3">10.3.3</div>
       <div class="checklist-item" data-sub-requirement="10.3" data-item-requirement="10.3.4">10.3.4</div>
       <div class="checklist-item" data-sub-requirement="10.4" data-item-requirement="10.4.1">10.4.1</div>
-      <div class="checklist-item" data-sub-requirement="10.4" data-item-requirement="10.4.1.1">10.4.1.1</div>
+      <div class="checklist-item" data-sub-requirement="10.4" data-item-requirement="10.4.1.1" data-lazy="true">10.4.1.1</div>
       <div class="checklist-item" data-sub-requirement="10.4" data-item-requirement="10.4.2">10.4.2</div>
-      <div class="checklist-item" data-sub-requirement="10.4" data-item-requirement="10.4.2.1">10.4.2.1</div>
+      <div class="checklist-item" data-sub-requirement="10.4" data-item-requirement="10.4.2.1" data-lazy="true">10.4.2.1</div>
       <div class="checklist-item" data-sub-requirement="10.4" data-item-requirement="10.4.3">10.4.3</div>
       <div class="checklist-item" data-sub-requirement="10.5" data-item-requirement="10.5.1">10.5.1</div>
       <div class="checklist-item" data-sub-requirement="10.6" data-item-requirement="10.6.1">10.6.1</div>
@@ -375,7 +379,7 @@
       <div class="checklist-item" data-sub-requirement="10.6" data-item-requirement="10.6.3">10.6.3</div>
       <div class="checklist-item" data-sub-requirement="10.7" data-item-requirement="10.7.1" data-provider-only="true">
         10.7.1</div>
-      <div class="checklist-item" data-sub-requirement="10.7" data-item-requirement="10.7.2">10.7.2</div>
+      <div class="checklist-item" data-sub-requirement="10.7" data-item-requirement="10.7.2" data-lazy="true">10.7.2</div>
       <div class="checklist-item" data-sub-requirement="10.7" data-item-requirement="10.7.3">10.7.3</div>
 
       <div class="checklist-item" data-sub-requirement="11.1" data-item-requirement="11.1.1">11.1.1</div>
@@ -383,8 +387,8 @@
       <div class="checklist-item" data-sub-requirement="11.2" data-item-requirement="11.2.1">11.2.1</div>
       <div class="checklist-item" data-sub-requirement="11.2" data-item-requirement="11.2.2">11.2.2</div>
       <div class="checklist-item" data-sub-requirement="11.3" data-item-requirement="11.3.1">11.3.1</div>
-      <div class="checklist-item" data-sub-requirement="11.3" data-item-requirement="11.3.1.1">11.3.1.1</div>
-      <div class="checklist-item" data-sub-requirement="11.3" data-item-requirement="11.3.1.2">11.3.1.2</div>
+      <div class="checklist-item" data-sub-requirement="11.3" data-item-requirement="11.3.1.1" data-lazy="true">11.3.1.1</div>
+      <div class="checklist-item" data-sub-requirement="11.3" data-item-requirement="11.3.1.2" data-lazy="true">11.3.1.2</div>
       <div class="checklist-item" data-sub-requirement="11.3" data-item-requirement="11.3.1.3">11.3.1.3</div>
       <div class="checklist-item" data-sub-requirement="11.3" data-item-requirement="11.3.2">11.3.2</div>
       <div class="checklist-item" data-sub-requirement="11.3" data-item-requirement="11.3.2.1">11.3.2.1</div>
@@ -397,19 +401,19 @@
         11.4.6</div>
       <div class="checklist-item" data-sub-requirement="11.4" data-item-requirement="11.4.7">11.4.7</div>
       <div class="checklist-item" data-sub-requirement="11.5" data-item-requirement="11.5.1">11.5.1</div>
-      <div class="checklist-item" data-sub-requirement="11.5" data-item-requirement="11.5.1.1" data-provider-only="true">11.5.1.1</div>
+      <div class="checklist-item" data-sub-requirement="11.5" data-item-requirement="11.5.1.1" data-provider-only="true" data-lazy="true">11.5.1.1</div>
       <div class="checklist-item" data-sub-requirement="11.5" data-item-requirement="11.5.2">11.5.2</div>
-      <div class="checklist-item" data-sub-requirement="11.6" data-item-requirement="11.6.1">11.6.1</div>
+      <div class="checklist-item" data-sub-requirement="11.6" data-item-requirement="11.6.1" data-lazy="true">11.6.1</div>
 
       <div class="checklist-item" data-sub-requirement="12.1" data-item-requirement="12.1.1">12.1.1</div>
       <div class="checklist-item" data-sub-requirement="12.1" data-item-requirement="12.1.2">12.1.2</div>
       <div class="checklist-item" data-sub-requirement="12.1" data-item-requirement="12.1.3">12.1.3</div>
       <div class="checklist-item" data-sub-requirement="12.1" data-item-requirement="12.1.4">12.1.4</div>
       <div class="checklist-item" data-sub-requirement="12.2" data-item-requirement="12.2.1">12.2.1</div>
-      <div class="checklist-item" data-sub-requirement="12.3" data-item-requirement="12.3.1">12.3.1</div>
+      <div class="checklist-item" data-sub-requirement="12.3" data-item-requirement="12.3.1" data-lazy="true">12.3.1</div>
       <div class="checklist-item" data-sub-requirement="12.3" data-item-requirement="12.3.2">12.3.2</div>
-      <div class="checklist-item" data-sub-requirement="12.3" data-item-requirement="12.3.3">12.3.3</div>
-      <div class="checklist-item" data-sub-requirement="12.3" data-item-requirement="12.3.4">12.3.4</div>
+      <div class="checklist-item" data-sub-requirement="12.3" data-item-requirement="12.3.3" data-lazy="true">12.3.3</div>
+      <div class="checklist-item" data-sub-requirement="12.3" data-item-requirement="12.3.4" data-lazy="true">12.3.4</div>
       <div class="checklist-item" data-sub-requirement="12.4" data-item-requirement="12.4.1" data-provider-only="true">
         12.4.1</div>
       <div class="checklist-item" data-sub-requirement="12.4" data-item-requirement="12.4.2" data-provider-only="true">
@@ -417,14 +421,13 @@
       <div class="checklist-item" data-sub-requirement="12.4" data-item-requirement="12.4.2.1" data-provider-only="true">12.4.2.1</div>
       <div class="checklist-item" data-sub-requirement="12.5" data-item-requirement="12.5.1">12.5.1</div>
       <div class="checklist-item" data-sub-requirement="12.5" data-item-requirement="12.5.2">12.5.2</div>
-      <div class="checklist-item" data-sub-requirement="12.5" data-item-requirement="12.5.2.1" data-provider-only="true">12.5.2.1</div>
-      <div class="checklist-item" data-sub-requirement="12.5" data-item-requirement="12.5.3" data-provider-only="true">
-        12.5.3</div>
-      <div class="checklist-item" data-sub-requirement="12.6" data-item-requirement="12.6.1">12.6.1</div>
+      <div class="checklist-item" data-sub-requirement="12.5" data-item-requirement="12.5.2.1" data-provider-only="true" data-lazy="true">12.5.2.1</div>
+      <div class="checklist-item" data-sub-requirement="12.5" data-item-requirement="12.5.3" data-provider-only="true" data-lazy="true">12.5.3</div>
+      <div class="checklist-item" data-sub-requirement="12.6" data-item-requirement="12.6.1" data-lazy="true">12.6.1</div>
       <div class="checklist-item" data-sub-requirement="12.6" data-item-requirement="12.6.2">12.6.2</div>
       <div class="checklist-item" data-sub-requirement="12.6" data-item-requirement="12.6.3">12.6.3</div>
-      <div class="checklist-item" data-sub-requirement="12.6" data-item-requirement="12.6.3.1">12.6.3.1</div>
-      <div class="checklist-item" data-sub-requirement="12.6" data-item-requirement="12.6.3.2">12.6.3.2</div>
+      <div class="checklist-item" data-sub-requirement="12.6" data-item-requirement="12.6.3.1" data-lazy="true">12.6.3.1</div>
+      <div class="checklist-item" data-sub-requirement="12.6" data-item-requirement="12.6.3.2" data-lazy="true">12.6.3.2</div>
       <div class="checklist-item" data-sub-requirement="12.7" data-item-requirement="12.7.1">12.7.1</div>
       <div class="checklist-item" data-sub-requirement="12.8" data-item-requirement="12.8.1">12.8.1</div>
       <div class="checklist-item" data-sub-requirement="12.8" data-item-requirement="12.8.2">12.8.2</div>
@@ -439,13 +442,285 @@
       <div class="checklist-item" data-sub-requirement="12.10" data-item-requirement="12.10.2">12.10.2</div>
       <div class="checklist-item" data-sub-requirement="12.10" data-item-requirement="12.10.3">12.10.3</div>
       <div class="checklist-item" data-sub-requirement="12.10" data-item-requirement="12.10.4">12.10.4</div>
-      <div class="checklist-item" data-sub-requirement="12.10" data-item-requirement="12.10.4.1">12.10.4.1</div>
+      <div class="checklist-item" data-sub-requirement="12.10" data-item-requirement="12.10.4.1" data-lazy="true">12.10.4.1</div>
       <div class="checklist-item" data-sub-requirement="12.10" data-item-requirement="12.10.5">12.10.5</div>
       <div class="checklist-item" data-sub-requirement="12.10" data-item-requirement="12.10.6">12.10.6</div>
-      <div class="checklist-item" data-sub-requirement="12.10" data-item-requirement="12.10.7">12.10.7</div>
+      <div class="checklist-item" data-sub-requirement="12.10" data-item-requirement="12.10.7" data-lazy="true">12.10.7</div>
 
     </div>
     <div id="inner-panel">
+
+      <div class="checklist-content" id="content-4.2.1" style="display: none;">
+        <h3>4.2.1 Strong cryptography and security protocols are implemented as follows to safeguard PAN during transmission over open, public networks:
+          <ul>
+            <li>
+              Only trusted keys and certificates are accepted.
+            </li>
+            <li>
+              Certificates used to safeguard PAN during transmission over open, public networks are confirmed as valid and are not expired or revoked. <i>This bullet is a best practice until its effective date; refer to applicability notes below for details.</i>
+            </li>
+            <li>
+              The protocol in use supports only secure versions or configurations and does not support fallback to, or use of insecure versions, algorithms, key sizes, or implementations.
+            </li>
+            <li>
+              The encryption strength is appropriate for the encryption methodology in use.
+            </li>
+          </ul>
+        </h3>
+        <h4>Defined Approach Testing Procedures</h4>
+        <button class="testing-approach" data-approach="4.2.1.a">
+          <b>4.2.1.a</b> Examine documented policies and
+          procedures and interview personnel to verify
+          processes are defined to include all elements
+          specified in this requirement.
+        </button>
+        <button class="testing-approach" data-approach="4.2.1.b">
+          <b>4.2.1.b</b> Examine system configurations to verify
+          that strong cryptography and security protocols are
+          implemented in accordance with all elements
+          specified in this requirement.
+        </button>
+        <button class="testing-approach" data-approach="4.2.1.c">
+          <b>4.2.1.c</b> Examine cardholder data transmissions to
+          verify that all PAN is encrypted with strong
+          cryptography when it is transmitted over open,
+          public networks.
+        </button>
+        <button class="testing-approach" data-approach="4.2.1.d">
+          <b>4.2.1.d</b> Examine system configurations to verify
+          that keys and/or certificates that cannot be verified
+          as trusted are rejected.
+        </button>
+        <h4>Customized Approach Objective</h4>
+        <p>Cleartext PAN cannot be read or intercepted from any transmissions over open, public networks.</p>
+        <h4>Applicability Notes</h4>
+        <p>There could be occurrences where an entity
+          receives cardholder data unsolicited via an insecure
+          communication channel that was not intended for
+          the purpose of receiving sensitive data. In this
+          situation, the entity can choose to either include the
+          channel in the scope of their CDE and secure it
+          according to PCI DSS or implement measures to
+          prevent the channel from being used for cardholder
+          data.</p>
+        <p>A self-signed certificate may also be acceptable if
+          the certificate is issued by an internal CA within the
+          organization, the certificate’s author is confirmed,
+          and the certificate is verified—for example, via hash
+          or signature—and has not expired. Note that self-
+          signed certificates where the Distinguished Name
+          (DN) field in the “issued by” and “issued to” field is
+          the same are not acceptable.</p>
+        <p><i>The bullet above (for confirming that certificates
+            used to safeguard PAN during transmission over
+            open, public networks are valid and are not expired
+            or revoked) is a best practice until 31 March 2025,
+            after which it will be required as part of Requirement
+            4.2.1 and must be fully considered during a PCI
+            DSS assessment.</i></p>
+        <h4>Purpose</h4>
+        <p>Sensitive information must be encrypted during
+          transmission over public networks because it is
+          easy and common for a malicious individual to
+          intercept and/or divert data while in transit.</p>
+        <h4>Good Practice</h4>
+        <p>The network and data-flow diagrams defined in
+          Requirement 1 are useful resources for identifying
+          all connection points where account data is
+          transmitted or received over open, public
+          networks.</p>
+        <p>While not required, it is considered a good
+          practice for entities to also encrypt PAN over their
+          internal networks, and for entities to establish any
+          new network implementations with encrypted
+          communications.</p>
+        <p>PAN transmissions can be protected by
+          encrypting the data before it is transmitted, or by
+          encrypting the session over which the data is
+          transmitted, or both. While it is not required that
+          strong cryptography be applied at both the data
+          level and the session level, it is strongly
+          recommended. If encrypted at the data level, the
+          cryptographic keys used for protecting the data
+          can be managed in accordance with
+          Requirements 3.6 and 3.7. If the data is encrypted
+          at the session level, designated key custodians
+          should be assigned responsibility for managing
+          transmission keys and certificates.</p>
+        <p>Some protocol implementations (such as SSL,
+          SSH v1.0, and early TLS) have known
+          vulnerabilities that an attacker can use to gain
+          access to the cleartext data. It is critical that
+          entities maintain awareness of industry-defined
+          deprecation dates for the cipher suites they are
+          using and are prepared to migrate to newer
+          versions or protocols when older ones are no
+          longer deemed secure.</p>
+        <p>Verifying that certificates are trusted helps ensure
+          the integrity of the secure connection. To be
+          considered trusted, a certificate should be issued
+          from a trusted source, such as a trusted certificate
+          authority (CA), and not be expired. Up-to-date
+          Certificate Revocation Lists (CRLs) or Online
+          Certificate Status Protocol (OCSP) can be used to
+          validate certificates.</p>
+        <p>Techniques to validate certificates may include
+          certificate and public key pinning, where the
+          trusted certificate or a public key is pinned either
+          during development or upon its first use. Entities
+          can also confirm with developers or review source
+          code to ensure that clients and servers reject
+          connections if the certificate is bad.</p>
+        <p>For browser-based TLS certificates, certificate
+          trust can often be verified by clicking on the lock
+          icon that appears next to the address bar.</p>
+        <h4>Examples</h4>
+        <p>Open, public networks include, but are not limited
+          to:
+        <ul>
+          <li>The Internet and</li>
+          <li>Wireless technologies, including Wi-Fi,
+            Bluetooth, cellular technologies, and satellite
+            communications.</li>
+        </ul>
+        </p>
+        <h4>Further Information</h4>
+        <p>Vendor recommendations and industry best
+          practices can be consulted for information about
+          the proper encryption strength specific to the
+          encryption methodology in use.</p>
+        <p>For more information about strong cryptography
+          and secure protocols, see industry standards and
+          best practices such as <a href="https://doi.org/10.6028/NIST.SP.800-52r2">NIST SP 800-52</a> and <a href="https://doi.org/10.6028/NIST.SP.800-57pt1r5 ">SP
+          800-57</a>.</p>
+        <p>For more information about trusted keys and
+          certificates, see <a href="https://doi.org/10.6028/NIST.SP.1800-16 ">NIST Cybersecurity Practice
+          Guide Special Publication 1800-16, Securing Web
+          Transactions: Transport Layer Security (TLS)
+          Server Certificate Management.</a></p>
+      </div>
+
+      <div class="checklist-content" id="content-4.2.1.1" style="display: none;">
+        <h3>4.2.1.1 An inventory of the entity’s trusted keys and certificates used to protect PAN during transmission is maintained.</h3>
+        <h4>Defined Approach Testing Procedures</h4>
+        <button class="testing-approach" data-approach="4.2.1.1.a">
+          <b>4.2.1.1.a</b> Examine documented policies and
+          procedures to verify processes are defined for the
+          entity to maintain an inventory of its trusted keys
+          and certificates.
+        </button>
+        <button class="testing-approach" data-approach="4.2.1.1.b">
+          <b>4.2.1.1.b</b> Examine the inventory of trusted keys
+          and certificates to verify it is kept up to date.
+        </button>
+        <h4>Customized Approach Objective</h4>
+        <p>All keys and certificates used to protect PAN during
+          transmission are identified and confirmed as trusted.</p>
+        <h4>Applicability Notes</h4>
+        <p><i>This requirement is a best practice until 31 March
+            2025, after which it will be required and must be
+            fully considered during a PCI DSS assessment.</i></p>
+        <h4>Purpose</h4>
+        <p>The inventory of trusted keys helps the entity
+          keep track of the algorithms, protocols, key
+          strength, key custodians, and key expiry dates.
+          This enables the entity to respond quickly to
+          vulnerabilities discovered in encryption software,
+          certificates, and cryptographic algorithms.</p>
+        <h4>Good Practice</h4>
+        <p>For certificates, the inventory should include the
+          issuing CA and certification expiration date.</p>
+      </div>
+
+      <div class="checklist-content" id="content-4.2.1.2" style="display: none;">
+        <h3>4.2.1.2 Wireless networks transmitting PAN or connected to the CDE use industry best practices to implement strong cryptography for authentication and transmission.</h3>
+        <h4>Defined Approach Testing Procedures</h4>
+        <button class="testing-approach" data-approach="4.2.1.2">
+          <b>4.2.1.2</b> Examine system configurations to verify
+          that wireless networks transmitting PAN or
+          connected to the CDE use industry best practices
+          to implement strong cryptography for
+          authentication and transmission.
+        </button>
+        <h4>Customized Approach Objective</h4>
+        <p>Cleartext PAN cannot be read or intercepted from
+          wireless network transmissions.</p>
+        <h4>Purpose</h4>
+        <p>Since wireless networks do not require physical
+          media to connect, it is important to establish
+          controls limiting who can connect and what
+          transmission protocols will be used. Malicious
+          users use free and widely available tools to
+          eavesdrop on wireless communications. Use of
+          strong cryptography can help limit disclosure of
+          sensitive information across wireless networks.</p>
+        <p>Wireless networks present unique risks to an
+          organization; therefore, they must be identified
+          and protected according to industry requirements.
+          Strong cryptography for authentication and
+          transmission of PAN is required to prevent
+          malicious users from gaining access to the
+          wireless network or utilizing wireless networks to
+          access other internal networks or data.</p>
+        <h4>Good Practice</h4>
+        <p>Wireless networks should not permit fallback or
+          downgrade to an insecure protocol or lower
+          encryption strength that does not meet the intent
+          of strong cryptography.</p>
+        <h4>Further Information</h4>
+        <p>Review the vendor’s specific documentation for
+          more details on the choice of protocols,
+          configurations, and settings related to
+          cryptography.</p>
+      </div>
+
+      <div class="checklist-content" id="content-4.2.2" style="display: none;">
+        <h3>4.2.2 PAN is secured with strong cryptography
+          whenever it is sent via end-user messaging
+          technologies.</h3>
+        <h4>Defined Approach Testing Procedures</h4>
+        <button class="testing-approach" data-approach="4.2.2.a">
+          <b>4.2.2.a</b> Examine documented policies and
+          procedures to verify that processes are defined to
+          secure PAN with strong cryptography whenever
+          sent over end-user messaging technologies.
+        </button>
+        <button class="testing-approach" data-approach="4.2.2.b">
+          <b>4.2.2.b</b> Examine system configurations and vendor
+          documentation to verify that PAN is secured with
+          strong cryptography whenever it is sent via end-
+          user messaging technologies.
+        </button>
+        <h4>Customized Approach Objective</h4>
+        <p>Cleartext PAN cannot be read or intercepted from
+          transmissions using end-user messaging
+          technologies.</p>
+        <h4>Applicability Notes</h4>
+        <p>This requirement also applies if a customer, or other
+          third-party, requests that PAN is sent to them via
+          end-user messaging technologies.</p>
+        <p>There could be occurrences where an entity
+          receives unsolicited cardholder data via an insecure
+          communication channel that was not intended for
+          transmissions of sensitive data. In this situation, the
+          entity can choose to either include the channel in
+          the scope of their CDE and secure it according to
+          PCI DSS or delete the cardholder data and
+          implement measures to prevent the channel from
+          being used for cardholder data.</p>
+        <h4>Purpose</h4>
+        <p>End-user messaging technologies typically can be
+          easily intercepted by packet-sniffing during
+          delivery across internal and public networks.</p>
+        <h4>Good Practice</h4>
+        <p>The use of end-user messaging technology to
+          send PAN should only be considered where there
+          is a defined business need.</p>
+        <h4>Examples</h4>
+        <p>E-mail, instant messaging, SMS, and chat are
+          examples of the type of end-user messaging
+          technology that this requirement refers to.</p>
+      </div>
 
       <div class="checklist-content" id="content-5.1.1" style="display: none;">
         <h3>5.1.1 All security policies and operational procedures that are identified in Requirement 5 are:
@@ -536,7 +811,13 @@
       </div>
 
       <div class="checklist-content" id="content-5.2.1" style="display: none;">
-        <h3>5.2.1 An anti-malware solution(s) is deployed on all system components, except for those system components identified in periodic evaluations per Requirement 5.2.3 that concludes the system components are not at risk from malware.</h3>
+        <h3>5.2.1 An anti-malware solution(s) is deployed on all system components, except for those system components identified in periodic evaluations per <span title="5.2.3 Any system components that are not at risk for malware are evaluated periodically to include the following:
+          • A documented list of all system components not
+          at risk for malware.
+          • Identification and evaluation of evolving
+          malware threats for those system components.
+          • Confirmation whether such system components
+          continue to not require anti-malware protection.">Requirement 5.2.3</span> that concludes the system components are not at risk from malware.</h3>
         <h4>Defined Approach Testing Procedures</h4>
         <button class="testing-approach" data-approach="5.2.1.a">
           <b>5.2.1.a</b> Examine system components to verify that
